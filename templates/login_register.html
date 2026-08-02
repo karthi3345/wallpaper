@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+{% load shop_tags %}
+
+{% block title %}Login / Register — Mahashanka Decor{% endblock %}
+
+{% block content %}
+<div class="min-h-[60vh] bg-rw-cream py-12 md:py-20 px-4">
+    <div class="max-w-4xl mx-auto">
+
+        <!-- Heading -->
+        <div class="text-center mb-10">
+            <h1 class="text-2xl md:text-3xl font-light text-rw-brown uppercase tracking-wide">Oops! Looks like you didn't login</h1>
+            <p class="text-sm text-gray-500 mt-2">Login to access your account or create a new one.</p>
+        </div>
+
+        {% if messages %}
+        <div class="mb-6 max-w-2xl mx-auto">
+            {% for message in messages %}
+            <div class="{% if 'success' in message.tags %}bg-green-50 border-green-200 text-green-700{% elif 'error' in message.tags %}bg-red-50 border-red-200 text-red-700{% else %}bg-blue-50 border-blue-200 text-blue-700{% endif %} border rounded-lg p-3 text-sm mb-2 text-center">
+                {{ message }}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <div class="grid md:grid-cols-2 gap-6 lg:gap-8">
+
+            <!-- Login Form -->
+            <div class="bg-white rounded-lg border border-gray-100 p-6 md:p-8 shadow-sm">
+                <h2 class="text-xl font-medium text-rw-brown mb-6">Login</h2>
+
+                {% if login_error %}
+                <div class="bg-red-50 border border-red-200 text-red-700 rounded-lg p-3 text-sm mb-5">{{ login_error }}</div>
+                {% endif %}
+
+                <form method="post" action="{% url 'login_register' %}" class="space-y-5">
+                    {% csrf_token %}
+                    <input type="hidden" name="form_type" value="login">
+                    <div>
+                        <label class="block text-xs text-gray-500 mb-1.5">Username or email address <span class="text-red-500">*</span></label>
+                        <input type="text" name="username" required
+                               class="w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm focus:border-rw-brown focus:outline-none focus:ring-1 focus:ring-rw-brown transition">
+                    </div>
+                    <div>
+                        <label class="block text-xs text-gray-500 mb-1.5">Password <span class="text-red-500">*</span></label>
+                        <div class="relative">
+                            <input type="password" name="password" id="login-password" required
+                                   class="w-full border border-gray-200 rounded-lg px-4 py-2.5 pr-10 text-sm focus:border-rw-brown focus:outline-none focus:ring-1 focus:ring-rw-brown transition">
+                            <button type="button" onclick="togglePassword('login-password', this)"
+                                    class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-rw-brown">
+                                <svg class="w-4 h-4 eye-open" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                                <svg class="w-4 h-4 eye-closed hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <input type="checkbox" name="remember" id="remember" class="rounded border-gray-300 text-rw-brown focus:ring-rw-brown">
+                        <label for="remember" class="text-xs text-gray-500">Remember me</label>
+                    </div>
+                    <button type="submit"
+                            class="w-full bg-rw-brown text-white py-3 rounded-lg text-sm font-medium uppercase tracking-widest hover:bg-rw-brown-dark transition">
+                        Log in
+                    </button>
+                    <p class="text-center text-xs"><a href="#" class="text-gray-400 hover:text-rw-brown transition">Lost your password?</a></p>
+                </form>
+            </div>
+
+            <!-- Register Form -->
+            <div class="bg-white rounded-lg border border-gray-100 p-6 md:p-8 shadow-sm">
+                <h2 class="text-xl font-medium text-rw-brown mb-6">Register</h2>
+
+                <form method="post" action="{% url 'login_register' %}" class="space-y-5">
+                    {% csrf_token %}
+                    <input type="hidden" name="form_type" value="register">
+                    <div>
+                        <label class="block text-xs text-gray-500 mb-1.5">Email address <span class="text-red-500">*</span></label>
+                        <input type="email" name="email" required
+                               class="w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm focus:border-rw-brown focus:outline-none focus:ring-1 focus:ring-rw-brown transition">
+                    </div>
+                    <p class="text-xs text-gray-400 leading-relaxed">
+                        A link to set a new password will be sent to your email address.
+                    </p>
+                    <p class="text-xs text-gray-400 leading-relaxed">
+                        Your personal data will be used to support your experience throughout this website, to manage access to your account, and for other purposes described in our <a href="#" class="text-rw-brown underline">privacy policy</a>.
+                    </p>
+                    <button type="submit"
+                            class="w-full bg-rw-brown text-white py-3 rounded-lg text-sm font-medium uppercase tracking-widest hover:bg-rw-brown-dark transition">
+                        Register
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+function togglePassword(id, btn) {
+    const input = document.getElementById(id);
+    const open = btn.querySelector('.eye-open');
+    const closed = btn.querySelector('.eye-closed');
+    if (input.type === 'password') {
+        input.type = 'text';
+        open.classList.add('hidden');
+        closed.classList.remove('hidden');
+    } else {
+        input.type = 'password';
+        open.classList.remove('hidden');
+        closed.classList.add('hidden');
+    }
+}
+</script>
+{% endblock %}

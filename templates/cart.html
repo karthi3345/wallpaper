@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% load shop_tags %}
+
+{% block title %}Shopping Cart — Mahashanka{% endblock %}
+
+{% block content %}
+<div class="py-12 px-4">
+    <div class="max-w-5xl mx-auto">
+        <h1 class="text-3xl md:text-4xl font-light text-rw-brown mb-2">Shopping Cart</h1>
+        <div class="w-12 h-px bg-rw-gold mb-8"></div>
+
+        {% if messages %}
+        {% for message in messages %}
+        <div class="bg-rw-cream text-rw-brown px-4 py-3 rounded-lg mb-4 text-sm">{{ message }}</div>
+        {% endfor %}
+        {% endif %}
+
+        {% if items %}
+        <div class="grid lg:grid-cols-3 gap-8">
+            <!-- Cart items -->
+            <div class="lg:col-span-2 space-y-4">
+                {% for item in items %}
+                <div class="bg-white border border-gray-100 rounded-xl p-4 flex gap-4 items-center">
+                    <a href="{{ item.product.get_absolute_url }}">
+                        <img src="{{ item.product.main_image }}" alt="{{ item.product.name }}" class="w-20 h-20 md:w-24 md:h-24 object-cover rounded-lg shrink-0">
+                    </a>
+                    <div class="flex-1 min-w-0">
+                        <a href="{{ item.product.get_absolute_url }}" class="block">
+                            <h3 class="text-sm font-medium text-rw-brown truncate hover:text-rw-gold transition">{{ item.product.name }}</h3>
+                        </a>
+                        <p class="text-xs text-gray-400 mt-0.5">{{ item.product.category.name }}</p>
+                        <p class="text-sm font-semibold text-rw-brown mt-1">{{ item.product.price|inr }}{% if item.product.unit == 'sqft' %}<span class="text-xs font-normal">/sqft</span>{% endif %}</p>
+                    </div>
+                    <!-- Quantity -->
+                    <form action="{% url 'update_cart' item.product.id %}" method="post" class="flex items-center border border-gray-200 rounded-full">
+                        {% csrf_token %}
+                        <button type="submit" name="qty" value="{{ item.qty|add:'-1' }}" class="px-3 py-1.5 text-gray-500 hover:bg-rw-cream rounded-l-full">−</button>
+                        <span class="px-3 text-sm text-rw-brown font-medium">{{ item.qty }}</span>
+                        <button type="submit" name="qty" value="{{ item.qty|add:'1' }}" class="px-3 py-1.5 text-gray-500 hover:bg-rw-cream rounded-r-full">+</button>
+                    </form>
+                    <!-- Line total -->
+                    <div class="text-right hidden sm:block">
+                        <div class="text-sm font-semibold text-rw-brown">{{ item.line_total|inr }}</div>
+                    </div>
+                    <!-- Remove -->
+                    <a href="{% url 'remove_from_cart' item.product.id %}" class="text-gray-400 hover:text-red-500 transition shrink-0">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+
+            <!-- Order Summary -->
+            <div class="lg:col-span-1">
+                <div class="bg-rw-cream rounded-xl p-6 sticky top-28">
+                    <h3 class="text-sm font-semibold uppercase tracking-widest text-rw-brown mb-4 pb-3 border-b border-rw-brown/10">Order Summary</h3>
+                    <div class="space-y-3 text-sm">
+                        <div class="flex justify-between text-gray-600">
+                            <span>Subtotal</span>
+                            <span class="font-medium text-rw-brown">{{ subtotal|inr }}</span>
+                        </div>
+                        <div class="flex justify-between text-gray-600">
+                            <span>Shipping</span>
+                            <span class="font-medium text-rw-brown">{% if shipping == 0 %}FREE{% else %}{{ shipping|inr }}{% endif %}</span>
+                        </div>
+                        {% if shipping == 0 and subtotal > 0 %}
+                        <p class="text-xs text-rw-gold bg-rw-gold/10 rounded-lg p-2 text-center">🎉 You qualify for free shipping!</p>
+                        {% endif %}
+                        <div class="pt-3 border-t border-rw-brown/10 flex justify-between">
+                            <span class="font-semibold text-rw-brown">Total</span>
+                            <span class="text-xl font-light text-rw-brown">{{ total|inr }}</span>
+                        </div>
+                    </div>
+                    <a href="{% url 'checkout' %}" class="block bg-rw-brown text-white text-center py-3.5 rounded-full text-sm uppercase tracking-widest hover:bg-rw-brown-dark transition mt-6">
+                        Proceed to Checkout
+                    </a>
+                    <a href="{% url 'catalog' %}" class="block text-center text-xs text-gray-500 hover:text-rw-brown uppercase tracking-widest mt-3">
+                        Continue Shopping
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <div class="text-center py-20">
+            <svg class="w-20 h-20 text-gray-300 mx-auto mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+            <p class="text-gray-400 text-lg mb-6">Your cart is empty</p>
+            <a href="{% url 'catalog' %}" class="inline-flex items-center gap-2 bg-rw-brown text-white px-8 py-3.5 rounded-full text-sm uppercase tracking-widest hover:bg-rw-brown-dark transition">
+                Start Shopping
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </a>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,488 @@
+{% extends 'base.html' %}
+{% load shop_tags %}
+
+{% block content %}
+
+<!-- ==================== HERO — 3 IMAGE SPLIT ==================== -->
+<section class="relative h-[85vh] min-h-[560px] overflow-hidden bg-rw-brown-dark">
+    <div class="absolute inset-0 grid grid-cols-1 md:grid-cols-3 h-full">
+        <!-- Left: Murals -->
+        <a href="{% url 'category' 'wall-murals' %}" class="group relative overflow-hidden block h-[33%] md:h-full">
+            <img src="https://images.unsplash.com/photo-1600210492493-0946911123ea?w=900&q=80" alt="Wall Murals" class="w-full h-full object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-rw-brown-dark/70 via-transparent to-transparent"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-6 md:p-10 text-center">
+                <p class="text-white/70 text-[10px] uppercase tracking-[0.3em] mb-1">Collection 01</p>
+                <h2 class="text-white text-xl md:text-2xl font-light tracking-wide">Wall Murals</h2>
+                <span class="text-rw-gold-light text-[11px] uppercase tracking-widest opacity-0 group-hover:opacity-100 group-hover:translate-y-0 translate-y-2 transition-all duration-400 inline-block mt-1">Shop Now →</span>
+            </div>
+        </a>
+        <!-- Center: Brand -->
+        <a href="{% url 'catalog' %}" class="group relative overflow-hidden block h-[33%] md:h-full">
+            <img src="https://images.unsplash.com/photo-1618220179428-22790b461013?w=900&q=80" alt="Home Decor" class="w-full h-full object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-rw-brown-dark/70 via-transparent to-transparent"></div>
+            <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+                <p class="text-white/70 text-[10px] md:text-xs tracking-[0.3em] uppercase mb-3 md:mb-4">Welcome to</p>
+                <h1 class="text-white text-3xl md:text-5xl lg:text-6xl font-light tracking-tight leading-none mb-3 md:mb-4">Mahashanka</h1>
+                <p class="text-rw-gold-light text-xs md:text-sm tracking-[0.3em] uppercase mb-4 md:mb-6">Decor</p>
+                <p class="text-white/80 text-sm md:text-base max-w-xs md:max-w-md font-light leading-relaxed hidden md:block">Premium wallpapers, murals &amp; curated home decor</p>
+            </div>
+            <div class="absolute bottom-0 left-0 right-0 p-6 md:p-10 text-center md:hidden">
+                <span class="text-rw-gold-light text-[11px] uppercase tracking-widest">Shop Now →</span>
+            </div>
+        </a>
+        <!-- Right: Wallpaper Rolls -->
+        <a href="{% url 'category' 'wallpaper-rolls' %}" class="group relative overflow-hidden block h-[33%] md:h-full">
+            <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=900&q=80" alt="Wallpaper Rolls" class="w-full h-full object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-rw-brown-dark/70 via-transparent to-transparent"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-6 md:p-10 text-center">
+                <p class="text-white/70 text-[10px] uppercase tracking-[0.3em] mb-1">Collection 02</p>
+                <h2 class="text-white text-xl md:text-2xl font-light tracking-wide">Wallpaper Rolls</h2>
+                <span class="text-rw-gold-light text-[11px] uppercase tracking-widest opacity-0 group-hover:opacity-100 group-hover:translate-y-0 translate-y-2 transition-all duration-400 inline-block mt-1">Shop Now →</span>
+            </div>
+        </a>
+    </div>
+    <div class="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/40 animate-bounce z-10 hidden md:block">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+    </div>
+</section>
+
+<!-- ==================== MARQUEE BANNER ==================== -->
+<section class="bg-rw-brown py-3.5 overflow-hidden">
+    <div class="marquee"><div class="marquee-track">
+        <span class="marquee-item">✦ Free Shipping Above ₹5,000</span>
+        <span class="marquee-item">✦ 500+ Premium Designs</span>
+        <span class="marquee-item">✦ Pan‑India Installation</span>
+        <span class="marquee-item">✦ 7‑Day Easy Returns</span>
+        <span class="marquee-item">✦ Authentic Products</span>
+        <span class="marquee-item">✦ Free Shipping Above ₹5,000</span>
+        <span class="marquee-item">✦ 500+ Premium Designs</span>
+        <span class="marquee-item">✦ Pan‑India Installation</span>
+        <span class="marquee-item">✦ 7‑Day Easy Returns</span>
+        <span class="marquee-item">✦ Authentic Products</span>
+    </div></div>
+</section>
+
+<!-- ==================== SALE COUNTDOWN ==================== -->
+<section class="bg-rw-cream py-14 px-4" x-data="countdown('2026-12-31T23:59:59')" x-init="start()">
+    <div class="max-w-4xl mx-auto text-center">
+        <p class="text-rw-gold text-xs tracking-[0.3em] uppercase mb-2">Limited Time Offer</p>
+        <h2 class="text-rw-brown text-2xl md:text-3xl font-light mb-6">Mega Decor Sale — Up to 40% Off</h2>
+        <div class="flex justify-center gap-3 md:gap-6">
+            <div class="text-center bg-white rounded-xl px-4 py-3 md:px-6 md:py-4 shadow-sm min-w-[70px]">
+                <div class="text-3xl md:text-4xl font-light text-rw-brown tabular-nums" x-text="days">00</div>
+                <div class="text-[10px] text-gray-400 uppercase tracking-widest mt-1">Days</div>
+            </div>
+            <div class="text-3xl md:text-4xl font-light text-rw-gold self-center">:</div>
+            <div class="text-center bg-white rounded-xl px-4 py-3 md:px-6 md:py-4 shadow-sm min-w-[70px]">
+                <div class="text-3xl md:text-4xl font-light text-rw-brown tabular-nums" x-text="hours">00</div>
+                <div class="text-[10px] text-gray-400 uppercase tracking-widest mt-1">Hours</div>
+            </div>
+            <div class="text-3xl md:text-4xl font-light text-rw-gold self-center">:</div>
+            <div class="text-center bg-white rounded-xl px-4 py-3 md:px-6 md:py-4 shadow-sm min-w-[70px]">
+                <div class="text-3xl md:text-4xl font-light text-rw-brown tabular-nums" x-text="minutes">00</div>
+                <div class="text-[10px] text-gray-400 uppercase tracking-widest mt-1">Minutes</div>
+            </div>
+            <div class="text-3xl md:text-4xl font-light text-rw-gold self-center">:</div>
+            <div class="text-center bg-white rounded-xl px-4 py-3 md:px-6 md:py-4 shadow-sm min-w-[70px]">
+                <div class="text-3xl md:text-4xl font-light text-rw-brown tabular-nums" x-text="seconds">00</div>
+                <div class="text-[10px] text-gray-400 uppercase tracking-widest mt-1">Seconds</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== SHOP BY CATEGORY ==================== -->
+<section id="categories" class="py-16 md:py-24 px-4">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-12">
+            <p class="text-rw-gold text-xs tracking-[0.3em] uppercase mb-2">Discover</p>
+            <h2 class="text-3xl md:text-5xl font-light text-rw-brown">Shop by Category</h2>
+            <div class="w-16 h-px bg-rw-gold mx-auto mt-4"></div>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+            {% for category in categories %}
+            <a href="{% url 'category' category.slug %}" class="group relative overflow-hidden rounded-xl aspect-[4/5] block">
+                <img src="{{ category.image }}" alt="{{ category.name }}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
+                <div class="absolute inset-0 bg-gradient-to-t from-rw-brown-dark/80 via-transparent to-transparent"></div>
+                <div class="absolute bottom-0 left-0 right-0 p-6 text-center">
+                    <h3 class="text-white text-lg md:text-xl font-medium tracking-wide mb-1 group-hover:text-rw-gold-light transition">{{ category.name }}</h3>
+                    <span class="text-white/60 text-xs uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">Shop Now →</span>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- ==================== BEST SELLERS ==================== -->
+<section class="bg-rw-cream py-16 md:py-24 px-4">
+    <div class="max-w-7xl mx-auto">
+        <div class="flex items-end justify-between mb-10">
+            <div>
+                <p class="text-rw-gold text-xs tracking-[0.3em] uppercase mb-2">Most Loved</p>
+                <h2 class="text-3xl md:text-4xl font-light text-rw-brown">Best Sellers</h2>
+            </div>
+            <a href="{% url 'catalog' %}" class="text-sm uppercase tracking-widest text-rw-brown hover:text-rw-gold transition hidden md:block">View All →</a>
+        </div>
+        <div class="swiper product-swiper">
+            <div class="swiper-wrapper">
+                {% for product in best_sellers %}
+                <div class="swiper-slide pb-4">{% include 'partials/_product_card.html' with product=product %}</div>
+                {% endfor %}
+            </div>
+            <div class="swiper-pagination mt-4"></div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== COLLECTION PROMO CARDS ==================== -->
+<section class="py-16 md:py-24 px-4">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-12">
+            <p class="text-rw-gold text-xs tracking-[0.3em] uppercase mb-2">Signature Collections</p>
+            <h2 class="text-3xl md:text-5xl font-light text-rw-brown">Curated for Modern Spaces</h2>
+            <div class="w-16 h-px bg-rw-gold mx-auto mt-4"></div>
+        </div>
+        <div class="grid md:grid-cols-2 gap-6">
+            <a href="{% url 'category' 'wall-murals' %}" class="group relative overflow-hidden rounded-2xl aspect-[16/10] block">
+                <img src="https://images.unsplash.com/photo-1567016432779-094069958ea5?w=1200" alt="Murals" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                <div class="absolute inset-0 bg-gradient-to-t from-rw-brown-dark/80 to-transparent"></div>
+                <div class="absolute bottom-0 left-0 p-8">
+                    <h3 class="text-white text-2xl font-light mb-2">Heritage Murals</h3>
+                    <p class="text-white/70 text-sm mb-3">Timeless Indian artistry for your walls</p>
+                    <span class="text-rw-gold-light text-xs uppercase tracking-widest">Discover →</span>
+                </div>
+            </a>
+            <a href="{% url 'category' 'wallpaper-rolls' %}" class="group relative overflow-hidden rounded-2xl aspect-[16/10] block">
+                <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=1200" alt="Wallpapers" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                <div class="absolute inset-0 bg-gradient-to-t from-rw-brown-dark/80 to-transparent"></div>
+                <div class="absolute bottom-0 left-0 p-8">
+                    <h3 class="text-white text-2xl font-light mb-2">Designer Wallpapers</h3>
+                    <p class="text-white/70 text-sm mb-3">Contemporary patterns for every room</p>
+                    <span class="text-rw-gold-light text-xs uppercase tracking-widest">Discover →</span>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== CURATED PRODUCT GRID ==================== -->
+<section class="bg-rw-cream py-16 md:py-24 px-4">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-10">
+            <p class="text-rw-gold text-xs tracking-[0.3em] uppercase mb-2">Handpicked for You</p>
+            <h2 class="text-3xl md:text-4xl font-light text-rw-brown">New &amp; Noteworthy</h2>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+            {% for product in curated|slice:":8" %}
+            {% include 'partials/_product_card.html' with product=product %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- ==================== ROOM-BASED BROWSING ==================== -->
+<section class="py-16 md:py-24 px-4">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-12">
+            <p class="text-rw-gold text-xs tracking-[0.3em] uppercase mb-2">Browse by Room</p>
+            <h2 class="text-3xl md:text-5xl font-light text-rw-brown">Find Your Space</h2>
+            <div class="w-16 h-px bg-rw-gold mx-auto mt-4"></div>
+        </div>
+        <div class="flex flex-col md:flex-row gap-2 h-[500px] md:h-[560px]">
+            {% for room in rooms %}
+            <a href="{% url 'catalog' %}?room={{ room.slug }}" class="room-card group relative flex-1 overflow-hidden rounded-xl transition-all duration-500">
+                <img src="{{ room.image }}" alt="{{ room.name }}" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-gradient-to-t from-rw-brown-dark/80 to-transparent"></div>
+                <div class="absolute bottom-0 left-0 right-0 p-6 text-center">
+                    <h3 class="text-white text-lg md:text-xl font-medium tracking-wide group-hover:text-rw-gold-light transition">{{ room.name }}</h3>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- ==================== COLOR PALETTE CAROUSEL ==================== -->
+<section class="bg-rw-brown-dark py-16 md:py-24 px-4">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-12">
+            <p class="text-rw-gold-light text-xs tracking-[0.3em] uppercase mb-2">Find Your Shade</p>
+            <h2 class="text-white text-3xl md:text-5xl font-light">Color Palette</h2>
+            <div class="w-16 h-px bg-rw-gold mx-auto mt-4"></div>
+        </div>
+        <div class="swiper color-swiper">
+            <div class="swiper-wrapper">
+                {% for color in colors %}
+                <div class="swiper-slide">
+                    <a href="{% url 'catalog' %}?color={{ color.slug }}" class="block group">
+                        <div class="rounded-xl overflow-hidden aspect-square mb-4 relative">
+                            <div class="absolute inset-0" style="background-color: {{ color.hex_code }};"></div>
+                            <img src="{{ color.image }}" alt="{{ color.name }}" class="w-full h-full object-cover mix-blend-overlay opacity-80 group-hover:scale-110 transition-transform duration-500">
+                        </div>
+                        <h3 class="text-center text-white font-medium tracking-wide group-hover:text-rw-gold-light transition">{{ color.name }}</h3>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== LATEST ARRIVALS ==================== -->
+<section class="py-16 md:py-24 px-4">
+    <div class="max-w-7xl mx-auto">
+        <div class="flex items-end justify-between mb-10">
+            <div>
+                <p class="text-rw-gold text-xs tracking-[0.3em] uppercase mb-2">Just Arrived</p>
+                <h2 class="text-3xl md:text-4xl font-light text-rw-brown">Latest Arrivals</h2>
+            </div>
+            <a href="{% url 'catalog' %}" class="text-sm uppercase tracking-widest text-rw-brown hover:text-rw-gold transition hidden md:block">View All →</a>
+        </div>
+        <div class="swiper product-swiper">
+            <div class="swiper-wrapper">
+                {% for product in latest_arrivals %}
+                <div class="swiper-slide pb-4">{% include 'partials/_product_card.html' with product=product %}</div>
+                {% endfor %}
+            </div>
+            <div class="swiper-pagination mt-4"></div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== KNOW YOUR WALLPAPERS ==================== -->
+<section class="bg-rw-cream py-16 md:py-24 px-4">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-12">
+            <p class="text-rw-gold text-xs tracking-[0.3em] uppercase mb-2">Expert Guide</p>
+            <h2 class="text-3xl md:text-5xl font-light text-rw-brown">Know Your Wallpapers</h2>
+            <div class="w-16 h-px bg-rw-gold mx-auto mt-4"></div>
+        </div>
+        <div class="swiper info-swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide bg-white rounded-xl p-8 shadow-sm">
+                    <div class="text-rw-gold text-4xl mb-4">①</div>
+                    <h3 class="text-xl font-medium text-rw-brown mb-3">Non-Woven</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Easy to install and remove, tear-resistant, and eco-friendly. The most popular choice for modern homes.</p>
+                </div>
+                <div class="swiper-slide bg-white rounded-xl p-8 shadow-sm">
+                    <div class="text-rw-gold text-4xl mb-4">②</div>
+                    <h3 class="text-xl font-medium text-rw-brown mb-3">Vinyl Coated</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Water-resistant and durable. Perfect for kitchens, bathrooms, and high-traffic areas.</p>
+                </div>
+                <div class="swiper-slide bg-white rounded-xl p-8 shadow-sm">
+                    <div class="text-rw-gold text-4xl mb-4">③</div>
+                    <h3 class="text-xl font-medium text-rw-brown mb-3">3D Wall Panels</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Add depth and texture to your walls. Create stunning feature walls with dimensional designs.</p>
+                </div>
+                <div class="swiper-slide bg-white rounded-xl p-8 shadow-sm">
+                    <div class="text-rw-gold text-4xl mb-4">④</div>
+                    <h3 class="text-xl font-medium text-rw-brown mb-3">Custom Murals</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Bespoke designs tailored to your wall dimensions. Transform any space with personalized art.</p>
+                </div>
+            </div>
+            <div class="swiper-pagination mt-6"></div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== FEATURED COLLECTION ==================== -->
+<section class="py-16 md:py-24 px-4">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-10">
+            <p class="text-rw-gold text-xs tracking-[0.3em] uppercase mb-2">Premium Selection</p>
+            <h2 class="text-3xl md:text-4xl font-light text-rw-brown">Featured Collection</h2>
+        </div>
+        <div class="swiper product-swiper">
+            <div class="swiper-wrapper">
+                {% for product in featured_collection %}
+                <div class="swiper-slide pb-4">{% include 'partials/_product_card.html' with product=product %}</div>
+                {% endfor %}
+            </div>
+            <div class="swiper-pagination mt-4"></div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== FLIP CARDS — OUR PROMISE ==================== -->
+<section class="bg-rw-cream py-16 md:py-24 px-4">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-12">
+            <p class="text-rw-gold text-xs tracking-[0.3em] uppercase mb-2">Why Choose Us</p>
+            <h2 class="text-3xl md:text-5xl font-light text-rw-brown">Our Promise</h2>
+            <div class="w-16 h-px bg-rw-gold mx-auto mt-4"></div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <div class="flip-card group h-64 cursor-pointer" style="perspective: 1000px;">
+                <div class="flip-card-inner relative w-full h-full transition-transform duration-700" style="transform-style: preserve-3d;">
+                    <div class="absolute inset-0 bg-white rounded-xl flex flex-col items-center justify-center p-6 text-center shadow-sm" style="backface-visibility: hidden;">
+                        <svg class="w-12 h-12 text-rw-brown mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                        <h3 class="text-lg font-medium text-rw-brown">Authentic Products</h3>
+                    </div>
+                    <div class="absolute inset-0 bg-rw-brown rounded-xl flex items-center justify-center p-6 text-center" style="backface-visibility: hidden; transform: rotateY(180deg);">
+                        <p class="text-white text-sm leading-relaxed">Every product is sourced directly from authorized manufacturers. 100% genuine, every time.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="flip-card group h-64 cursor-pointer" style="perspective: 1000px;">
+                <div class="flip-card-inner relative w-full h-full transition-transform duration-700" style="transform-style: preserve-3d;">
+                    <div class="absolute inset-0 bg-white rounded-xl flex flex-col items-center justify-center p-6 text-center shadow-sm" style="backface-visibility: hidden;">
+                        <svg class="w-12 h-12 text-rw-brown mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        <h3 class="text-lg font-medium text-rw-brown">Worldwide Delivery</h3>
+                    </div>
+                    <div class="absolute inset-0 bg-rw-brown rounded-xl flex items-center justify-center p-6 text-center" style="backface-visibility: hidden; transform: rotateY(180deg);">
+                        <p class="text-white text-sm leading-relaxed">We ship across India and internationally. Your dream decor, delivered to your doorstep.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="flip-card group h-64 cursor-pointer" style="perspective: 1000px;">
+                <div class="flip-card-inner relative w-full h-full transition-transform duration-700" style="transform-style: preserve-3d;">
+                    <div class="absolute inset-0 bg-white rounded-xl flex flex-col items-center justify-center p-6 text-center shadow-sm" style="backface-visibility: hidden;">
+                        <svg class="w-12 h-12 text-rw-brown mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 15v-1a4 4 0 00-4-4H8m0 0l3 3m-3-3l3-3m9 14V5a2 2 0 00-2-2H6a2 2 0 00-2 2v16l4-2 4 2 4-2 4 2z"/></svg>
+                        <h3 class="text-lg font-medium text-rw-brown">Easy Returns</h3>
+                    </div>
+                    <div class="absolute inset-0 bg-rw-brown rounded-xl flex items-center justify-center p-6 text-center" style="backface-visibility: hidden; transform: rotateY(180deg);">
+                        <p class="text-white text-sm leading-relaxed">Not happy with your order? Return within 7 days for a full refund. No questions asked.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="flip-card group h-64 cursor-pointer" style="perspective: 1000px;">
+                <div class="flip-card-inner relative w-full h-full transition-transform duration-700" style="transform-style: preserve-3d;">
+                    <div class="absolute inset-0 bg-white rounded-xl flex flex-col items-center justify-center p-6 text-center shadow-sm" style="backface-visibility: hidden;">
+                        <svg class="w-12 h-12 text-rw-brown mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                        <h3 class="text-lg font-medium text-rw-brown">Secure Payment</h3>
+                    </div>
+                    <div class="absolute inset-0 bg-rw-brown rounded-xl flex items-center justify-center p-6 text-center" style="backface-visibility: hidden; transform: rotateY(180deg);">
+                        <p class="text-white text-sm leading-relaxed">Bank-grade encryption and multiple payment options. Your transactions are always safe.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== ABOUT SECTION ==================== -->
+<section id="about" class="py-16 md:py-24 px-4">
+    <div class="max-w-4xl mx-auto text-center">
+        <p class="text-rw-gold text-xs tracking-[0.3em] uppercase mb-2">Our Story</p>
+        <h2 class="text-3xl md:text-5xl font-light text-rw-brown mb-8">The Mahashanka Difference</h2>
+        <div class="w-16 h-px bg-rw-gold mx-auto mb-8"></div>
+        <p class="text-gray-600 text-lg leading-relaxed mb-6">
+            At Mahashanka Decor, we believe your walls are a canvas waiting to be transformed. We've been passionate about bringing exceptional wallpapers, murals, and decor to homes across India.
+        </p>
+        <p class="text-gray-600 text-lg leading-relaxed mb-8">
+            From heritage murals to contemporary designer wallpapers, each piece in our collection is curated for quality, beauty, and the power to transform your space. We don't just sell wallpaper — we help you create an atmosphere.
+        </p>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12">
+            <div class="text-center">
+                <div class="text-4xl font-light text-rw-gold mb-2">500+</div>
+                <div class="text-sm uppercase tracking-widest text-gray-500">Designs</div>
+            </div>
+            <div class="text-center">
+                <div class="text-4xl font-light text-rw-gold mb-2">10k+</div>
+                <div class="text-sm uppercase tracking-widest text-gray-500">Happy Homes</div>
+            </div>
+            <div class="text-center">
+                <div class="text-4xl font-light text-rw-gold mb-2">25+</div>
+                <div class="text-sm uppercase tracking-widest text-gray-500">Categories</div>
+            </div>
+            <div class="text-center">
+                <div class="text-4xl font-light text-rw-gold mb-2">100%</div>
+                <div class="text-sm uppercase tracking-widest text-gray-500">Satisfaction</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== TESTIMONIALS CAROUSEL ==================== -->
+<section class="bg-rw-brown py-16 md:py-24 px-4">
+    <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-12">
+            <p class="text-rw-gold-light text-xs tracking-[0.3em] uppercase mb-2">Client Stories</p>
+            <h2 class="text-white text-3xl md:text-5xl font-light">What Our Customers Say</h2>
+            <div class="w-16 h-px bg-rw-gold mx-auto mt-4"></div>
+        </div>
+        <div class="swiper testimonial-swiper">
+            <div class="swiper-wrapper">
+                {% for testimonial in testimonials %}
+                <div class="swiper-slide">
+                    <div class="bg-white/5 backdrop-blur rounded-xl p-8 md:p-10 border border-white/10 text-center">
+                        <div class="flex justify-center gap-1 mb-4">
+                            {% for i in "12345"|make_list %}
+                            <svg class="w-4 h-4 {% if forloop.counter <= testimonial.rating %}text-rw-gold{% else %}text-white/20{% endif %}" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            {% endfor %}
+                        </div>
+                        <p class="text-white/80 text-lg leading-relaxed italic mb-6">"{{ testimonial.content }}"</p>
+                        <div class="flex items-center justify-center gap-3">
+                            {% if testimonial.image %}
+                            <img src="{{ testimonial.image }}" alt="{{ testimonial.author }}" class="w-12 h-12 rounded-full object-cover">
+                            {% endif %}
+                            <div class="text-left">
+                                <div class="text-white font-medium">{{ testimonial.author }}</div>
+                                <div class="text-white/50 text-sm">{{ testimonial.location }}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="swiper-pagination mt-6"></div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== REAL HOMES INSTAGRAM CAROUSEL ==================== -->
+<section class="py-16 md:py-24 px-4">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-12">
+            <p class="text-rw-gold text-xs tracking-[0.3em] uppercase mb-2">Inspiration</p>
+            <h2 class="text-3xl md:text-5xl font-light text-rw-brown">Real Homes. Real Stories.</h2>
+            <div class="w-16 h-px bg-rw-gold mx-auto mt-4"></div>
+        </div>
+        <div class="swiper instagram-swiper">
+            <div class="swiper-wrapper">
+                {% with 'photo-1586023492125-27b2c045efd7 photo-1505691938895-1758d7feb511 photo-1499933374294-4584851497cc photo-1448630360428-654868afe5cd photo-1505693416388-ac5ce068fe85 photo-1567016432779-094069958ea5' as photo_list %}
+                {% for photo_id in 'photo-1586023492125-27b2c045efd7,photo-1505691938895-1758d7feb511,photo-1499933374294-4584851497cc,photo-1448630360428-654868afe5cd,photo-1505693416388-ac5ce068fe85,photo-1567016432779-094069958ea5'|make_list %}
+                <div class="swiper-slide">
+                    <div class="relative group overflow-hidden rounded-xl aspect-square">
+                        <img src="https://images.unsplash.com/{{ photo_id }}?w=600" alt="Real Home" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-rw-brown-dark/0 group-hover:bg-rw-brown-dark/40 transition-colors flex items-center justify-center">
+                            <svg class="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8z"/></svg>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                {% endwith %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== AWARDS & RECOGNITIONS ==================== -->
+<section class="bg-rw-cream py-16 px-4">
+    <div class="max-w-5xl mx-auto text-center">
+        <p class="text-rw-gold text-xs tracking-[0.3em] uppercase mb-2">Recognition</p>
+        <h2 class="text-2xl md:text-3xl font-light text-rw-brown mb-10">Awards &amp; Recognitions</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
+            <div class="opacity-60 hover:opacity-100 transition-opacity">
+                <div class="text-2xl font-light text-rw-brown">Best Design</div>
+                <div class="text-xs text-gray-500 uppercase tracking-widest mt-1">Interior Awards 2025</div>
+            </div>
+            <div class="opacity-60 hover:opacity-100 transition-opacity">
+                <div class="text-2xl font-light text-rw-brown">Top Brand</div>
+                <div class="text-xs text-gray-500 uppercase tracking-widest mt-1">Decor Excellence 2024</div>
+            </div>
+            <div class="opacity-60 hover:opacity-100 transition-opacity">
+                <div class="text-2xl font-light text-rw-brown">Innovation</div>
+                <div class="text-xs text-gray-500 uppercase tracking-widest mt-1">Wall Art Awards 2024</div>
+            </div>
+            <div class="opacity-60 hover:opacity-100 transition-opacity">
+                <div class="text-2xl font-light text-rw-brown">Customer Choice</div>
+                <div class="text-xs text-gray-500 uppercase tracking-widest mt-1">Decor India 2023</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

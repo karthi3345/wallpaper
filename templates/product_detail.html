@@ -1,0 +1,161 @@
+{% extends 'base.html' %}
+{% load shop_tags %}
+
+{% block title %}{{ product.name }} — Mahashanka{% endblock %}
+
+{% block content %}
+<div class="py-8 px-4">
+    <div class="max-w-7xl mx-auto">
+        <!-- Breadcrumb -->
+        <div class="flex items-center gap-2 text-xs text-gray-500 mb-6 flex-wrap">
+            <a href="{% url 'home' %}" class="hover:text-rw-brown">Home</a>
+            <span>/</span>
+            <a href="{% url 'catalog' %}" class="hover:text-rw-brown">Shop</a>
+            <span>/</span>
+            {% if product.category.parent %}
+            <a href="{% url 'category' product.category.parent.slug %}" class="hover:text-rw-brown">{{ product.category.parent.name }}</a>
+            <span>/</span>
+            {% endif %}
+            <a href="{% url 'category' product.category.slug %}" class="hover:text-rw-brown">{{ product.category.name }}</a>
+            <span>/</span>
+            <span class="text-rw-brown font-medium truncate">{{ product.name }}</span>
+        </div>
+
+        <!-- Product main section -->
+        <div class="grid md:grid-cols-2 gap-12 mb-16">
+            <!-- Image gallery -->
+            <div>
+                <div class="rounded-2xl overflow-hidden bg-rw-cream aspect-square mb-4">
+                    <img id="mainProductImage" src="{{ product.main_image }}" alt="{{ product.name }}" class="w-full h-full object-cover">
+                </div>
+                {% if product.images|length > 1 %}
+                <div class="grid grid-cols-4 gap-3">
+                    {% for img in product.images %}
+                    <button onclick="document.getElementById('mainProductImage').src='{{ img }}'" class="rounded-lg overflow-hidden aspect-square border-2 border-transparent hover:border-rw-brown transition">
+                        <img src="{{ img }}" alt="Thumbnail {{ forloop.counter }}" class="w-full h-full object-cover">
+                    </button>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+
+            <!-- Product info -->
+            <div>
+                <p class="text-xs uppercase tracking-widest text-rw-gold mb-2">{{ product.category.name }}</p>
+                <h1 class="text-3xl md:text-4xl font-light text-rw-brown mb-4">{{ product.name }}</h1>
+
+                <!-- SKU -->
+                <p class="text-sm text-gray-400 mb-4">SKU: {{ product.sku }}</p>
+
+                <!-- Price -->
+                <div class="flex items-center gap-4 mb-6">
+                    <span class="text-3xl font-light text-rw-brown">{{ product.price|inr }}{% if product.unit == 'sqft' %}<span class="text-base">/sqft</span>{% endif %}</span>
+                    {% if product.compare_at_price %}
+                    <span class="text-lg text-gray-400 line-through">{{ product.compare_at_price|inr }}</span>
+                    <span class="bg-rw-cream text-rw-brown px-3 py-1 rounded-full text-xs font-medium">Save {{ product.discount_percent }}%</span>
+                    {% endif %}
+                </div>
+
+                <!-- Short description -->
+                <p class="text-gray-600 leading-relaxed mb-6">{{ product.short_description }}</p>
+
+                <!-- Rooms -->
+                {% if product.rooms.all %}
+                <div class="mb-6">
+                    <h4 class="text-xs font-medium uppercase tracking-wide text-gray-500 mb-2">Suitable for</h4>
+                    <div class="flex flex-wrap gap-2">
+                        {% for room in product.rooms.all %}
+                        <span class="bg-rw-cream text-rw-brown px-3 py-1 rounded-full text-xs">{{ room.name }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+
+                <!-- Colors -->
+                {% if product.colors.all %}
+                <div class="mb-6">
+                    <h4 class="text-xs font-medium uppercase tracking-wide text-gray-500 mb-2">Available Colors</h4>
+                    <div class="flex gap-2">
+                        {% for color in product.colors.all %}
+                        <div class="w-8 h-8 rounded-full border-2 border-gray-200" style="background-color: {{ color.hex_code }};" title="{{ color.name }}"></div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+
+                <!-- Quantity + Add to cart -->
+                <form action="{% url 'add_to_cart' product.id %}" method="post" class="flex flex-col sm:flex-row gap-4 mb-6">
+                    {% csrf_token %}
+                    <div class="flex items-center border border-gray-200 rounded-full overflow-hidden">
+                        <button type="button" onclick="this.nextElementSibling.stepDown()" class="px-4 py-3 text-gray-500 hover:bg-rw-cream">−</button>
+                        <input type="number" name="qty" value="1" min="1" class="w-16 text-center border-0 focus:outline-none text-rw-brown">
+                        <button type="button" onclick="this.previousElementSibling.stepUp()" class="px-4 py-3 text-gray-500 hover:bg-rw-cream">+</button>
+                    </div>
+                    <button type="submit" class="flex-1 bg-rw-brown text-white px-8 py-3.5 rounded-full text-sm uppercase tracking-widest hover:bg-rw-brown-dark transition">
+                        Add to Cart
+                    </button>
+                </form>
+
+                <!-- Trust badges -->
+                <div class="grid grid-cols-3 gap-4 pt-6 border-t border-gray-100">
+                    <div class="text-center">
+                        <svg class="w-6 h-6 text-rw-brown mx-auto mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        <p class="text-[10px] uppercase tracking-widest text-gray-500">Worldwide<br>Delivery</p>
+                    </div>
+                    <div class="text-center">
+                        <svg class="w-6 h-6 text-rw-brown mx-auto mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 15v-1a4 4 0 00-4-4H8m0 0l3 3m-3-3l3-3m9 14V5a2 2 0 00-2-2H6a2 2 0 00-2 2v16l4-2 4 2 4-2 4 2z"/></svg>
+                        <p class="text-[10px] uppercase tracking-widest text-gray-500">Easy<br>Returns</p>
+                    </div>
+                    <div class="text-center">
+                        <svg class="w-6 h-6 text-rw-brown mx-auto mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                        <p class="text-[10px] uppercase tracking-widest text-gray-500">100%<br>Authentic</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Description -->
+        <div class="max-w-3xl mb-16">
+            <h2 class="text-2xl font-light text-rw-brown mb-4">Description</h2>
+            <div class="w-12 h-px bg-rw-gold mb-6"></div>
+            <p class="text-gray-600 leading-relaxed">{{ product.description }}</p>
+        </div>
+
+        <!-- Reviews -->
+        {% if reviews %}
+        <div class="max-w-3xl mb-16">
+            <h2 class="text-2xl font-light text-rw-brown mb-4">Customer Reviews</h2>
+            <div class="w-12 h-px bg-rw-gold mb-6"></div>
+            <div class="space-y-6">
+                {% for review in reviews %}
+                <div class="bg-rw-cream rounded-xl p-6">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="flex gap-0.5">
+                            {% for i in "12345"|make_list %}
+                            <svg class="w-4 h-4 {% if forloop.counter <= review.rating %}text-rw-gold{% else %}text-gray-300{% endif %}" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            {% endfor %}
+                        </div>
+                        <span class="text-sm font-medium text-rw-brown">{{ review.author }}</span>
+                    </div>
+                    <p class="text-gray-600 text-sm">{{ review.content }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Related products -->
+        {% if related_products %}
+        <div class="mb-8">
+            <h2 class="text-2xl font-light text-rw-brown mb-2">You May Also Like</h2>
+            <div class="w-12 h-px bg-rw-gold mb-8"></div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+                {% for product in related_products %}
+                {% include 'partials/_product_card.html' with product=product %}
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

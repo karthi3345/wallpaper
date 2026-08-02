@@ -1,0 +1,39 @@
+{% load shop_tags %}
+<div class="product-card group cursor-pointer" x-data="{ hovered: false }">
+    <a href="{{ product.get_absolute_url }}" class="block">
+        <div class="relative overflow-hidden rounded-lg aspect-[3/4] bg-rw-cream mb-3">
+            <img src="{{ product.main_image }}" alt="{{ product.name }}"
+                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                 loading="lazy">
+
+            <!-- Discount badge -->
+            {% if product.discount_percent > 0 %}
+            <div class="absolute top-3 left-3 bg-rw-brown text-white text-xs px-2 py-1 rounded-full font-medium">
+                -{{ product.discount_percent }}%
+            </div>
+            {% endif %}
+
+            <!-- Quick add button -->
+            <div class="absolute bottom-0 left-0 right-0 p-3 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                <form action="{% url 'add_to_cart' product.id %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="w-full bg-white/95 backdrop-blur text-rw-brown py-2.5 rounded-full text-xs font-medium uppercase tracking-widest hover:bg-rw-brown hover:text-white transition">
+                        Add to Cart
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Product info -->
+        <div class="text-center">
+            <p class="text-[10px] uppercase tracking-widest text-gray-400 mb-1">{{ product.category.name }}</p>
+            <h3 class="text-sm font-medium text-rw-brown-dark line-clamp-1 mb-1 group-hover:text-rw-gold transition">{{ product.name }}</h3>
+            <div class="flex items-center justify-center gap-2">
+                <span class="text-sm font-semibold text-rw-brown">{{ product.price|inr }}{% if product.unit == 'sqft' %}<span class="text-xs font-normal">/sqft</span>{% endif %}</span>
+                {% if product.compare_at_price %}
+                <span class="text-xs text-gray-400 line-through">{{ product.compare_at_price|inr }}</span>
+                {% endif %}
+            </div>
+        </div>
+    </a>
+</div>

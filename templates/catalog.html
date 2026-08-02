@@ -1,0 +1,164 @@
+{% extends 'base.html' %}
+{% load shop_tags %}
+
+{% block title %}{% if category %}{{ category.name }}{% else %}Shop All{% endif %} — Mahashanka{% endblock %}
+
+{% block content %}
+<div class="bg-rw-cream py-8 px-4">
+    <div class="max-w-7xl mx-auto">
+        <!-- Breadcrumb -->
+        <div class="flex items-center gap-2 text-xs text-gray-500 mb-6">
+            <a href="{% url 'home' %}" class="hover:text-rw-brown">Home</a>
+            <span>/</span>
+            <a href="{% url 'catalog' %}" class="hover:text-rw-brown">Shop</a>
+            {% if category %}
+            {% if category.parent %}
+            <span>/</span>
+            <span class="text-rw-brown">{{ category.parent.name }}</span>
+            {% endif %}
+            <span>/</span>
+            <span class="text-rw-brown font-medium">{{ category.name }}</span>
+            {% endif %}
+        </div>
+
+        <!-- Page title -->
+        <div class="mb-8">
+            <h1 class="text-3xl md:text-4xl font-light text-rw-brown">{% if category %}{{ category.name }}{% else %}All Products{% endif %}</h1>
+            <p class="text-gray-500 text-sm mt-2">{{ products|length }} products found</p>
+        </div>
+
+        <div class="flex gap-8">
+            <!-- Filter Sidebar -->
+            <aside class="hidden lg:block w-64 shrink-0">
+                <div class="bg-white rounded-xl p-6 sticky top-28">
+                    <form method="get" id="filterForm">
+                        <!-- If we're in a category, keep the slug -->
+                        {% if category %}
+                        <input type="hidden" name="category" value="{{ category.slug }}">
+                        {% endif %}
+
+                        <h3 class="text-sm font-semibold uppercase tracking-widest text-rw-brown mb-4 pb-3 border-b border-gray-100">Filters</h3>
+
+                        <!-- Price range -->
+                        <div class="mb-6">
+                            <h4 class="text-xs font-medium uppercase tracking-wide text-gray-600 mb-3">Price Range</h4>
+                            <div class="flex items-center gap-2">
+                                <input type="number" name="price_min" placeholder="Min" value="{{ price_min|default:'' }}"
+                                    class="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:border-rw-brown">
+                                <span class="text-gray-400">—</span>
+                                <input type="number" name="price_max" placeholder="Max" value="{{ price_max|default:'' }}"
+                                    class="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:border-rw-brown">
+                            </div>
+                        </div>
+
+                        <!-- Rooms -->
+                        {% if all_rooms %}
+                        <div class="mb-6">
+                            <h4 class="text-xs font-medium uppercase tracking-wide text-gray-600 mb-3">Room</h4>
+                            <div class="space-y-2">
+                                {% for room in all_rooms %}
+                                <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer hover:text-rw-brown">
+                                    <input type="checkbox" name="room" value="{{ room.slug }}"
+                                        class="filter-checkbox rounded text-rw-brown focus:ring-rw-brown"
+                                        {% if room.slug in selected_rooms %}checked{% endif %}>
+                                    {{ room.name }}
+                                </label>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        {% endif %}
+
+                        <!-- Colors -->
+                        {% if all_colors %}
+                        <div class="mb-6">
+                            <h4 class="text-xs font-medium uppercase tracking-wide text-gray-600 mb-3">Color Palette</h4>
+                            <div class="space-y-2">
+                                {% for color in all_colors %}
+                                <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer hover:text-rw-brown">
+                                    <input type="checkbox" name="color" value="{{ color.slug }}"
+                                        class="filter-checkbox rounded text-rw-brown focus:ring-rw-brown"
+                                        {% if color.slug in selected_colors %}checked{% endif %}>
+                                    <span class="w-4 h-4 rounded-full inline-block border border-gray-300" style="background-color: {{ color.hex_code }};"></span>
+                                    {{ color.name }}
+                                </label>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        {% endif %}
+
+                        <!-- Categories (only on main shop page) -->
+                        {% if not category and all_categories %}
+                        <div class="mb-6">
+                            <h4 class="text-xs font-medium uppercase tracking-wide text-gray-600 mb-3">Category</h4>
+                            <div class="space-y-2">
+                                {% for cat in all_categories %}
+                                <a href="{% url 'category' cat.slug %}" class="block text-sm text-gray-700 hover:text-rw-brown">{{ cat.name }}</a>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        {% endif %}
+
+                        <div class="flex flex-col gap-2">
+                            <button type="submit" class="bg-rw-brown text-white py-2.5 rounded-full text-xs uppercase tracking-widest hover:bg-rw-brown-dark transition">Apply Filters</button>
+                            <a href="{% if category %}{% url 'category' category.slug %}{% else %}{% url 'catalog' %}{% endif %}" class="text-center text-xs text-gray-500 hover:text-rw-brown uppercase tracking-widest">Clear All</a>
+                        </div>
+                    </form>
+                </div>
+            </aside>
+
+            <!-- Products Grid -->
+            <div class="flex-1">
+                <!-- Sort + mobile filter toggle -->
+                <div class="flex items-center justify-between mb-6">
+                    <button class="lg:hidden text-sm uppercase tracking-widest text-rw-brown" x-data="{ show: false }" @click="show = !show">
+                        Filters
+                    </button>
+                    <form method="get" class="flex items-center gap-3 ml-auto" id="sortForm">
+                        <!-- Preserve existing filters in sort form -->
+                        {% for room in selected_rooms %}<input type="hidden" name="room" value="{{ room }}">{% endfor %}
+                        {% for color in selected_colors %}<input type="hidden" name="color" value="{{ color }}">{% endfor %}
+                        {% if price_min %}<input type="hidden" name="price_min" value="{{ price_min }}">{% endif %}
+                        {% if price_max %}<input type="hidden" name="price_max" value="{{ price_max }}">{% endif %}
+                        <span class="text-sm text-gray-500">Sort by:</span>
+                        <select name="sort" onchange="document.getElementById('sortForm').submit()"
+                            class="text-sm border border-gray-200 rounded-lg px-3 py-1.5 focus:outline-none focus:border-rw-brown bg-white">
+                            <option value="newest" {% if current_sort == 'newest' %}selected{% endif %}>Newest</option>
+                            <option value="price_low" {% if current_sort == 'price_low' %}selected{% endif %}>Price: Low to High</option>
+                            <option value="price_high" {% if current_sort == 'price_high' %}selected{% endif %}>Price: High to Low</option>
+                            <option value="name" {% if current_sort == 'name' %}selected{% endif %}>Name A-Z</option>
+                        </select>
+                    </form>
+                </div>
+
+                <!-- Mobile filters (collapsible) -->
+                <div class="lg:hidden mb-6" x-data="{ show: false }" x-show="show" style="display: none;">
+                    <div class="bg-white rounded-xl p-4">
+                        <!-- Same filters as desktop, compact -->
+                        <form method="get">
+                            {% for room in all_rooms %}
+                            <label class="flex items-center gap-2 text-sm py-1">
+                                <input type="checkbox" name="room" value="{{ room.slug }}" {% if room.slug in selected_rooms %}checked{% endif %}> {{ room.name }}
+                            </label>
+                            {% endfor %}
+                            <button type="submit" class="bg-rw-brown text-white px-4 py-2 rounded-full text-xs mt-3">Apply</button>
+                        </form>
+                    </div>
+                </div>
+
+                {% if products %}
+                <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
+                    {% for product in products %}
+                    {% include 'partials/_product_card.html' with product=product %}
+                    {% endfor %}
+                </div>
+                {% else %}
+                <div class="text-center py-20">
+                    <p class="text-gray-400 text-lg mb-4">No products found matching your filters.</p>
+                    <a href="{% url 'catalog' %}" class="text-rw-brown hover:text-rw-gold text-sm uppercase tracking-widest">Browse All Products →</a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
