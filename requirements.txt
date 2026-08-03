@@ -4,3 +4,4 @@ gunicorn
 pillow
 django-environ
 whitenoise
+razorpay

@@ -1,12 +1,53 @@
 {% extends 'base.html' %}
 {% load shop_tags %}
 
-{% block title %}Order Confirmed — Mahashanka{% endblock %}
+{% block title %}Order Confirmed — Red and Wine Decor{% endblock %}
 
 {% block content %}
 <div class="py-16 md:py-24 px-4">
     <div class="max-w-2xl mx-auto text-center">
+        {% if order.payment_status == 'paid' %}
         <!-- Success icon -->
+        <div class="w-20 h-20 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-6">
+            <svg class="w-10 h-10 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+        </div>
+
+        <h1 class="text-3xl md:text-4xl font-light text-rw-brown mb-3">Payment Successful!</h1>
+        <p class="text-gray-500 mb-2">Thank you for your purchase. Your payment has been received and your order is confirmed.</p>
+        <p class="text-sm text-gray-400 mb-8">Order Number: <span class="font-medium text-rw-brown">{{ order.order_number }}</span></p>
+
+        {% elif order.payment_status == 'pending' %}
+        <!-- Pending payment -->
+        <div class="w-20 h-20 bg-amber-50 rounded-full flex items-center justify-center mx-auto mb-6">
+            <svg class="w-10 h-10 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+
+        <h1 class="text-3xl md:text-4xl font-light text-rw-brown mb-3">Complete Your Payment</h1>
+        <p class="text-gray-500 mb-2">Your order has been placed. Please complete the payment to confirm it.</p>
+        <p class="text-sm text-gray-400 mb-8">Order Number: <span class="font-medium text-rw-brown">{{ order.order_number }}</span></p>
+
+        <!-- Pay Now button -->
+        <a href="{% url 'payment_page' order.order_number %}" class="inline-flex items-center gap-2 bg-rw-brown text-white px-8 py-3.5 rounded-full text-sm uppercase tracking-widest hover:bg-rw-brown-dark transition mb-4">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
+            Pay {{ order.total|inr }} Now
+        </a>
+
+        {% elif order.payment_status == 'failed' %}
+        <!-- Payment failed -->
+        <div class="w-20 h-20 bg-red-50 rounded-full flex items-center justify-center mx-auto mb-6">
+            <svg class="w-10 h-10 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </div>
+
+        <h1 class="text-3xl md:text-4xl font-light text-rw-brown mb-3">Payment Failed</h1>
+        <p class="text-gray-500 mb-2">Your order was placed but the payment could not be processed.</p>
+        <p class="text-sm text-gray-400 mb-8">Order Number: <span class="font-medium text-rw-brown">{{ order.order_number }}</span></p>
+
+        <a href="{% url 'payment_page' order.order_number %}" class="inline-flex items-center gap-2 bg-rw-brown text-white px-8 py-3.5 rounded-full text-sm uppercase tracking-widest hover:bg-rw-brown-dark transition mb-4">
+            Retry Payment
+        </a>
+
+        {% else %}
+        <!-- COD / unpaid -->
         <div class="w-20 h-20 bg-rw-gold/10 rounded-full flex items-center justify-center mx-auto mb-6">
             <svg class="w-10 h-10 text-rw-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
         </div>
@@ -14,6 +55,7 @@
         <h1 class="text-3xl md:text-4xl font-light text-rw-brown mb-3">Order Confirmed!</h1>
         <p class="text-gray-500 mb-2">Thank you for your purchase. Your order has been placed successfully.</p>
         <p class="text-sm text-gray-400 mb-8">Order Number: <span class="font-medium text-rw-brown">{{ order.order_number }}</span></p>
+        {% endif %}
 
         <!-- Order details -->
         <div class="bg-rw-cream rounded-xl p-6 text-left mb-8">
@@ -29,6 +71,13 @@
             <div class="pt-4 mt-4 border-t border-rw-brown/10 flex justify-between">
                 <span class="font-semibold text-rw-brown">Total</span>
                 <span class="text-lg font-light text-rw-brown">{{ order.total|inr }}</span>
+            </div>
+            <!-- Payment status badge -->
+            <div class="pt-4 mt-4 border-t border-rw-brown/10 flex justify-between items-center">
+                <span class="text-xs uppercase tracking-widest text-gray-500">Payment Status</span>
+                <span class="text-sm font-medium {% if order.payment_status == 'paid' %}text-green-600{% elif order.payment_status == 'pending' %}text-amber-600{% elif order.payment_status == 'failed' %}text-red-500{% else %}text-gray-500{% endif %}">
+                    {{ order.get_payment_status_display }} · {{ order.get_payment_method_display }}
+                </span>
             </div>
         </div>
 

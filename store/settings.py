@@ -22,6 +22,9 @@ DEBUG = env('DJANGO_DEBUG')
 
 ALLOWED_HOSTS = env('DJANGO_ALLOWED_HOSTS').split(',')
 
+# Login URL — @login_required redirects here
+LOGIN_URL = '/login/'
+
 # CSRF trusted origins — allows HTTPS POST requests through Caddy proxy
 CSRF_TRUSTED_ORIGINS = [
     'https://*.drytis.dev',
@@ -68,6 +71,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'shop.context_processors.cart_count',
                 'shop.context_processors.categories',
+                'shop.context_processors.notifications',
             ],
         },
     },
@@ -122,3 +126,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Email
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 DEFAULT_FROM_EMAIL = 'noreply@mahashanka.com'
+
+# Razorpay
+RAZORPAY_KEY_ID = os.environ.get('RAZORPAY_KEY_ID', '')
+RAZORPAY_KEY_SECRET = os.environ.get('RAZORPAY_KEY_SECRET', '')
+RAZORPAY_CURRENCY = 'INR'
+
+# Demo mode is active when no Razorpay credentials are configured.
+# This lets the full payment flow be tested without a real gateway account.
+RAZORPAY_DEMO_MODE = not (RAZORPAY_KEY_ID and RAZORPAY_KEY_SECRET)

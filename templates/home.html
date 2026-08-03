@@ -114,6 +114,35 @@
     </div>
 </section>
 
+<!-- ==================== SHOP BY COUNTRY ==================== -->
+<section class="bg-rw-brown-dark py-16 md:py-24 px-4">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-12">
+            <p class="text-rw-gold-light text-xs tracking-[0.3em] uppercase mb-2">Explore the World</p>
+            <h2 class="text-white text-3xl md:text-5xl font-light">Shop by Country</h2>
+            <div class="w-16 h-px bg-rw-gold mx-auto mt-4"></div>
+            <p class="text-white/50 text-sm mt-4 max-w-lg mx-auto">Discover wallpapers inspired by famous cities and regions across the globe</p>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+            {% for country in countries %}
+            <a href="{% url 'country_detail' country.slug %}" class="group relative overflow-hidden rounded-xl aspect-[4/3] block">
+                <img src="{{ country.image }}" alt="{{ country.name }}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
+                <div class="absolute inset-0 bg-gradient-to-t from-rw-brown-dark/85 via-rw-brown-dark/20 to-transparent"></div>
+                <div class="absolute bottom-0 left-0 right-0 p-4 md:p-6 text-center">
+                    <h3 class="text-white text-lg md:text-xl font-medium tracking-wide group-hover:text-rw-gold-light transition">{{ country.name }}</h3>
+                    <span class="text-white/50 text-[10px] uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">Explore →</span>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+        <div class="text-center mt-8">
+            <a href="{% url 'countries' %}" class="inline-flex items-center gap-1 text-sm uppercase tracking-widest text-rw-gold-light hover:text-white transition">View All Countries
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </a>
+        </div>
+    </div>
+</section>
+
 <!-- ==================== BEST SELLERS ==================== -->
 <section class="bg-rw-cream py-16 md:py-24 px-4">
     <div class="max-w-7xl mx-auto">
@@ -166,20 +195,6 @@
     </div>
 </section>
 
-<!-- ==================== CURATED PRODUCT GRID ==================== -->
-<section class="bg-rw-cream py-16 md:py-24 px-4">
-    <div class="max-w-7xl mx-auto">
-        <div class="text-center mb-10">
-            <p class="text-rw-gold text-xs tracking-[0.3em] uppercase mb-2">Handpicked for You</p>
-            <h2 class="text-3xl md:text-4xl font-light text-rw-brown">New &amp; Noteworthy</h2>
-        </div>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-            {% for product in curated|slice:":8" %}
-            {% include 'partials/_product_card.html' with product=product %}
-            {% endfor %}
-        </div>
-    </div>
-</section>
 
 <!-- ==================== ROOM-BASED BROWSING ==================== -->
 <section class="py-16 md:py-24 px-4">

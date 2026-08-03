@@ -40,6 +40,9 @@ PRODUCT_COUNT=$(PGPASSWORD=redwine2026 psql -U redwine -d redwine_db -h 127.0.0.
 if [ "$PRODUCT_COUNT" -eq 0 ] 2>/dev/null; then
     echo "Seeding demo data..."
     python3 manage.py seed_demo
+    python3 manage.py seed_geo
+    python3 manage.py seed_geo_all
+    python3 manage.py update_country_landmarks
 else
     echo "Demo data already present ($PRODUCT_COUNT products). Skipping seed."
 fi

@@ -1,7 +1,7 @@
 {% load shop_tags %}
 <!-- Header — matches mahashanka.in reference -->
-<header class="sticky top-0 z-50 bg-white shadow-sm" x-data="{ mobileOpen: false, shopOpen: false, searchOpen: false }"
-        @mouseleave="shopOpen = false">
+<header class="sticky top-0 z-50 bg-white shadow-sm" x-data="{ mobileOpen: false, shopOpen: false, searchOpen: false, notifOpen: false, userOpen: false }"
+        @mouseleave="shopOpen = false; notifOpen = false; userOpen = false">
     <div class="max-w-7xl mx-auto px-4">
         <div class="flex items-center justify-between h-[72px]">
             <!-- Logo -->
@@ -66,6 +66,10 @@
                     </div>
                 </div>
 
+                <a href="{% url 'countries' %}" class="text-rw-brown hover:text-rw-gold transition relative group">
+                    Countries
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-rw-gold group-hover:w-full transition-all duration-300"></span>
+                </a>
                 <a href="{% url 'home' %}#about" class="text-rw-brown hover:text-rw-gold transition relative group">
                     About Us
                     <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-rw-gold group-hover:w-full transition-all duration-300"></span>
@@ -82,15 +86,60 @@
                 <button @click="searchOpen = !searchOpen" class="text-rw-brown hover:text-rw-gold transition">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
                 </button>
-                <!-- User / Login -->
+                <!-- Notification Bell (only for logged-in users) -->
                 {% if user.is_authenticated %}
-                <a href="{% url 'logout' %}" class="text-rw-brown hover:text-rw-gold transition relative" title="Logout {{ user.username }}">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7zM18.364 15.536L21 18.172m0 0l-2.536 2.536M21 18.172H18.364"/></svg>
-                </a>
-                {% else %}
-                <a href="{% url 'login_register' %}" class="text-rw-brown hover:text-rw-gold transition">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
-                </a>
+                <div class="relative" @mouseenter="notifOpen = true" @mouseleave="notifOpen = false">
+                    <a href="{% url 'notification_list' %}" class="relative text-rw-brown hover:text-rw-gold transition" title="Notifications">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
+                        {% if unread_notifications > 0 %}
+                        <span class="absolute -top-1.5 -right-1.5 bg-red-500 text-white text-[10px] min-w-[18px] h-[18px] rounded-full flex items-center justify-center font-semibold px-1">{{ unread_notifications }}</span>
+                        {% endif %}
+                    </a>
+
+                    <!-- Dropdown panel -->
+                    <div x-show="notifOpen" x-transition.opacity.duration.200ms
+                         class="absolute top-full right-0 mt-0 w-80 sm:w-96 bg-white shadow-2xl rounded-lg border border-gray-100 overflow-hidden"
+                         style="display: none;">
+                        <div class="bg-rw-brown px-4 py-3 flex items-center justify-between">
+                            <span class="text-white text-sm font-semibold uppercase tracking-wide">Notifications</span>
+                            {% if unread_notifications > 0 %}
+                            <form action="{% url 'mark_all_notifications_read' %}" method="post">
+                                {% csrf_token %}
+                                <button type="submit" class="text-white/70 hover:text-white text-xs underline">Mark all read</button>
+                            </form>
+                            {% endif %}
+                        </div>
+                        <div class="max-h-80 overflow-y-auto">
+                            {% if recent_notifications %}
+                                {% for notif in recent_notifications %}
+                                <div class="px-4 py-3 border-b border-gray-50 hover:bg-gray-50 transition {% if not notif.is_read %}bg-amber-50{% endif %}">
+                                    <div class="flex items-start gap-3">
+                                        <span class="text-lg shrink-0">{{ notif.icon }}</span>
+                                        <div class="flex-1 min-w-0">
+                                            <p class="text-sm font-medium text-gray-900 truncate">{{ notif.title }}</p>
+                                            <p class="text-xs text-gray-500 mt-0.5 line-clamp-2">{{ notif.message|truncatechars:100 }}</p>
+                                            <div class="flex items-center justify-between mt-1.5">
+                                                <span class="text-[11px] text-gray-400">{{ notif.created_at|timesince }} ago</span>
+                                                {% if not notif.is_read %}
+                                                <a href="{% url 'mark_notification_read' notif.id %}" class="text-[11px] text-rw-gold hover:underline">Mark read</a>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            {% else %}
+                                <div class="px-4 py-10 text-center">
+                                    <span class="text-3xl block mb-2">🔔</span>
+                                    <p class="text-sm text-gray-400">No notifications yet</p>
+                                </div>
+                            {% endif %}
+                        </div>
+                        <a href="{% url 'notification_list' %}" class="block bg-gray-50 hover:bg-gray-100 text-center py-2.5 text-sm font-medium text-rw-brown uppercase tracking-wide transition">
+                            View All Notifications
+                        </a>
+                    </div>
+                </div>
                 {% endif %}
                 <!-- Cart -->
                 <a href="{% url 'cart' %}" class="relative text-rw-brown hover:text-rw-gold transition">
@@ -99,6 +148,43 @@
                     <span class="absolute -top-1.5 -right-1.5 bg-rw-gold text-white text-[10px] w-4.5 h-4.5 min-w-[18px] h-[18px] rounded-full flex items-center justify-center font-semibold">{{ cart_count }}</span>
                     {% endif %}
                 </a>
+                <!-- User / Login / Logout dropdown -->
+                {% if user.is_authenticated %}
+                <div class="relative" @mouseenter="userOpen = true" @mouseleave="userOpen = false">
+                    <button class="flex items-center gap-1.5 text-rw-brown hover:text-rw-gold transition">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <!-- User dropdown -->
+                    <div x-show="userOpen" x-transition.opacity.duration.200ms
+                         class="absolute top-full right-0 mt-0 w-52 bg-white shadow-2xl rounded-lg border border-gray-100 overflow-hidden"
+                         style="display: none;">
+                        <div class="bg-rw-brown px-4 py-3">
+                            <p class="text-[10px] uppercase tracking-widest text-rw-gold">Account</p>
+                            <p class="text-sm text-white font-medium truncate">{{ user.username }}</p>
+                            <p class="text-xs text-white/60 truncate">{{ user.email }}</p>
+                        </div>
+                        <a href="{% url 'notification_list' %}" class="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition">
+                            <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
+                            Notifications
+                        </a>
+                        <a href="{% url 'cart' %}" class="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition">
+                            <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                            My Cart
+                        </a>
+                        <div class="border-t border-gray-100"></div>
+                        <a href="{% url 'logout' %}" class="flex items-center gap-2 px-4 py-2.5 text-sm text-red-600 hover:bg-red-50 transition font-medium">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
+                            Logout
+                        </a>
+                    </div>
+                </div>
+                {% else %}
+                <a href="{% url 'login_register' %}" class="flex items-center gap-1 text-rw-brown hover:text-rw-gold transition" title="Login / Register">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+                    <span class="hidden md:inline text-xs font-medium uppercase tracking-wide">Login</span>
+                </a>
+                {% endif %}
                 <!-- Mobile menu toggle -->
                 <button @click="mobileOpen = !mobileOpen" class="lg:hidden text-rw-brown">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/></svg>
@@ -130,9 +216,18 @@
                 {% endif %}
             {% endfor %}
             <a href="{% url 'catalog' %}" class="block py-2.5 text-rw-brown font-medium text-sm border-t border-gray-50 mt-2 pt-3">View All Products</a>
+            <a href="{% url 'countries' %}" class="block py-2.5 text-rw-brown font-medium uppercase tracking-wide text-sm">Shop by Country</a>
             <a href="{% url 'home' %}#about" class="block py-2.5 text-rw-brown font-medium uppercase tracking-wide text-sm">About Us</a>
             <a href="{% url 'contact_us' %}" class="block py-2.5 text-rw-brown font-medium uppercase tracking-wide text-sm">Contact Us</a>
+            {% if user.is_authenticated %}
+            <div class="border-t border-gray-100 pt-3 mt-3">
+                <p class="text-xs text-gray-500 mb-2">Signed in as <span class="font-medium text-rw-brown">{{ user.username }}</span></p>
+                <a href="{% url 'notification_list' %}" class="block py-2.5 text-rw-brown font-medium uppercase tracking-wide text-sm">🔔 Notifications</a>
+                <a href="{% url 'logout' %}" class="block py-2.5 text-red-600 font-medium uppercase tracking-wide text-sm">Logout</a>
+            </div>
+            {% else %}
             <a href="{% url 'login_register' %}" class="block py-2.5 text-rw-brown font-medium uppercase tracking-wide text-sm">Login / Register</a>
+            {% endif %}
         </div>
     </div>
 </header>

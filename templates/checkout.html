@@ -60,18 +60,22 @@
                 <div class="bg-white border border-gray-100 rounded-xl p-6">
                     <h3 class="text-sm font-semibold uppercase tracking-widest text-rw-brown mb-4">Payment Method</h3>
                     <div class="space-y-3">
-                        <label class="flex items-center gap-3 p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-rw-cream transition">
-                            <input type="radio" name="payment" value="cod" checked class="text-rw-brown focus:ring-rw-brown">
+                        <label class="flex items-center gap-3 p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-rw-cream transition" onclick="document.getElementById('pay-cod').checked = true">
+                            <input type="radio" name="payment" value="cod" id="pay-cod" checked class="text-rw-brown focus:ring-rw-brown">
                             <div>
                                 <div class="text-sm font-medium text-rw-brown">Cash on Delivery</div>
                                 <div class="text-xs text-gray-500">Pay when you receive your order</div>
                             </div>
                         </label>
-                        <label class="flex items-center gap-3 p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-rw-cream transition opacity-50">
-                            <input type="radio" name="payment" value="online" disabled class="text-rw-brown focus:ring-rw-brown">
+                        <label class="flex items-center gap-3 p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-rw-cream transition" onclick="document.getElementById('pay-online').checked = true">
+                            <input type="radio" name="payment" value="online" id="pay-online" class="text-rw-brown focus:ring-rw-brown">
                             <div>
                                 <div class="text-sm font-medium text-rw-brown">Online Payment</div>
-                                <div class="text-xs text-gray-500">Coming soon</div>
+                                <div class="text-xs text-gray-500">UPI, Cards, Net Banking &amp; Wallets via Razorpay</div>
+                            </div>
+                            <div class="ml-auto flex gap-1">
+                                <span class="text-[10px] bg-rw-cream text-rw-brown px-2 py-0.5 rounded">UPI</span>
+                                <span class="text-[10px] bg-rw-cream text-rw-brown px-2 py-0.5 rounded">Card</span>
                             </div>
                         </label>
                     </div>
