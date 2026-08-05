@@ -18,23 +18,35 @@
                     </svg>
                 </div>
                 <div>
-                    <div class="text-white font-medium text-sm">Mahashank Assistant</div>
+                    <div class="text-white font-medium text-sm flex items-center gap-2">
+                        Mahashank Assistant
+                        <span class="bg-rw-gold/30 text-rw-gold-light text-[9px] px-1.5 py-0.5 rounded-full font-semibold uppercase tracking-wide">AI</span>
+                    </div>
                     <div class="flex items-center gap-1.5">
                         <span class="chatbot-status-dot"></span>
-                        <span class="text-white/70 text-xs">Online · We typically reply instantly</span>
+                        <span class="text-white/70 text-xs">AI-Powered · Replies instantly</span>
                     </div>
                 </div>
             </div>
-            <button @click="isOpen = false" class="text-white/60 hover:text-white transition">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-            </button>
+            <div class="flex items-center gap-1">
+                <!-- Minimize / Dropdown button -->
+                <button @click="isMinimized = !isMinimized" class="chatbot-header-btn" title="Minimize">
+                    <svg x-show="!isMinimized" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"/></svg>
+                    <svg x-show="isMinimized" style="display:none" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                </button>
+                <!-- Close button -->
+                <button @click="isOpen = false; isMinimized = false" class="chatbot-header-btn" title="Close">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+            </div>
         </div>
 
         <!-- Messages -->
-        <div class="chatbot-messages" x-ref="messages">
+        <div class="chatbot-messages" x-ref="messages" x-show="!isMinimized" x-collapse>
             <template x-for="(msg, idx) in messages" :key="idx">
                 <div :class="msg.from === 'bot' ? 'chatbot-msg-bot' : 'chatbot-msg-user'">
-                    <div :class="msg.from === 'bot' ? 'chatbot-bubble-bot' : 'chatbot-bubble-user'" x-text="msg.text"></div>
+                    <div :class="msg.from === 'bot' ? 'chatbot-bubble-bot' : 'chatbot-bubble-user'"
+                         x-html="msg.from === 'bot' ? renderMarkdown(msg.text) : escapeHtml(msg.text)"></div>
                 </div>
             </template>
 
@@ -51,7 +63,7 @@
         </div>
 
         <!-- Quick replies -->
-        <div x-show="messages.length <= 2" class="chatbot-quick-replies">
+        <div x-show="!isMinimized && messages.length <= 2" class="chatbot-quick-replies">
             <button @click="sendQuickReply('products')" class="chatbot-quick-btn">Wallpapers & Murals</button>
             <button @click="sendQuickReply('pricing')" class="chatbot-quick-btn">Pricing</button>
             <button @click="sendQuickReply('shipping')" class="chatbot-quick-btn">Shipping</button>
@@ -59,7 +71,7 @@
         </div>
 
         <!-- Input -->
-        <form @submit.prevent="sendMessage()" class="chatbot-input-area">
+        <form x-show="!isMinimized" @submit.prevent="sendMessage()" class="chatbot-input-area">
             <input type="text" x-model="inputText" placeholder="Type your message..."
                    class="chatbot-input">
             <button type="submit" class="chatbot-send-btn" :disabled="!inputText.trim()">

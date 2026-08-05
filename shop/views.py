@@ -775,3 +775,44 @@ def ai_generate_image(request):
         'prompt': prompt,
         'created_id': ai_img.id,
     })
+
+
+# ── AI Decor Assistant Chatbot ───────────────────────────────────────
+
+@require_http_methods(["POST"])
+def ai_chat(request):
+    """
+    AJAX endpoint for the Mistral-powered decor assistant chatbot.
+
+    Accepts JSON: { "message": "...", "history": [{"from": "bot"|"user", "text": "..."}] }
+    Returns JSON: { "reply": "...", "source": "ai"|"fallback" }
+    """
+    try:
+        body = json.loads(request.body)
+    except (json.JSONDecodeError, ValueError):
+        return JsonResponse({'error': 'Invalid JSON'}, status=400)
+
+    message = (body.get('message') or '').strip()
+    history = body.get('history') or []
+
+    if not message:
+        return JsonResponse({'error': 'Message is required.'}, status=400)
+
+    # Cap history at 20 entries to prevent abuse
+    if isinstance(history, list) and len(history) > 20:
+        history = history[-20:]
+
+    from .decor_assistant import get_ai_response, get_keyword_fallback
+
+    reply, error = get_ai_response(message, history)
+
+    if reply:
+        return JsonResponse({'reply': reply, 'source': 'ai'})
+
+    # Fallback to keyword-based reply
+    fallback = get_keyword_fallback(message)
+    return JsonResponse({
+        'reply': fallback,
+        'source': 'fallback',
+        'note': 'AI service temporarily unavailable — showing a quick answer.',
+    })

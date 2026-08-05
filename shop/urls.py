@@ -37,4 +37,6 @@ urlpatterns = [
     # AI Wallpaper Generation
     path('ai-generate/', views.ai_generate, name='ai_generate'),
     path('ai-generate/create/', views.ai_generate_image, name='ai_generate_image'),
+    # AI Decor Assistant Chatbot
+    path('ai-chat/', views.ai_chat, name='ai_chat'),
 ]

@@ -166,146 +166,114 @@ function showToast(message) {
     }, 3000);
 }
 
-// ===== Chatbot =====
+// ===== Chatbot (Mistral AI-Powered) =====
 function chatbot() {
     return {
         isOpen: false,
+        isMinimized: false,
         isTyping: false,
         unreadCount: 1,
         inputText: '',
         messages: [],
+        csrfToken: '',
 
         init() {
+            // Grab the CSRF token for fetch() calls
+            const tokenEl = document.querySelector('[name=csrfmiddlewaretoken]');
+            this.csrfToken = tokenEl ? tokenEl.value :
+                (window.csrfToken || document.cookie.match(/csrftoken=([^;]+)/)?.[1] || '');
+
             // Send welcome message after a short delay
             setTimeout(() => {
                 if (this.messages.length === 0) {
                     this.messages.push({
                         from: 'bot',
-                        text: 'Namaste! 🙏 Welcome to Mahashank. How can we help you transform your walls today?'
+                        text: 'Namaste! 🙏 Welcome to Mahashank! I\'m your AI decor assistant. Ask me about wallpapers, murals, pricing, or how to write great prompts for our AI Generator!'
                     });
                 }
             }, 1500);
         },
 
-        sendMessage() {
+        async sendMessage() {
             const text = this.inputText.trim();
-            if (!text) return;
+            if (!text || this.isTyping) return;
 
             this.messages.push({ from: 'user', text: text });
             this.inputText = '';
             this.scrollToBottom();
-
-            // Simulate bot response
             this.isTyping = true;
-            setTimeout(() => {
+
+            try {
+                const resp = await fetch('/ai-chat/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': this.csrfToken,
+                    },
+                    body: JSON.stringify({
+                        message: text,
+                        history: this.messages.slice(-7), // last ~7 turns for context
+                    }),
+                });
+
+                const data = await resp.json();
+
+                if (data.reply) {
+                    this.messages.push({ from: 'bot', text: data.reply });
+                } else if (data.error) {
+                    this.messages.push({ from: 'bot', text: 'Sorry, I had trouble understanding that. Could you try rephrasing?' });
+                }
+            } catch (err) {
+                this.messages.push({
+                    from: 'bot',
+                    text: 'I\'m having trouble connecting right now. Please try again, or email us at hello@mahashank.com.'
+                });
+            } finally {
                 this.isTyping = false;
-                this.messages.push({ from: 'bot', text: this.getReply(text) });
                 this.scrollToBottom();
-            }, 800 + Math.random() * 700);
+            }
         },
 
-        sendQuickReply(topic) {
+        async sendQuickReply(topic) {
+            if (this.isTyping) return;
+
             const questions = {
                 'products': 'Tell me about your wallpapers and murals',
                 'pricing': 'What are your prices?',
                 'shipping': 'How long does shipping take?',
                 'installation': 'Do you offer installation?',
+                'prompts': 'How do I write a good prompt for the AI Wallpaper Generator?',
             };
-            this.messages.push({ from: 'user', text: questions[topic] });
+            const text = questions[topic] || topic;
+
+            this.messages.push({ from: 'user', text: text });
             this.scrollToBottom();
             this.isTyping = true;
-            setTimeout(() => {
+
+            try {
+                const resp = await fetch('/ai-chat/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': this.csrfToken,
+                    },
+                    body: JSON.stringify({
+                        message: text,
+                        history: this.messages.slice(-7),
+                    }),
+                });
+
+                const data = await resp.json();
+                this.messages.push({ from: 'bot', text: data.reply || 'Sorry, I couldn\'t answer that. Please try again.' });
+            } catch (err) {
+                this.messages.push({
+                    from: 'bot',
+                    text: 'I\'m having trouble connecting right now. Please try again, or email us at hello@mahashank.com.'
+                });
+            } finally {
                 this.isTyping = false;
-                this.messages.push({ from: 'bot', text: this.getReply(questions[topic]) });
                 this.scrollToBottom();
-            }, 800 + Math.random() * 400);
-        },
-
-        getReply(input) {
-            const text = input.toLowerCase();
-
-            // Greetings
-            if (/hello|hi|hey|namaste|good (morning|evening|afternoon)/.test(text)) {
-                return 'Hello! How can I assist you today? You can ask me about our wallpapers, murals, pricing, or shipping. 😊';
             }
-
-            // Products
-            if (/wallpaper|roll|design|pattern/.test(text)) {
-                return 'We have a wide range of wallpapers including Luxury Series, Damask, Floral, Abstract, Metallic, and more. Prices start from ₹85/sqft. Browse our collection at the Shop page!';
-            }
-            if (/mural|heritage|pichwai|peacock|temple|tropical/.test(text)) {
-                return 'Our Wall Murals are stunning! We offer Heritage, European, Pichwai, Temple, Tropical, 3D, and Peacock designs. Each is custom-made to your wall dimensions. Would you like to see our best sellers?';
-            }
-            if (/kids|nursery|children/.test(text)) {
-                return 'We have delightful Kids & Nursery wallpapers featuring playful patterns and themes. Perfect for creating a magical space for little ones! 🧸';
-            }
-            if (/mosaic|tile|glass/.test(text)) {
-                return 'Our Glass Mosaic Tiles are perfect for adding elegance to kitchens, bathrooms, and feature walls. Available in multiple colors and finishes.';
-            }
-            if (/painting|wall.?art|canvas/.test(text)) {
-                return 'Our Paintings & Wallart collection features curated pieces from talented artists. Each piece adds a unique character to your space.';
-            }
-            if (/self.?adhesive|peel.?stick|stick.?on/.test(text)) {
-                return 'Our Self-Adhesive Wallpapers are perfect for DIY installation — just peel and stick! No glue needed. Great for renters and quick makeovers.';
-            }
-
-            // Pricing
-            if (/price|cost|rate|how much|expensive|cheap|budget/.test(text)) {
-                return 'Our prices range from ₹85/sqft for standard wallpapers to ₹3,000/pc for premium murals. Final pricing depends on the design and wall size. Free shipping on orders above ₹5,000!';
-            }
-
-            // Shipping & Delivery
-            if (/ship|deliver|delivery|how long|when|reach/.test(text)) {
-                return 'We deliver across India and internationally! Domestic orders typically arrive in 5-7 business days. International shipping takes 10-15 days. Free shipping on orders above ₹5,000 within India.';
-            }
-
-            // Installation
-            if (/install|fit|apply|put up|set up|fix/.test(text)) {
-                return 'We offer professional installation services in major cities (Mumbai, Delhi, Bangalore, Chennai). For other locations, we provide detailed DIY guides. Would you like to book an installation?';
-            }
-
-            // Returns
-            if (/return|refund|exchange|replace/.test(text)) {
-                return 'We offer easy 7-day returns! If you\'re not happy with your order, contact us within 7 days of delivery for a full refund or exchange.';
-            }
-
-            // Contact
-            if (/contact|phone|call|email|reach|whatsapp|number/.test(text)) {
-                return 'You can reach us at hello@mahashank.com or +91 98765 43210. We\'re available Monday-Saturday, 10 AM - 7 PM IST. We also respond on WhatsApp!';
-            }
-
-            // Rooms
-            if (/living room|bedroom|dining|hallway|study|bathroom/.test(text)) {
-                return 'Great choice! We have wallpapers curated for every room. Check out our "Browse by Room" section on the homepage for room-specific recommendations!';
-            }
-
-            // Color
-            if (/color|colour|shade|tone|palette/.test(text)) {
-                return 'We offer wallpapers in 5 curated palettes: Warm Neutrals, Earthy Browns, Cool Grays, Soft Blues, and Sage & Greens. What\'s your preferred color scheme?';
-            }
-
-            // Size / measurement
-            if (/size|measure|dimension|how to measure|square feet|sqft|wall size/.test(text)) {
-                return 'To calculate how much wallpaper you need: measure your wall\'s width × height in feet. For patterned wallpapers, add 10-15% extra for pattern matching. Need help? Share your wall dimensions and we\'ll calculate for you!';
-            }
-
-            // Order
-            if (/order|buy|purchase|checkout|cart/.test(text)) {
-                return 'You can place an order directly on our website! Add products to your cart and proceed to checkout. We accept Cash on Delivery and online payments. Need help choosing? I\'m here!';
-            }
-
-            // Thanks
-            if (/thank|thanks|great|awesome|perfect|nice|cool/.test(text)) {
-                return 'You\'re most welcome! 😊 Feel free to browse our collection. If you have any more questions, I\'m always here to help!';
-            }
-
-            // Bye
-            if (/bye|goodbye|see you|exit|quit/.test(text)) {
-                return 'Thank you for visiting Mahashank! Have a wonderful day. 🙏 Come back anytime!';
-            }
-
-            // Default fallback
-            return 'I\'d love to help with that! You can ask me about our wallpapers, murals, pricing, shipping, installation, or anything else. For specific queries, you can also email us at hello@mahashank.com or call +91 98765 43210.';
         },
 
         scrollToBottom() {
@@ -314,6 +282,124 @@ function chatbot() {
                     this.$refs.messages.scrollTop = this.$refs.messages.scrollHeight;
                 }
             });
+        },
+
+        /**
+         * Convert markdown text to safe HTML for bot messages.
+         * Uses marked.js if available, falls back to basic formatting.
+         * All output is sanitized to prevent XSS.
+         */
+        renderMarkdown(text) {
+            if (!text) return '';
+
+            // Use marked.js if available (loaded from CDN)
+            if (typeof marked !== 'undefined') {
+                try {
+                    marked.setOptions({
+                        breaks: true,      // single line breaks → <br>
+                        gfm: true,         // GitHub-flavored markdown (tables!)
+                        headerIds: false,  // no id attributes on headers
+                        mangle: false,
+                    });
+                    let html = marked.parse(text);
+                    return this.sanitizeHtml(html);
+                } catch (e) {
+                    console.warn('Markdown parse error:', e);
+                }
+            }
+
+            // Fallback: basic markdown without library
+            return this.basicMarkdown(text);
+        },
+
+        /**
+         * Sanitize HTML output — strip dangerous tags/attributes.
+         */
+        sanitizeHtml(html) {
+            // Remove script, iframe, object, embed, style tags entirely
+            html = html.replace(/<\s*(script|iframe|object|embed|style|form|input|button)[^>]*>[\s\S]*?<\s*\/\s*\1\s*>/gi, '');
+            html = html.replace(/<\s*(script|iframe|object|embed|style|form|input|button)[^>]*\/?\s*>/gi, '');
+            // Remove event handlers (on*)
+            html = html.replace(/\son\w+\s*=\s*"[^"]*"/gi, '');
+            html = html.replace(/\son\w+\s*=\s*'[^']*'/gi, '');
+            html = html.replace(/\son\w+\s*=\s*[^\s>]+/gi, '');
+            // Remove javascript: and data: URLs
+            html = html.replace(/(href|src)\s*=\s*["']javascript:[^"']*["']/gi, '$1="#"');
+            html = html.replace(/(href|src)\s*=\s*["']data:[^"']*["']/gi, '$1="#"');
+            // Make links safe
+            html = html.replace(/<a\s/g, '<a target="_blank" rel="noopener noreferrer" ');
+            return html;
+        },
+
+        /**
+         * Basic markdown rendering without external library.
+         */
+        basicMarkdown(text) {
+            let html = this.escapeHtml(text);
+
+            // Tables (pipe-delimited)
+            html = html.replace(/((?:^\|.+\|[ \t]*$\n?)+)/gm, function(match) {
+                var lines = match.trim().split('\n');
+                if (lines.length < 2) return match;
+                // Check if second line is separator
+                if (!/^\|?[\s:|-]+\|?\s*$/.test(lines[1])) return match;
+
+                var headers = lines[0].split('|').filter(function(h) {
+                    return h.trim() !== '';
+                }).map(function(h) { return h.trim(); });
+
+                var rows = lines.slice(2).map(function(line) {
+                    return line.split('|').filter(function(c) {
+                        return c.trim() !== '';
+                    }).map(function(c) { return c.trim(); });
+                });
+
+                var table = '<div class="chat-table-wrap"><table class="chat-md-table"><thead><tr>';
+                headers.forEach(function(h) { table += '<th>' + h + '</th>'; });
+                table += '</tr></thead><tbody>';
+                rows.forEach(function(r) {
+                    table += '<tr>';
+                    r.forEach(function(c) { table += '<td>' + c + '</td>'; });
+                    table += '</tr>';
+                });
+                table += '</tbody></table></div>';
+                return table;
+            });
+
+            // Bold
+            html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+            // Italic
+            html = html.replace(/(?<!\w)\*(?!\s)(.+?)\*(?!\w)/g, '<em>$1</em>');
+            // Inline code
+            html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
+            // Headings (### and ##)
+            html = html.replace(/^###\s+(.+)$/gm, '<h4 class="chat-md-h">$1</h4>');
+            html = html.replace(/^##\s+(.+)$/gm, '<h4 class="chat-md-h">$1</h4>');
+            // Lists — mark items with data-type, then wrap groups
+            // Numbered list items
+            html = html.replace(/^\d+\.\s+(.+)$/gm, '<li data-t="ol">$1</li>');
+            // Bullet list items (only if not already a <li> from numbered)
+            html = html.replace(/^[-*]\s+(.+)$/gm, '<li data-t="ul">$1</li>');
+            // Wrap consecutive same-type items
+            html = html.replace(/(?:<li data-t="ol">.*?<\/li>\n?)+/g, function(m) {
+                return '<ol class="chat-md-ol">' + m.replace(/ data-t="ol"/g, '') + '</ol>';
+            });
+            html = html.replace(/(?:<li data-t="ul">.*?<\/li>\n?)+/g, function(m) {
+                return '<ul class="chat-md-ul">' + m.replace(/ data-t="ul"/g, '') + '</ul>';
+            });
+            html = html.replace(/<li>/g, '<li class="chat-md-li">');
+            // Line breaks
+            html = html.replace(/\n/g, '<br>');
+            return html;
+        },
+
+        /**
+         * Escape HTML entities — used for user messages and as base for markdown.
+         */
+        escapeHtml(text) {
+            var div = document.createElement('div');
+            div.appendChild(document.createTextNode(text));
+            return div.innerHTML;
         }
     };
 }
