@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load shop_tags %}
+
+{% block content %}
+
+<!-- Breadcrumb -->
+<div class="bg-rw-cream py-3 px-4">
+    <div class="max-w-7xl mx-auto flex items-center gap-2 text-xs text-gray-500 flex-wrap">
+        <a href="{% url 'home' %}" class="hover:text-rw-brown">Home</a>
+        <span>/</span>
+        <a href="{% url 'countries' %}" class="hover:text-rw-brown">Countries</a>
+        <span>/</span>
+        <a href="{% url 'country_detail' country.slug %}" class="hover:text-rw-brown">{{ country.name }}</a>
+        <span>/</span>
+        <a href="{% url 'region_detail' country.slug region.slug %}" class="hover:text-rw-brown">{{ region.name }}</a>
+        <span>/</span>
+        <span class="text-rw-brown font-medium">{{ city.name }}</span>
+    </div>
+</div>
+
+<!-- City Hero -->
+<section class="relative h-[40vh] min-h-[300px] overflow-hidden bg-rw-brown-dark">
+    {% if city.image %}
+    <img src="{{ city.image }}" alt="{{ city.name }}" class="absolute inset-0 w-full h-full object-cover">
+    {% endif %}
+    <div class="absolute inset-0 bg-gradient-to-t from-rw-brown-dark via-rw-brown-dark/50 to-rw-brown-dark/20"></div>
+    <div class="absolute bottom-0 left-0 right-0 p-6 md:p-12">
+        <div class="max-w-7xl mx-auto">
+            <p class="text-rw-gold-light text-xs tracking-[0.3em] uppercase mb-2">{{ region.name }}, {{ country.name }}</p>
+            <h1 class="text-white text-3xl md:text-5xl font-light tracking-tight">{{ city.name }}</h1>
+            {% if city.description %}
+            <p class="text-white/70 text-sm md:text-base mt-3 max-w-2xl font-light leading-relaxed">{{ city.description }}</p>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+<!-- Wallpaper Grid -->
+<section class="py-12 md:py-16 px-4">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-10">
+            <p class="text-rw-gold text-xs tracking-[0.3em] uppercase mb-2">Famous Designs</p>
+            <h2 class="text-2xl md:text-3xl font-light text-rw-brown">Wallpapers from {{ city.name }}</h2>
+        </div>
+
+        {% if products %}
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+            {% for product in products %}
+            {% include 'partials/_product_card.html' with product=product %}
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="text-center py-20 text-gray-400">
+            <p class="text-lg">No wallpapers available for {{ city.name }} yet.</p>
+            <a href="{% url 'catalog' %}" class="inline-block mt-4 text-rw-brown underline text-sm hover:text-rw-gold transition">Browse all wallpapers →</a>
+        </div>
+        {% endif %}
+    </div>
+</section>
+
+<!-- Other Cities in this Region -->
+{% if sibling_cities %}
+<section class="bg-rw-cream py-12 md:py-16 px-4">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-8">
+            <p class="text-rw-gold text-xs tracking-[0.3em] uppercase mb-2">Continue Exploring</p>
+            <h2 class="text-xl md:text-2xl font-light text-rw-brown">Other Cities in {{ region.name }}</h2>
+        </div>
+        <div class="flex flex-wrap justify-center gap-3">
+            {% for sibling in sibling_cities %}
+            <a href="{% url 'city_detail' country.slug region.slug sibling.slug %}" class="bg-white rounded-full px-5 py-2.5 text-sm text-rw-brown hover:bg-rw-brown hover:text-white transition shadow-sm font-medium">{{ sibling.name }}</a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+{% endblock %}

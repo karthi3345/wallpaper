@@ -1,6 +1,6 @@
 """
 Django settings for store project.
-Mahashanka — Wallpaper & Home Decor E-commerce
+Mahashank — Wallpaper & Home Decor E-commerce
 """
 
 import os
@@ -125,7 +125,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Email
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-DEFAULT_FROM_EMAIL = 'noreply@mahashanka.com'
+DEFAULT_FROM_EMAIL = 'noreply@mahashank.com'
 
 # Razorpay
 RAZORPAY_KEY_ID = os.environ.get('RAZORPAY_KEY_ID', '')

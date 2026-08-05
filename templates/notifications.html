@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load shop_tags %}
+
+{% block title %}Notifications — Mahashank Decor{% endblock %}
+
+{% block content %}
+<div class="max-w-3xl mx-auto px-4 py-10">
+    <!-- Header -->
+    <div class="flex items-center justify-between mb-8">
+        <div>
+            <h1 class="text-2xl md:text-3xl font-semibold text-rw-brown tracking-tight">Notifications</h1>
+            {% if unread_count > 0 %}
+            <p class="text-sm text-gray-500 mt-1">{{ unread_count }} unread notification{{ unread_count|pluralize }}</p>
+            {% else %}
+            <p class="text-sm text-gray-500 mt-1">You're all caught up!</p>
+            {% endif %}
+        </div>
+        {% if unread_count > 0 %}
+        <form action="{% url 'mark_all_notifications_read' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="bg-rw-brown text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-rw-brown-dark transition uppercase tracking-wide">
+                Mark All Read
+            </button>
+        </form>
+        {% endif %}
+    </div>
+
+    <!-- Notifications List -->
+    <div class="space-y-3">
+        {% if notifications %}
+            {% for notif in notifications %}
+            <div class="bg-white rounded-xl border {% if not notif.is_read %}border-rw-gold/30 bg-amber-50/50{% else %}border-gray-100{% endif %} shadow-sm p-4 md:p-5 transition hover:shadow-md">
+                <div class="flex items-start gap-4">
+                    <!-- Icon -->
+                    <div class="w-11 h-11 rounded-full {% if not notif.is_read %}bg-rw-gold/10{% else %}bg-gray-100{% endif %} flex items-center justify-center shrink-0">
+                        <span class="text-xl">{{ notif.icon }}</span>
+                    </div>
+                    <!-- Content -->
+                    <div class="flex-1 min-w-0">
+                        <div class="flex items-center gap-2 flex-wrap">
+                            <h3 class="text-[15px] font-semibold text-gray-900">{{ notif.title }}</h3>
+                            {% if not notif.is_read %}
+                            <span class="bg-rw-gold text-white text-[10px] px-2 py-0.5 rounded-full uppercase tracking-wide font-medium">New</span>
+                            {% endif %}
+                        </div>
+                        <p class="text-sm text-gray-600 mt-1 whitespace-pre-line">{{ notif.message }}</p>
+                        <div class="flex items-center gap-4 mt-3">
+                            <span class="text-xs text-gray-400">{{ notif.created_at|date:"d M Y, g:i A" }}</span>
+                            {% if not notif.is_read %}
+                            <a href="{% url 'mark_notification_read' notif.id %}" class="text-xs text-rw-gold hover:underline font-medium">Mark as read</a>
+                            {% endif %}
+                            {% if notif.related_order %}
+                            <a href="{% url 'order_confirmation' notif.related_order.order_number %}" class="text-xs text-rw-brown hover:underline font-medium">View Order →</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <!-- Empty state -->
+            <div class="text-center py-20">
+                <div class="w-20 h-20 mx-auto rounded-full bg-gray-100 flex items-center justify-center mb-4">
+                    <span class="text-4xl">🔔</span>
+                </div>
+                <h3 class="text-lg font-semibold text-gray-700 mb-1">No Notifications</h3>
+                <p class="text-sm text-gray-400">Your login/logout activity and order updates will appear here.</p>
+                <a href="{% url 'home' %}" class="inline-block mt-6 bg-rw-brown text-white px-6 py-2.5 rounded-full text-sm font-medium uppercase tracking-wide hover:bg-rw-brown-dark transition">
+                    Continue Shopping
+                </a>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

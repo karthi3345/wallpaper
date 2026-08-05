@@ -7,7 +7,7 @@
             <!-- Logo -->
             <a href="{% url 'home' %}" class="flex items-center gap-2 shrink-0">
                 <div class="text-xl md:text-2xl tracking-tight leading-none">
-                    <span class="font-semibold text-rw-brown">Mahashanka</span>
+                    <span class="font-semibold text-rw-brown">Mahashank</span>
                     <span class="block text-[9px] tracking-[0.25em] uppercase text-rw-gold mt-0.5">Decor</span>
                 </div>
             </a>
@@ -68,6 +68,11 @@
 
                 <a href="{% url 'countries' %}" class="text-rw-brown hover:text-rw-gold transition relative group">
                     Countries
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-rw-gold group-hover:w-full transition-all duration-300"></span>
+                </a>
+                <a href="{% url 'ai_generate' %}" class="text-rw-brown hover:text-rw-gold transition relative group flex items-center gap-1">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.456-2.456L14.25 6l1.035-.259a3.375 3.375 0 002.456-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z"/></svg>
+                    AI Generate
                     <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-rw-gold group-hover:w-full transition-all duration-300"></span>
                 </a>
                 <a href="{% url 'home' %}#about" class="text-rw-brown hover:text-rw-gold transition relative group">
@@ -217,6 +222,7 @@
             {% endfor %}
             <a href="{% url 'catalog' %}" class="block py-2.5 text-rw-brown font-medium text-sm border-t border-gray-50 mt-2 pt-3">View All Products</a>
             <a href="{% url 'countries' %}" class="block py-2.5 text-rw-brown font-medium uppercase tracking-wide text-sm">Shop by Country</a>
+            <a href="{% url 'ai_generate' %}" class="block py-2.5 text-rw-brown font-medium uppercase tracking-wide text-sm">✨ AI Wallpaper Generator</a>
             <a href="{% url 'home' %}#about" class="block py-2.5 text-rw-brown font-medium uppercase tracking-wide text-sm">About Us</a>
             <a href="{% url 'contact_us' %}" class="block py-2.5 text-rw-brown font-medium uppercase tracking-wide text-sm">Contact Us</a>
             {% if user.is_authenticated %}

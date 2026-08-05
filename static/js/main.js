@@ -1,4 +1,4 @@
-/* Mahashanka — Main JS */
+/* Mahashank — Main JS */
 
 document.addEventListener('DOMContentLoaded', function() {
 
@@ -181,7 +181,7 @@ function chatbot() {
                 if (this.messages.length === 0) {
                     this.messages.push({
                         from: 'bot',
-                        text: 'Namaste! 🙏 Welcome to Mahashanka. How can we help you transform your walls today?'
+                        text: 'Namaste! 🙏 Welcome to Mahashank. How can we help you transform your walls today?'
                     });
                 }
             }, 1500);
@@ -271,7 +271,7 @@ function chatbot() {
 
             // Contact
             if (/contact|phone|call|email|reach|whatsapp|number/.test(text)) {
-                return 'You can reach us at hello@mahashanka.com or +91 98765 43210. We\'re available Monday-Saturday, 10 AM - 7 PM IST. We also respond on WhatsApp!';
+                return 'You can reach us at hello@mahashank.com or +91 98765 43210. We\'re available Monday-Saturday, 10 AM - 7 PM IST. We also respond on WhatsApp!';
             }
 
             // Rooms
@@ -301,11 +301,11 @@ function chatbot() {
 
             // Bye
             if (/bye|goodbye|see you|exit|quit/.test(text)) {
-                return 'Thank you for visiting Mahashanka! Have a wonderful day. 🙏 Come back anytime!';
+                return 'Thank you for visiting Mahashank! Have a wonderful day. 🙏 Come back anytime!';
             }
 
             // Default fallback
-            return 'I\'d love to help with that! You can ask me about our wallpapers, murals, pricing, shipping, installation, or anything else. For specific queries, you can also email us at hello@mahashanka.com or call +91 98765 43210.';
+            return 'I\'d love to help with that! You can ask me about our wallpapers, murals, pricing, shipping, installation, or anything else. For specific queries, you can also email us at hello@mahashank.com or call +91 98765 43210.';
         },
 
         scrollToBottom() {

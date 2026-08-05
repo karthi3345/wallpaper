@@ -1,0 +1,140 @@
+{% extends 'base.html' %}
+{% load shop_tags %}
+
+{% block title %}Payment — {{ order.order_number }}{% endblock %}
+
+{% block content %}
+<div class="py-12 px-4">
+    <div class="max-w-lg mx-auto">
+        <div class="text-center mb-8">
+            <div class="w-16 h-16 bg-rw-gold/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8 text-rw-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
+            </div>
+            <h1 class="text-3xl font-light text-rw-brown mb-2">Secure Payment</h1>
+            <p class="text-gray-500 text-sm">Order #{{ order.order_number }}</p>
+        </div>
+
+        <!-- Order summary -->
+        <div class="bg-rw-cream rounded-xl p-6 mb-6">
+            <div class="space-y-2 text-sm mb-4">
+                <div class="flex justify-between text-gray-600">
+                    <span>Customer</span>
+                    <span class="font-medium text-rw-brown">{{ order.customer_name }}</span>
+                </div>
+                <div class="flex justify-between text-gray-600">
+                    <span>Items</span>
+                    <span class="font-medium text-rw-brown">{{ order.items.count }} product(s)</span>
+                </div>
+            </div>
+            <div class="pt-4 border-t border-rw-brown/10 flex justify-between items-center">
+                <span class="font-semibold text-rw-brown">Amount to Pay</span>
+                <span class="text-2xl font-light text-rw-brown">{{ order.total|inr }}</span>
+            </div>
+        </div>
+
+        {% if demo_mode %}
+        {# ============================================================ #}
+        {# DEMO MODE — no Razorpay keys configured                     #}
+        {# ============================================================ #}
+        <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-6 text-center">
+            <p class="text-sm text-amber-800 font-medium">⚠ Demo Mode</p>
+            <p class="text-xs text-amber-700 mt-1">Razorpay credentials are not configured. You can simulate a payment to test the full flow.</p>
+        </div>
+
+        <div class="space-y-3">
+            <button onclick="demoPay('success')" class="w-full bg-rw-brown text-white py-4 rounded-full text-sm uppercase tracking-widest hover:bg-rw-brown-dark transition flex items-center justify-center gap-2">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                Simulate Successful Payment
+            </button>
+            <button onclick="demoPay('failure')" class="w-full bg-white border border-red-200 text-red-600 py-3.5 rounded-full text-sm uppercase tracking-widest hover:bg-red-50 transition">
+                Simulate Failed Payment
+            </button>
+        </div>
+
+        <form id="demo-form" method="post" action="{% url 'payment_verify' order.order_number %}">
+            {% csrf_token %}
+            <input type="hidden" name="demo_result" id="demo-result" value="success">
+        </form>
+
+        <script>
+        function demoPay(result) {
+            document.getElementById('demo-result').value = result;
+            document.getElementById('demo-form').submit();
+        }
+        </script>
+
+        {% else %}
+        {# ============================================================ #}
+        {# LIVE RAZORPAY CHECKOUT                                       #}
+        {# ============================================================ #}
+        <button id="pay-btn" class="w-full bg-rw-brown text-white py-4 rounded-full text-sm uppercase tracking-widest hover:bg-rw-brown-dark transition flex items-center justify-center gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+            Pay {{ order.total|inr }} Now
+        </button>
+        <p class="text-center text-xs text-gray-400 mt-4">Secured by Razorpay · UPI, Cards, Net Banking &amp; Wallets</p>
+
+        <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+        <script>
+        var options = {
+            key: "{{ razorpay_key_id }}",
+            amount: {{ amount_paise }},
+            currency: "{{ currency }}",
+            name: "Mahashank Decor",
+            description: "Order #{{ order.order_number }}",
+            order_id: "{{ razorpay_order_id }}",
+            prefill: {
+                name: "{{ order.customer_name }}",
+                email: "{{ order.email }}",
+                contact: "{{ order.phone }}"
+            },
+            theme: { color: "#4A341D" },
+            handler: function(response) {
+                // Payment successful — submit to server for signature verification
+                var form = document.createElement('form');
+                form.method = 'POST';
+                form.action = "{% url 'payment_verify' order.order_number %}";
+
+                var csrf = document.createElement('input');
+                csrf.type = 'hidden';
+                csrf.name = 'csrfmiddlewaretoken';
+                csrf.value = '{{ csrf_token }}';
+                form.appendChild(csrf);
+
+                var fields = {
+                    'razorpay_payment_id': response.razorpay_payment_id,
+                    'razorpay_order_id': response.razorpay_order_id,
+                    'razorpay_signature': response.razorpay_signature
+                };
+                for (var k in fields) {
+                    var inp = document.createElement('input');
+                    inp.type = 'hidden';
+                    inp.name = k;
+                    inp.value = fields[k];
+                    form.appendChild(inp);
+                }
+                document.body.appendChild(form);
+                form.submit();
+            },
+            modal: {
+                ondismiss: function() {
+                    // User closed the Razorpay modal — keep order pending
+                    window.location.href = "{% url 'payment_page' order.order_number %}";
+                }
+            }
+        };
+        var rzp = new Razorpay(options);
+        document.getElementById('pay-btn').onclick = function(e) {
+            e.preventDefault();
+            rzp.open();
+        };
+        // Auto-open on load
+        rzp.open();
+        </script>
+        {% endif %}
+
+        <div class="text-center mt-8">
+            <a href="{% url 'order_confirmation' order.order_number %}" class="text-sm text-gray-400 hover:text-rw-brown underline">Back to order details</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

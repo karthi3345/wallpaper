@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% load shop_tags %}
+
+{% block content %}
+
+<!-- Breadcrumb -->
+<div class="bg-rw-cream py-3 px-4">
+    <div class="max-w-7xl mx-auto flex items-center gap-2 text-xs text-gray-500">
+        <a href="{% url 'home' %}" class="hover:text-rw-brown">Home</a>
+        <span>/</span>
+        <span class="text-rw-brown font-medium">Shop by Country</span>
+    </div>
+</div>
+
+<!-- Header -->
+<section class="py-12 md:py-16 px-4">
+    <div class="max-w-7xl mx-auto text-center">
+        <p class="text-rw-gold text-xs tracking-[0.3em] uppercase mb-2">Explore the World</p>
+        <h1 class="text-3xl md:text-5xl font-light text-rw-brown">Shop by Country</h1>
+        <div class="w-16 h-px bg-rw-gold mx-auto mt-4 mb-6"></div>
+        <p class="text-gray-500 max-w-xl mx-auto text-sm md:text-base">
+            Discover wallpapers inspired by famous cities, towns, and regions across {{ total_countries }} countries.
+            Each destination tells a story through its signature designs.
+        </p>
+    </div>
+</section>
+
+<!-- Countries Grid with Search & Filter -->
+<section class="pb-16 md:pb-24 px-4" x-data="countryExplorer()">
+    <div class="max-w-7xl mx-auto">
+
+        <!-- Search & Alphabet Bar -->
+        <div class="mb-8 md:mb-10">
+            <!-- Search input -->
+            <div class="flex justify-center mb-6">
+                <div class="relative w-full max-w-md">
+                    <input
+                        type="text"
+                        x-model="search"
+                        @input="filter()"
+                        placeholder="Search countries…"
+                        class="w-full px-5 py-3 pl-12 rounded-full border border-gray-200 bg-white text-sm focus:outline-none focus:border-rw-gold focus:ring-1 focus:ring-rw-gold transition">
+                    <svg class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
+                    <button x-show="search" @click="search=''; filter()" class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-rw-brown">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Result count -->
+            <p class="text-center text-xs text-gray-400 mt-4" x-show="visibleCount > 0">
+                <span x-text="visibleCount"></span> countries
+            </p>
+        </div>
+
+        <!-- Countries Grid -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 md:gap-4" id="countries-grid">
+            {% for country in countries %}
+            <a href="{% url 'country_detail' country.slug %}"
+               class="group relative overflow-hidden rounded-xl aspect-[4/3] block shadow-sm country-card"
+               data-name="{{ country.name|lower }}"
+               data-letter="{{ country.name|slice:':1'|lower }}">
+                <img src="{{ country.image }}" alt="{{ country.name }}"
+                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                     loading="lazy">
+                <div class="absolute inset-0 bg-gradient-to-t from-rw-brown-dark/80 via-transparent to-transparent"></div>
+                <div class="absolute bottom-0 left-0 right-0 p-3">
+                    <h3 class="text-white text-sm font-medium tracking-wide group-hover:text-rw-gold-light transition line-clamp-2">{{ country.name }}</h3>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+
+        <!-- Empty state (for search) -->
+        <div class="text-center py-20 text-gray-400" x-show="visibleCount === 0" style="display: none;">
+            <p class="text-lg">No countries found.</p>
+            <p class="text-sm mt-2">Try a different search term.</p>
+        </div>
+
+    </div>
+</section>
+
+<script>
+function countryExplorer() {
+    return {
+        search: '',
+        visibleCount: document.querySelectorAll('.country-card').length,
+
+        filter() {
+            const cards = document.querySelectorAll('.country-card');
+            let count = 0;
+            cards.forEach(card => {
+                let show = true;
+                if (this.search) {
+                    const name = card.dataset.name;
+                    show = name.includes(this.search.toLowerCase());
+                }
+                card.style.display = show ? '' : 'none';
+                if (show) count++;
+            });
+            this.visibleCount = count;
+        }
+    };
+}
+</script>
+
+{% endblock %}

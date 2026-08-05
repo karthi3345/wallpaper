@@ -1,0 +1,963 @@
+{% extends 'base.html' %}
+
+{% block title %}AI Wallpaper Generator — Mahashank Decor{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-rw-cream" x-data="aiGenerator()" x-init="init()">
+    <!-- ═══ Hero Section ═══ -->
+    <section class="relative bg-rw-brown text-white py-16 md:py-20 overflow-hidden">
+        <div class="absolute inset-0 opacity-10" style="background-image: url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=1600'); background-size: cover; background-position: center;"></div>
+        <div class="relative max-w-7xl mx-auto px-4 text-center">
+            <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur px-4 py-1.5 rounded-full mb-4">
+                <svg class="w-4 h-4 text-rw-gold" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8l-6.2 4.5 2.4-7.4L2 9.4h7.6z"/></svg>
+                <span class="text-xs uppercase tracking-[0.2em] text-rw-gold font-semibold">AI Powered</span>
+            </div>
+            <h1 class="font-jost text-4xl md:text-6xl font-light tracking-tight mb-4">AI Wallpaper Generator</h1>
+            <p class="text-white/70 max-w-2xl mx-auto text-base md:text-lg font-light">
+                Describe your dream wall design, choose a category, and let AI craft a unique
+                wallpaper, mural, or painting — tailored to your space.
+            </p>
+        </div>
+    </section>
+
+    <!-- ═══ Generator ═══ -->
+    <section class="max-w-7xl mx-auto px-4 py-10 md:py-14">
+        <!-- Step 1: Category Selection -->
+        <div class="mb-10">
+            <div class="flex items-center gap-3 mb-6">
+                <span class="flex items-center justify-center w-8 h-8 rounded-full bg-rw-brown text-white text-sm font-semibold">1</span>
+                <h2 class="font-jost text-2xl font-medium text-rw-brown">Choose Your Style</h2>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+                <template x-for="cat in categories" :key="cat.key">
+                    <button @click="selectedCategory = cat.key"
+                            :class="selectedCategory === cat.key ? 'ring-2 ring-rw-brown bg-white shadow-lg scale-[1.02]' : 'bg-white hover:shadow-md border border-gray-100'"
+                            class="rounded-xl p-4 md:p-5 text-left transition-all duration-200">
+                        <div class="text-3xl mb-2" x-text="cat.icon"></div>
+                        <h3 class="font-jost font-medium text-sm md:text-base text-rw-brown mb-1" x-text="cat.label"></h3>
+                        <p class="text-xs text-gray-500 line-clamp-2" x-text="cat.description"></p>
+                    </button>
+                </template>
+            </div>
+        </div>
+
+        <!-- Step 2: Prompt Input -->
+        <div class="mb-8">
+            <div class="flex items-center gap-3 mb-6">
+                <span class="flex items-center justify-center w-8 h-8 rounded-full bg-rw-brown text-white text-sm font-semibold">2</span>
+                <h2 class="font-jost text-2xl font-medium text-rw-brown">Describe Your Design</h2>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5 md:p-7">
+                <!-- Suggestion chips -->
+                <div class="flex flex-wrap gap-2 mb-4" x-show="selectedCategory">
+                    <template x-for="suggestion in currentSuggestions" :key="suggestion">
+                        <button @click="prompt = suggestion"
+                                class="text-xs px-3 py-1.5 rounded-full bg-rw-cream text-rw-brown hover:bg-rw-brown hover:text-white transition border border-rw-brown/10">
+                            <span x-text="suggestion"></span>
+                        </button>
+                    </template>
+                </div>
+
+                <textarea x-model="prompt" rows="4"
+                    placeholder="e.g. A golden geometric mandala with intricate Indian motifs on a deep maroon background..."
+                    class="w-full border border-gray-200 rounded-lg p-4 text-sm text-gray-800 focus:border-rw-brown focus:outline-none focus:ring-1 focus:ring-rw-brown/20 resize-none transition"></textarea>
+
+                <!-- Negative prompt input -->
+                <div class="mt-4">
+                    <div class="flex items-center gap-2 mb-2">
+                        <label class="text-xs uppercase tracking-wide text-gray-500 font-semibold">Negative Prompt</label>
+                        <span class="text-[10px] text-gray-400 bg-gray-100 px-2 py-0.5 rounded-full">Optional</span>
+                    </div>
+                    <div class="relative">
+                        <span class="absolute left-3 top-2.5 text-red-400 text-sm pointer-events-none">
+                            <svg class="w-4 h-4 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"/></svg>
+                        </span>
+                        <input type="text" x-model="negativePrompt"
+                            placeholder="e.g. blurry, text, watermark, low quality, distorted..."
+                            class="w-full border border-red-100 rounded-lg pl-10 pr-4 py-2.5 text-sm text-gray-700 focus:border-red-300 focus:outline-none focus:ring-1 focus:ring-red-200/40 transition">
+                    </div>
+                    <p class="text-xs text-gray-400 mt-1.5 flex items-center gap-1">
+                        <svg class="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        Describe what you <span class="font-medium text-gray-500">don't</span> want in the image. Default exclusions (blurry, watermarks, text) are applied automatically.
+                    </p>
+                    <!-- Quick negative prompt chips -->
+                    <div class="flex flex-wrap gap-1.5 mt-2">
+                        <template x-for="chip in negativeChips" :key="chip">
+                            <button type="button" @click="toggleNegativeChip(chip)"
+                                :class="negativePrompt.includes(chip) ? 'bg-red-100 text-red-600 border-red-200' : 'bg-gray-50 text-gray-500 border-gray-200 hover:bg-gray-100'"
+                                class="text-[11px] px-2.5 py-1 rounded-full border transition">
+                                <span x-text="'⊘ ' + chip"></span>
+                            </button>
+                        </template>
+                    </div>
+                </div>
+
+                <div class="flex flex-col md:flex-row gap-4 mt-4">
+                    <!-- Size selector -->
+                    <div class="flex-shrink-0">
+                        <label class="text-xs uppercase tracking-wide text-gray-500 font-semibold mb-2 block">Aspect Ratio</label>
+                        <div class="flex gap-2">
+                            <button @click="selectedSize = '1024x1024'" :class="selectedSize === '1024x1024' ? 'bg-rw-brown text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'" class="px-3 py-2 rounded-lg text-xs font-medium transition flex items-center gap-1.5">
+                                <div class="w-3 h-3 border-2 border-current rounded-sm"></div> Square
+                            </button>
+                            <button @click="selectedSize = '1792x1024'" :class="selectedSize === '1792x1024' ? 'bg-rw-brown text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'" class="px-3 py-2 rounded-lg text-xs font-medium transition flex items-center gap-1.5">
+                                <div class="w-4 h-3 border-2 border-current rounded-sm"></div> Landscape
+                            </button>
+                            <button @click="selectedSize = '1024x1792'" :class="selectedSize === '1024x1792' ? 'bg-rw-brown text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'" class="px-3 py-2 rounded-lg text-xs font-medium transition flex items-center gap-1.5">
+                                <div class="w-2.5 h-4 border-2 border-current rounded-sm"></div> Portrait
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Generate Button -->
+                    <div class="flex-1 flex items-end">
+                        <button @click="generate()"
+                                :disabled="loading || !prompt.trim() || !selectedCategory"
+                                :class="(loading || !prompt.trim() || !selectedCategory) ? 'opacity-50 cursor-not-allowed' : 'hover:bg-rw-brown-dark'"
+                                class="w-full md:w-auto bg-rw-brown text-white px-8 py-3 rounded-lg font-medium text-sm uppercase tracking-wide transition flex items-center justify-center gap-2">
+                            <template x-if="!loading">
+                                <span class="flex items-center gap-2">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.456-2.456L14.25 6l1.035-.259a3.375 3.375 0 002.456-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456z"/></svg>
+                                    Generate Image
+                                </span>
+                            </template>
+                            <template x-if="loading">
+                                <span class="flex items-center gap-2">
+                                    <svg class="animate-spin w-4 h-4" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
+                                    Generating... <span x-text="loadingSeconds + 's'"></span>
+                                </span>
+                            </template>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Error message -->
+                <div x-show="error" x-transition class="mt-4 bg-red-50 border border-red-200 rounded-lg p-4 flex items-start gap-3">
+                    <svg class="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>
+                    <p class="text-sm text-red-700" x-text="error"></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══ Result ═══ -->
+        <div x-show="resultImage" x-transition.duration.500ms class="mb-12" style="display:none;">
+            <!-- ═══ Frame Selector ═══ -->
+            <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5 md:p-7 mb-6">
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-full bg-rw-brown text-white text-sm font-semibold">3</span>
+                    <h3 class="font-jost text-xl font-medium text-rw-brown">Choose a Frame</h3>
+                    <span class="text-xs text-gray-400" x-text="'Curated for ' + (categories.find(c => c.key === selectedCategory)?.label || '') + ' style'"></span>
+                </div>
+                <!-- Frame thumbnails -->
+                <div class="flex flex-wrap gap-3">
+                    <template x-for="frame in currentFrames" :key="frame.id">
+                        <button @click="selectedFrame = frame.id"
+                                :class="selectedFrame === frame.id ? 'ring-2 ring-rw-brown scale-[1.03]' : 'hover:shadow-md'"
+                                class="group flex flex-col items-center bg-gray-50 rounded-lg p-3 transition-all duration-200 border border-gray-100 w-[110px]">
+                            <!-- Mini preview of frame style -->
+                            <div class="w-16 h-16 mb-2 relative">
+                                <div class="w-full h-full" :style="frameMiniStyle(frame)">
+                                    <div class="w-full h-full bg-gradient-to-br from-rw-brown/30 to-rw-gold/30"></div>
+                                </div>
+                            </div>
+                            <span class="text-[11px] font-medium text-gray-700 group-hover:text-rw-brown text-center leading-tight" x-text="frame.name"></span>
+                        </button>
+                    </template>
+                </div>
+            </div>
+
+            <!-- Framed image preview -->
+            <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                <div class="flex flex-col lg:flex-row">
+                    <!-- Image with frame -->
+                    <div class="lg:flex-1 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center p-6 md:p-10">
+                        <div :style="frameStyle()" class="transition-all duration-300">
+                            <img :src="resultImage" alt="AI Generated" :class="frameImageClass()" class="transition-all duration-300" />
+                        </div>
+                    </div>
+                    <!-- Details -->
+                    <div class="lg:w-96 p-6 md:p-8 flex flex-col">
+                        <div class="inline-flex items-center gap-2 self-start bg-rw-cream px-3 py-1.5 rounded-full mb-4">
+                            <span x-text="resultIcon" class="text-lg"></span>
+                            <span class="text-xs font-semibold text-rw-brown uppercase tracking-wide" x-text="resultCategory"></span>
+                        </div>
+                        <h3 class="font-jost text-xl font-medium text-rw-brown mb-2">Your AI Design</h3>
+                        <p class="text-sm text-gray-500 mb-4 italic" x-text="resultPrompt"></p>
+
+                        <!-- Selected frame info -->
+                        <div class="flex items-center gap-2 mb-6 text-sm">
+                            <span class="text-gray-400">Frame:</span>
+                            <span class="font-medium text-rw-brown" x-text="currentFrames.find(f => f.id === selectedFrame)?.name || 'None'"></span>
+                        </div>
+
+                        <div class="space-y-3 mt-auto">
+                            <!-- Download with settings -->
+                            <button @click="openDownloadSettings()"
+                                    class="w-full flex items-center justify-center gap-2 bg-rw-brown text-white px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-rw-brown-dark transition">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                                Download Settings
+                            </button>
+                            <button @click="resetResult()" class="w-full flex items-center justify-center gap-2 border border-gray-200 text-gray-600 px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-gray-50 transition">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                                Generate Another
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══ Gallery ═══ -->
+        <div class="mt-14">
+            <h2 class="font-jost text-2xl font-medium text-rw-brown mb-6 text-center">Community Gallery</h2>
+            {% if recent_images %}
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
+                {% for img in recent_images %}
+                <div class="group relative overflow-hidden rounded-xl shadow-sm bg-white">
+                    <img src="{{ img.image.url }}" alt="{{ img.prompt|truncatechars:50 }}" class="w-full aspect-square object-cover group-hover:scale-105 transition duration-300" loading="lazy">
+                    <!-- Action icons -->
+                    <div class="absolute top-2 right-2 flex gap-1.5 opacity-0 group-hover:opacity-100 transition duration-200">
+                        <button @click="openLightbox('{{ img.image.url }}', '{{ img.prompt|escapejs }}', '{{ img.category_icon }}', '{{ img.category_label }}')"
+                                class="w-8 h-8 flex items-center justify-center bg-white/90 backdrop-blur rounded-full text-rw-brown hover:bg-white shadow-sm transition" title="View">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                        </button>
+                        <a href="{{ img.image.url }}" download="ai-wallpaper-{{ img.id }}.png"
+                           class="w-8 h-8 flex items-center justify-center bg-white/90 backdrop-blur rounded-full text-rw-brown hover:bg-white shadow-sm transition" title="Download">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                        </a>
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex flex-col justify-end p-3 pointer-events-none">
+                        <span class="text-white/90 text-xs font-medium">{{ img.category_icon }} {{ img.category_label }}</span>
+                        <p class="text-white/70 text-[11px] mt-0.5 line-clamp-2">{{ img.prompt|truncatechars:60 }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <p class="text-center text-gray-400 text-sm">No AI designs yet — be the first to create one!</p>
+            {% endif %}
+        </div>
+
+        <!-- ═══ My Designs ═══ -->
+        {% if user.is_authenticated and my_images %}
+        <div class="mt-14">
+            <h2 class="font-jost text-2xl font-medium text-rw-brown mb-6">My AI Designs</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+                {% for img in my_images %}
+                <div class="group relative overflow-hidden rounded-xl shadow-sm bg-white">
+                    <img src="{{ img.image.url }}" alt="{{ img.prompt|truncatechars:50 }}" class="w-full aspect-square object-cover group-hover:scale-105 transition duration-300" loading="lazy">
+                    <!-- Action icons -->
+                    <div class="absolute top-2 right-2 flex gap-1.5 opacity-0 group-hover:opacity-100 transition duration-200">
+                        <button @click="openLightbox('{{ img.image.url }}', '{{ img.prompt|escapejs }}', '{{ img.category_icon }}', '{{ img.category_label }}')"
+                                class="w-8 h-8 flex items-center justify-center bg-white/90 backdrop-blur rounded-full text-rw-brown hover:bg-white shadow-sm transition" title="View">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                        </button>
+                        <a href="{{ img.image.url }}" download="ai-wallpaper-{{ img.id }}.png"
+                           class="w-8 h-8 flex items-center justify-center bg-white/90 backdrop-blur rounded-full text-rw-brown hover:bg-white shadow-sm transition" title="Download">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                        </a>
+                    </div>
+                    <div class="absolute top-2 left-2 bg-white/90 backdrop-blur px-2 py-1 rounded-full text-[10px] font-medium text-rw-brown">
+                        {{ img.category_icon }}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+    </section>
+
+    <!-- ═══ How it Works ═══ -->
+    <section class="bg-white py-14 border-t border-gray-100">
+        <div class="max-w-5xl mx-auto px-4">
+            <h2 class="font-jost text-2xl md:text-3xl font-light text-center text-rw-brown mb-10">How It Works</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-rw-cream mb-4">
+                        <svg class="w-6 h-6 text-rw-brown" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h7"/></svg>
+                    </div>
+                    <h3 class="font-jost font-medium text-rw-brown mb-2">1. Pick a Category</h3>
+                    <p class="text-sm text-gray-500">Choose from paintings, murals, wallpaper rolls, 3D art, textures, and more. Each category guides the AI's style.</p>
+                </div>
+                <div class="text-center">
+                    <div class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-rw-cream mb-4">
+                        <svg class="w-6 h-6 text-rw-brown" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+                    </div>
+                    <h3 class="font-jometry font-medium text-rw-brown mb-2">2. Describe Your Vision</h3>
+                    <p class="text-sm text-gray-500">Type a prompt — colors, mood, patterns, themes. Use a suggestion or write your own. The AI does the rest.</p>
+            </div>
+                <div class="text-center">
+                    <div class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-rw-cream mb-4">
+                        <svg class="w-6 h-6 text-rw-brown" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                    </div>
+                    <h3 class="font-jost font-medium text-rw-brown mb-2">3. Download & Decorate</h3>
+                    <p class="text-sm text-gray-500">Your unique design is ready in seconds. Download it and bring your wall to life.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ Lightbox Modal ═══ -->
+    <div x-show="lightboxOpen" x-transition.opacity @keydown.escape.window="closeLightbox()"
+         class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
+         style="display:none;" @click.self="closeLightbox()">
+        <div class="relative max-w-4xl w-full bg-white rounded-2xl shadow-2xl overflow-hidden">
+            <!-- Close button -->
+            <button @click="closeLightbox()" class="absolute top-3 right-3 z-10 w-10 h-10 flex items-center justify-center bg-white/90 rounded-full text-gray-600 hover:bg-white hover:text-rw-brown shadow-md transition">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+            <!-- Image -->
+            <div class="bg-gray-50 flex items-center justify-center p-4 md:p-8">
+                <img :src="lightboxImage" alt="AI Art" class="max-w-full max-h-[65vh] rounded-lg shadow-lg" />
+            </div>
+            <!-- Details bar -->
+            <div class="flex items-center justify-between gap-4 p-4 md:p-5 border-t border-gray-100">
+                <div class="flex-1 min-w-0">
+                    <div class="flex items-center gap-2 mb-1">
+                        <span class="text-lg" x-text="lightboxIcon"></span>
+                        <span class="text-xs font-semibold text-rw-brown uppercase tracking-wide" x-text="lightboxCategory"></span>
+                    </div>
+                    <p class="text-sm text-gray-500 italic truncate" x-text="lightboxPrompt"></p>
+                </div>
+                <a :href="lightboxImage" download="ai-wallpaper-gallery.png"
+                   class="flex-shrink-0 flex items-center gap-2 bg-rw-brown text-white px-4 py-2.5 rounded-lg text-sm font-medium hover:bg-rw-brown-dark transition">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                    Download
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══ Download Settings Modal ═══ -->
+    <div x-show="downloadSettingsOpen" x-transition.opacity @keydown.escape.window="closeDownloadSettings()"
+         class="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4"
+         style="display:none;" @click.self="closeDownloadSettings()">
+        <div class="relative bg-white rounded-2xl shadow-2xl w-full max-w-md max-h-[90vh] overflow-y-auto">
+            <!-- Header -->
+            <div class="flex items-center justify-between p-5 border-b border-gray-100 sticky top-0 bg-white z-10 rounded-t-2xl">
+                <h3 class="font-jost text-lg font-semibold text-rw-brown flex items-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                    Download Settings
+                </h3>
+                <button @click="closeDownloadSettings()" class="w-8 h-8 flex items-center justify-center text-gray-400 hover:text-gray-600 rounded-full hover:bg-gray-100 transition">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+            </div>
+
+            <!-- Body -->
+            <div class="p-5 space-y-5">
+                <!-- File Name -->
+                <div>
+                    <label class="block text-xs font-semibold text-gray-600 uppercase tracking-wide mb-1.5">File Name</label>
+                    <div class="flex items-center border border-gray-200 rounded-lg overflow-hidden focus-within:border-rw-brown/40 transition">
+                        <input type="text" x-model="dlFileName" placeholder="ai-design"
+                               class="flex-1 px-3 py-2.5 text-sm text-gray-700 outline-none">
+                        <span class="px-3 text-sm text-gray-400 bg-gray-50 border-l border-gray-200" x-text="'.' + dlFormat.toLowerCase()"></span>
+                    </div>
+                </div>
+
+                <!-- Dimensions -->
+                <div>
+                    <label class="block text-xs font-semibold text-gray-600 uppercase tracking-wide mb-2">Dimensions</label>
+                    <div class="flex items-center gap-3">
+                        <div class="flex-1">
+                            <div class="flex items-center border border-gray-200 rounded-lg overflow-hidden">
+                                <input type="number" x-model.number="dlWidth" @input="onDimensionChange('width')"
+                                       class="w-full px-3 py-2 text-sm text-gray-700 outline-none" min="64" max="4096">
+                                <span class="px-2 text-xs text-gray-400 bg-gray-50 border-l border-gray-200">W</span>
+                            </div>
+                        </div>
+                        <!-- Lock toggle -->
+                        <button @click="dlLockAspect = !dlLockAspect"
+                                :class="dlLockAspect ? 'text-rw-brown bg-rw-cream' : 'text-gray-300'"
+                                class="w-9 h-9 flex-shrink-0 flex items-center justify-center rounded-lg border border-gray-200 hover:bg-gray-50 transition" title="Lock aspect ratio">
+                            <svg x-show="dlLockAspect" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                            <svg x-show="!dlLockAspect" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z"/></svg>
+                        </button>
+                        <div class="flex-1">
+                            <div class="flex items-center border border-gray-200 rounded-lg overflow-hidden">
+                                <input type="number" x-model.number="dlHeight" @input="onDimensionChange('height')"
+                                       class="w-full px-3 py-2 text-sm text-gray-700 outline-none" min="64" max="4096">
+                                <span class="px-2 text-xs text-gray-400 bg-gray-50 border-l border-gray-200">H</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Resolution (DPI) -->
+                <div>
+                    <label class="block text-xs font-semibold text-gray-600 uppercase tracking-wide mb-2">Resolution (DPI)</label>
+                    <div class="flex gap-2">
+                        <button @click="dlDpi = 72"
+                                :class="dlDpi === 72 ? 'border-rw-brown bg-rw-cream text-rw-brown' : 'border-gray-200 text-gray-500 hover:bg-gray-50'"
+                                class="flex-1 py-2 rounded-lg border text-xs font-medium transition">
+                            72 DPI <span class="block text-[10px] opacity-60">Web</span>
+                        </button>
+                        <button @click="dlDpi = 150"
+                                :class="dlDpi === 150 ? 'border-rw-brown bg-rw-cream text-rw-brown' : 'border-gray-200 text-gray-500 hover:bg-gray-50'"
+                                class="flex-1 py-2 rounded-lg border text-xs font-medium transition">
+                            150 DPI <span class="block text-[10px] opacity-60">Standard</span>
+                        </button>
+                        <button @click="dlDpi = 300"
+                                :class="dlDpi === 300 ? 'border-rw-brown bg-rw-cream text-rw-brown' : 'border-gray-200 text-gray-500 hover:bg-gray-50'"
+                                class="flex-1 py-2 rounded-lg border text-xs font-medium transition">
+                            300 DPI <span class="block text-[10px] opacity-60">Print</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Output Format -->
+                <div>
+                    <label class="block text-xs font-semibold text-gray-600 uppercase tracking-wide mb-2">Output Format</label>
+                    <div class="grid grid-cols-5 gap-2">
+                        <button @click="setFormat('PNG')"
+                                :class="dlFormat === 'PNG' ? 'border-rw-brown bg-rw-cream text-rw-brown' : 'border-gray-200 text-gray-500 hover:bg-gray-50'"
+                                class="py-2 rounded-lg border text-xs font-semibold transition">PNG</button>
+                        <button @click="setFormat('JPG')"
+                                :class="dlFormat === 'JPG' ? 'border-rw-brown bg-rw-cream text-rw-brown' : 'border-gray-200 text-gray-500 hover:bg-gray-50'"
+                                class="py-2 rounded-lg border text-xs font-semibold transition">JPG</button>
+                        <button @click="setFormat('WebP')"
+                                :class="dlFormat === 'WebP' ? 'border-rw-brown bg-rw-cream text-rw-brown' : 'border-gray-200 text-gray-500 hover:bg-gray-50'"
+                                class="py-2 rounded-lg border text-xs font-semibold transition">WebP</button>
+                        <button @click="setFormat('TIFF')"
+                                :class="dlFormat === 'TIFF' ? 'border-rw-brown bg-rw-cream text-rw-brown' : 'border-gray-200 text-gray-500 hover:bg-gray-50'"
+                                class="py-2 rounded-lg border text-xs font-semibold transition">TIFF</button>
+                        <button @click="setFormat('BMP')"
+                                :class="dlFormat === 'BMP' ? 'border-rw-brown bg-rw-cream text-rw-brown' : 'border-gray-200 text-gray-500 hover:bg-gray-50'"
+                                class="py-2 rounded-lg border text-xs font-semibold transition">BMP</button>
+                    </div>
+                </div>
+
+                <!-- Quality slider (JPG/WebP only) -->
+                <div x-show="dlFormat === 'JPG' || dlFormat === 'WebP'" x-transition>
+                    <div class="flex items-center justify-between mb-1.5">
+                        <label class="text-xs font-semibold text-gray-600 uppercase tracking-wide">Quality</label>
+                        <span class="text-xs font-medium text-rw-brown" x-text="dlQuality + '%'"></span>
+                    </div>
+                    <input type="range" x-model.number="dlQuality" min="10" max="100" step="5"
+                           class="w-full accent-rw-brown">
+                    <div class="flex justify-between text-[10px] text-gray-400 mt-0.5">
+                        <span>10%</span>
+                        <span>50%</span>
+                        <span>100%</span>
+                    </div>
+                </div>
+
+                <!-- Include frame toggle -->
+                <div x-show="selectedFrame !== 'none'" class="flex items-center justify-between pt-2 border-t border-gray-100">
+                    <div>
+                        <label class="text-xs font-semibold text-gray-600 uppercase tracking-wide">Include Frame</label>
+                        <p class="text-[11px] text-gray-400 mt-0.5">Apply the selected frame to the download</p>
+                    </div>
+                    <button @click="dlIncludeFrame = !dlIncludeFrame"
+                            :class="dlIncludeFrame ? 'bg-rw-brown' : 'bg-gray-200'"
+                            class="relative w-11 h-6 rounded-full transition flex-shrink-0">
+                        <span :class="dlIncludeFrame ? 'translate-x-5' : 'translate-x-0.5'"
+                              class="inline-block w-5 h-5 bg-white rounded-full shadow transform transition absolute top-0.5"></span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Footer buttons -->
+            <div class="flex gap-3 p-5 border-t border-gray-100 sticky bottom-0 bg-white rounded-b-2xl">
+                <button @click="closeDownloadSettings()"
+                        class="flex-1 py-2.5 rounded-lg border border-gray-200 text-sm font-medium text-gray-600 hover:bg-gray-50 transition">Cancel</button>
+                <button @click="executeDownload()"
+                        :class="dlDownloading ? 'opacity-60 pointer-events-none' : ''"
+                        class="flex-1 py-2.5 rounded-lg bg-rw-brown text-white text-sm font-medium hover:bg-rw-brown-dark transition flex items-center justify-center gap-2">
+                    <svg x-show="!dlDownloading" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                    <svg x-show="dlDownloading" class="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path></svg>
+                    <span x-text="dlDownloading ? 'Processing...' : 'Download'"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function aiGenerator() {
+    return {
+        categories: [
+            {% for cat in ai_categories %}
+            {
+                key: '{{ cat.key }}',
+                label: '{{ cat.label }}',
+                icon: '{{ cat.icon }}',
+                description: '{{ cat.description }}',
+                suggestions: [{% for s in cat.suggestions %}'{{ s|escapejs }}'{% if not forloop.last %}, {% endif %}{% endfor %}],
+            },
+            {% endfor %}
+        ],
+        selectedCategory: '',
+        prompt: '',
+        negativePrompt: '',
+        negativeChips: ['text', 'watermark', 'low quality', 'distorted', 'extra limbs', 'cartoon', 'photorealistic', 'blurry'],
+        selectedSize: '1024x1024',
+        loading: false,
+        loadingSeconds: 0,
+        loadingTimer: null,
+        error: '',
+        resultImage: '',
+        resultCategory: '',
+        resultIcon: '',
+        resultPrompt: '',
+        selectedFrame: 'none',
+        lightboxOpen: false,
+        lightboxImage: '',
+        lightboxPrompt: '',
+        lightboxIcon: '',
+        lightboxCategory: '',
+
+        // ── Download Settings state ─────────────────────────────────
+        downloadSettingsOpen: false,
+        dlDownloading: false,
+        dlFileName: 'ai-design',
+        dlWidth: 1024,
+        dlHeight: 1024,
+        dlLockAspect: true,
+        dlDpi: 72,
+        dlFormat: 'PNG',
+        dlQuality: 100,
+        dlIncludeFrame: true,
+        dlOrigAspect: 1,
+
+        // ── Category-specific frame collections ─────────────────────────
+        // Each category has its own curated frames that match the aesthetic.
+        categoryFrames: {
+            painting: [
+                { id: 'none',        name: 'No Frame',       border: 'none',                                  width: 'max-w-full max-h-[600px]' },
+                { id: 'ornate-gold', name: 'Ornate Gold',    border: '20px solid #d4af37',                    width: 'max-w-[500px]', double: true, inner: '6px solid #8b6914' },
+                { id: 'baroque',     name: 'Baroque Gold',   border: '24px solid #c5a059',                    width: 'max-w-[500px]', double: true, inner: '4px solid #5c4a1e' },
+                { id: 'classic',     name: 'Classic Gold',   border: '14px solid #c5a059',                    width: 'max-w-[500px]' },
+                { id: 'renaissance', name: 'Renaissance',    border: '18px solid #b8860b',                    width: 'max-w-[500px]', double: true, inner: '5px solid #3c2e0a' },
+                { id: 'gallery',     name: 'Gallery Mat',    border: '12px solid #1a1a1a',                    width: 'max-w-[500px]', mat: true },
+                { id: 'vintage',     name: 'Vintage Wood',   border: '16px solid #8b6f47',                    width: 'max-w-[500px]' },
+                { id: 'darkwalnut',  name: 'Dark Walnut',    border: '16px solid #5c4033',                    width: 'max-w-[500px]' },
+                { id: 'museum',      name: 'Museum Mat',     border: '10px solid #2a2a2a',                    width: 'max-w-[500px]', mat: true },
+                { id: 'elegant',     name: 'Elegant Brown',  border: '14px solid #4A341D',                    width: 'max-w-[500px]' },
+                { id: 'cherry',      name: 'Cherry Wood',    border: '14px solid #8b4513',                    width: 'max-w-[500px]' },
+                { id: 'silver-leaf', name: 'Silver Leaf',    border: '14px solid #c0c0c0',                    width: 'max-w-[500px]', double: true, inner: '4px solid #808080' },
+            ],
+            mural: [
+                { id: 'none',        name: 'No Frame',       border: 'none',                                  width: 'max-w-full max-h-[600px]' },
+                { id: 'arch-stone',  name: 'Stone Arch',     border: '18px solid #a0907a',                    width: 'max-w-[500px]' },
+                { id: 'marble',      name: 'Marble Trim',    border: '14px solid #e8e0d5',                    width: 'max-w-[500px]', double: true, inner: '3px solid #c0b090' },
+                { id: 'modern-trim', name: 'Modern Trim',    border: '8px solid #2a2a2a',                     width: 'max-w-[500px]' },
+                { id: 'brushed-steel', name: 'Brushed Steel', border: '12px solid #888888',                   width: 'max-w-[500px]' },
+                { id: 'bronze',      name: 'Bronze Edge',    border: '14px solid #8c7853',                    width: 'max-w-[500px]' },
+                { id: 'warm-stone',  name: 'Warm Stone',     border: '16px solid #b8a88a',                    width: 'max-w-[500px]' },
+                { id: 'terracotta',  name: 'Terracotta',     border: '14px solid #c4733a',                    width: 'max-w-[500px]' },
+                { id: 'minimal-trim', name: 'Minimal Trim',  border: '6px solid #4A341D',                     width: 'max-w-[500px]' },
+            ],
+            wallpaper: [
+                { id: 'none',        name: 'No Frame',       border: 'none',                                  width: 'max-w-full max-h-[600px]' },
+                { id: 'sample-card', name: 'Sample Card',    border: '20px solid #f5f0e8',                    width: 'max-w-[500px]', mat: true },
+                { id: 'roll-edge',   name: 'Roll Edge',      border: '8px solid #e0d8c8',                     width: 'max-w-[500px]' },
+                { id: 'pattern-mat', name: 'Pattern Mat',    border: '16px solid #4A341D',                    width: 'max-w-[500px]', mat: true },
+                { id: 'gold-trim',   name: 'Gold Trim',      border: '6px solid #c5a059',                     width: 'max-w-[500px]' },
+                { id: 'cream-card',  name: 'Cream Card',     border: '24px solid #faf6ef',                    width: 'max-w-[500px]', mat: true },
+                { id: 'brown-trim',  name: 'Brown Trim',     border: '10px solid #4A341D',                    width: 'max-w-[500px]' },
+                { id: 'display',     name: 'Display Board',  border: '18px solid #d4c4a8',                    width: 'max-w-[500px]', double: true, inner: '3px solid #b0a080' },
+            ],
+            'wall-art': [
+                { id: 'none',        name: 'No Frame',       border: 'none',                                  width: 'max-w-full max-h-[600px]' },
+                { id: 'float-black', name: 'Float Black',    border: '8px solid #1a1a1a',                     width: 'max-w-[500px]' },
+                { id: 'float-white', name: 'Float White',    border: '8px solid #ffffff',                     width: 'max-w-[500px]', shadow: true },
+                { id: 'canvas-wrap', name: 'Canvas Wrap',    border: '0',                                     width: 'max-w-[500px]', wrap: true },
+                { id: 'thin-black',  name: 'Thin Black',     border: '4px solid #1a1a1a',                     width: 'max-w-[500px]' },
+                { id: 'thin-gold',   name: 'Thin Gold',      border: '4px solid #c5a059',                     width: 'max-w-[500px]' },
+                { id: 'minimal-white', name: 'Minimal White', border: '10px solid #f5f5f5',                   width: 'max-w-[500px]' },
+                { id: 'modern-black', name: 'Modern Black',  border: '12px solid #1a1a1a',                    width: 'max-w-[500px]' },
+                { id: 'acrylic',     name: 'Acrylic Clear',  border: '10px solid rgba(200,200,200,0.5)',      width: 'max-w-[500px]', shadow: true },
+                { id: 'oak',         name: 'Natural Oak',    border: '12px solid #c4a87a',                    width: 'max-w-[500px]' },
+                { id: 'walnut-2',    name: 'Walnut',         border: '10px solid #5c4033',                    width: 'max-w-[500px]' },
+            ],
+            texture: [
+                { id: 'none',        name: 'No Frame',       border: 'none',                                  width: 'max-w-full max-h-[600px]' },
+                { id: 'metal-trim',  name: 'Metal Trim',     border: '8px solid #888888',                     width: 'max-w-[500px]' },
+                { id: 'brushed-gold', name: 'Brushed Gold',  border: '10px solid #b8860b',                    width: 'max-w-[500px]' },
+                { id: 'copper',      name: 'Copper Edge',    border: '10px solid #b87333',                    width: 'max-w-[500px]' },
+                { id: 'concrete',    name: 'Concrete Edge',  border: '14px solid #9e9e9e',                    width: 'max-w-[500px]' },
+                { id: 'stone-frame', name: 'Stone Frame',    border: '16px solid #a89880',                    width: 'max-w-[500px]' },
+                { id: 'minimal-metal', name: 'Minimal Metal', border: '4px solid #b0b0b0',                    width: 'max-w-[500px]' },
+                { id: 'industrial',  name: 'Industrial',     border: '10px solid #4a4a4a',                    width: 'max-w-[500px]' },
+                { id: 'brass',       name: 'Brass Frame',    border: '12px solid #b5a642',                    width: 'max-w-[500px]' },
+            ],
+            'kids-nursery': [
+                { id: 'none',        name: 'No Frame',       border: 'none',                                  width: 'max-w-full max-h-[600px]' },
+                { id: 'playful-pink', name: 'Pastel Pink',   border: '14px solid #ffb3ba',                    width: 'max-w-[500px]' },
+                { id: 'playful-blue', name: 'Pastel Blue',   border: '14px solid #bae1ff',                    width: 'max-w-[500px]' },
+                { id: 'playful-mint', name: 'Pastel Mint',   border: '14px solid #baffc9',                    width: 'max-w-[500px]' },
+                { id: 'playful-yellow', name: 'Pastel Yellow', border: '14px solid #ffffba',                 width: 'max-w-[500px]' },
+                { id: 'playful-lavender', name: 'Lavender',  border: '14px solid #e0bbff',                    width: 'max-w-[500px]' },
+                { id: 'white-kids',  name: 'White Wood',     border: '14px solid #ffffff',                    width: 'max-w-[500px]' },
+                { id: 'colorful',    name: 'Rainbow Border', border: '10px solid #ff6b6b',                    width: 'max-w-[500px]', rainbow: true },
+                { id: 'rounded-white', name: 'Rounded White', border: '12px solid #fff',                     width: 'max-w-[500px]', rounded: true },
+                { id: 'natural-wood', name: 'Natural Wood',  border: '12px solid #d4a76a',                    width: 'max-w-[500px]' },
+            ],
+            '3d-mural': [
+                { id: 'none',        name: 'No Frame',       border: 'none',                                  width: 'max-w-full max-h-[600px]' },
+                { id: 'shadow-box',  name: 'Shadow Box',     border: '18px solid #2a2a2a',                    width: 'max-w-[500px]', mat: true },
+                { id: 'recessed',    name: 'Recessed Panel', border: '14px solid #4a4a4a',                    width: 'max-w-[500px]', double: true, inner: '4px solid #6a6a6a' },
+                { id: 'geometric-black', name: 'Geo Black',  border: '12px solid #1a1a1a',                    width: 'max-w-[500px]' },
+                { id: 'geometric-gold', name: 'Geo Gold',    border: '12px solid #c5a059',                    width: 'max-w-[500px]' },
+                { id: 'floating',    name: 'Floating Edge',  border: '6px solid rgba(0,0,0,0.3)',             width: 'max-w-[500px]', shadow: true },
+                { id: 'architectural', name: 'Architectural', border: '16px solid #5c4033',                   width: 'max-w-[500px]' },
+                { id: 'modern-recess', name: 'Modern Recess', border: '10px solid #333',                      width: 'max-w-[500px]', mat: true },
+                { id: 'stone-edge',  name: 'Stone Edge',     border: '14px solid #a0907a',                    width: 'max-w-[500px]' },
+            ],
+            ceiling: [
+                { id: 'none',        name: 'No Frame',       border: 'none',                                  width: 'max-w-full max-h-[600px]' },
+                { id: 'dome-gold',   name: 'Dome Gold',      border: '22px solid #d4af37',                    width: 'max-w-[500px]', double: true, inner: '6px solid #8b6914' },
+                { id: 'celestial',   name: 'Celestial',      border: '18px solid #c5a059',                    width: 'max-w-[500px]', rounded: true },
+                { id: 'fresco-border', name: 'Fresco Border', border: '16px solid #b8860b',                   width: 'max-w-[500px]' },
+                { id: 'ornate-ceiling', name: 'Ornate',      border: '24px solid #d4af37',                    width: 'max-w-[500px]' },
+                { id: 'renaissance-2', name: 'Renaissance',  border: '18px solid #b8860b',                    width: 'max-w-[500px]', double: true, inner: '5px solid #5c4a1e' },
+                { id: 'classical',   name: 'Classical',      border: '14px solid #c5a059',                    width: 'max-w-[500px]' },
+                { id: 'circular-gold', name: 'Circle Gold',  border: '16px solid #d4af37',                    width: 'max-w-[500px]', rounded: true },
+                { id: 'sistine',     name: 'Sistine Style',  border: '20px solid #c0a040',                    width: 'max-w-[500px]', double: true, inner: '4px solid #806020' },
+                { id: 'baroque-ceil', name: 'Baroque',       border: '22px solid #c5a059',                    width: 'max-w-[500px]' },
+            ],
+        },
+
+        get currentFrames() {
+            return this.categoryFrames[this.selectedCategory] || this.categoryFrames.painting;
+        },
+
+        init() {
+            // auto-select first category
+            if (this.categories.length > 0) {
+                this.selectedCategory = this.categories[0].key;
+            }
+        },
+
+        get currentSuggestions() {
+            let cat = this.categories.find(c => c.key === this.selectedCategory);
+            return cat ? cat.suggestions : [];
+        },
+
+        toggleNegativeChip(chip) {
+            if (this.negativePrompt.includes(chip)) {
+                // Remove chip
+                let parts = this.negativePrompt.split(',').map(s => s.trim()).filter(s => s);
+                parts = parts.filter(s => s !== chip);
+                this.negativePrompt = parts.join(', ');
+            } else {
+                // Add chip
+                let parts = this.negativePrompt.split(',').map(s => s.trim()).filter(s => s);
+                parts.push(chip);
+                this.negativePrompt = parts.join(', ');
+            }
+        },
+
+        generate() {
+            this.error = '';
+            this.resultImage = '';
+            this.selectedFrame = 'none';
+
+            if (!this.prompt.trim()) {
+                this.error = 'Please describe what you want to generate.';
+                return;
+            }
+            if (!this.selectedCategory) {
+                this.error = 'Please select a category first.';
+                return;
+            }
+
+            this.loading = true;
+            this.loadingSeconds = 0;
+            this.loadingTimer = setInterval(() => { this.loadingSeconds++; }, 1000);
+
+            fetch('/ai-generate/create/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}',
+                },
+                body: JSON.stringify({
+                    prompt: this.prompt,
+                    negative_prompt: this.negativePrompt,
+                    category: this.selectedCategory,
+                    size: this.selectedSize,
+                }),
+            })
+            .then(resp => resp.json().then(data => ({status: resp.status, body: data})))
+            .then(({status, body}) => {
+                this.loading = false;
+                clearInterval(this.loadingTimer);
+                if (body.error) {
+                    this.error = body.error;
+                } else if (body.success) {
+                    this.resultImage = body.image_url;
+                    this.resultCategory = body.category_label;
+                    this.resultIcon = body.category_icon;
+                    this.resultPrompt = body.prompt;
+                    // Reset frame to 'none' for the new category
+                    this.selectedFrame = 'none';
+                    // Smooth scroll to result
+                    this.$nextTick(() => {
+                        document.querySelector('[x-show="resultImage"]').scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    });
+                }
+            })
+            .catch(() => {
+                this.loading = false;
+                clearInterval(this.loadingTimer);
+                this.error = 'A network error occurred. Please try again.';
+            });
+        },
+
+        resetResult() {
+            this.resultImage = '';
+            this.resultCategory = '';
+            this.resultIcon = '';
+            this.resultPrompt = '';
+            this.selectedFrame = 'none';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        },
+
+        openLightbox(url, prompt, icon, category) {
+            this.lightboxImage = url;
+            this.lightboxPrompt = prompt;
+            this.lightboxIcon = icon;
+            this.lightboxCategory = category;
+            this.lightboxOpen = true;
+            document.body.style.overflow = 'hidden';
+        },
+
+        closeLightbox() {
+            this.lightboxOpen = false;
+            document.body.style.overflow = '';
+        },
+
+        // ── Download Settings ──────────────────────────────────────
+        openDownloadSettings() {
+            // Detect original image dimensions for aspect ratio
+            let img = new Image();
+            img.onload = () => {
+                this.dlWidth = img.naturalWidth;
+                this.dlHeight = img.naturalHeight;
+                this.dlOrigAspect = img.naturalWidth / img.naturalHeight;
+            };
+            img.src = this.resultImage;
+
+            // Reset defaults
+            this.dlFileName = 'ai-design';
+            this.dlFormat = 'PNG';
+            this.dlQuality = 100;
+            this.dlDpi = 72;
+            this.dlLockAspect = true;
+            this.dlIncludeFrame = this.selectedFrame !== 'none';
+            this.downloadSettingsOpen = true;
+            document.body.style.overflow = 'hidden';
+        },
+
+        closeDownloadSettings() {
+            this.downloadSettingsOpen = false;
+            document.body.style.overflow = '';
+        },
+
+        onDimensionChange(which) {
+            if (!this.dlLockAspect) return;
+            if (which === 'width') {
+                this.dlHeight = Math.round(this.dlWidth / this.dlOrigAspect);
+            } else {
+                this.dlWidth = Math.round(this.dlHeight * this.dlOrigAspect);
+            }
+        },
+
+        setFormat(fmt) {
+            this.dlFormat = fmt;
+            // Lossless formats — hide quality slider
+        },
+
+        async executeDownload() {
+            if (!this.resultImage || this.dlDownloading) return;
+            this.dlDownloading = true;
+
+            try {
+                // Load source image
+                let img = new Image();
+                img.crossOrigin = 'anonymous';
+                await new Promise((resolve, reject) => {
+                    img.onload = resolve;
+                    img.onerror = reject;
+                    img.src = this.resultImage;
+                });
+
+                // Determine canvas dimensions
+                let bw = 0, matPad = 0;
+                if (this.dlIncludeFrame && this.selectedFrame !== 'none') {
+                    let f = this.currentFrames.find(fr => fr.id === this.selectedFrame);
+                    if (f) {
+                        bw = parseInt(f.border) || 10;
+                        matPad = f.mat ? 24 : 0;
+                    }
+                }
+
+                let scale = this.dlWidth / (img.naturalWidth + bw * 2 + (matPad ? matPad * 2 : 0));
+                let canvasW = Math.round(this.dlWidth);
+                let canvasH = Math.round(this.dlHeight);
+
+                let canvas = document.createElement('canvas');
+                canvas.width = canvasW;
+                canvas.height = canvasH;
+                let ctx = canvas.getContext('2d');
+
+                // Draw frame background
+                if (this.dlIncludeFrame && this.selectedFrame !== 'none') {
+                    let f = this.currentFrames.find(fr => fr.id === this.selectedFrame);
+                    if (f) {
+                        // Outer frame color
+                        let borderColor = f.border.match(/#[0-9a-fA-F]{3,6}/)?.[0] || '#4A341D';
+                        ctx.fillStyle = f.wrap ? '#e8e0d5' : borderColor;
+                        ctx.fillRect(0, 0, canvasW, canvasH);
+
+                        // Mat
+                        if (f.mat) {
+                            let matW = Math.round((bw / (img.naturalWidth + bw * 2)) * canvasW);
+                            ctx.fillStyle = '#f8f8f8';
+                            ctx.fillRect(matW, matW, canvasW - matW * 2, canvasH - matW * 2);
+                        }
+                    }
+                } else {
+                    ctx.fillStyle = '#ffffff';
+                    ctx.fillRect(0, 0, canvasW, canvasH);
+                }
+
+                // Calculate image position within frame
+                let imgDrawW = canvasW - (this.dlIncludeFrame && this.selectedFrame !== 'none' ? Math.round(bw * 2 * scale + (matPad ? matPad * 2 * scale : 0)) : 0);
+                let imgDrawH = canvasH - (this.dlIncludeFrame && this.selectedFrame !== 'none' ? Math.round(bw * 2 * scale + (matPad ? matPad * 2 * scale : 0)) : 0);
+                let imgX = (canvasW - imgDrawW) / 2;
+                let imgY = (canvasH - imgDrawH) / 2;
+
+                ctx.drawImage(img, imgX, imgY, imgDrawW, imgDrawH);
+
+                // Convert to chosen format
+                let mime;
+                let ext;
+                switch (this.dlFormat) {
+                    case 'JPG':  mime = 'image/jpeg'; ext = 'jpg'; break;
+                    case 'WebP': mime = 'image/webp';  ext = 'webp'; break;
+                    case 'TIFF': mime = 'image/png';   ext = 'tiff'; break; // browser has no TIFF encoder; PNG + .tiff extension
+                    case 'BMP':  mime = 'image/bmp';   ext = 'bmp'; break;
+                    default:     mime = 'image/png';   ext = 'png'; break;
+                }
+
+                let quality = this.dlQuality / 100;
+                if (mime === 'image/png' || mime === 'image/bmp') {
+                    quality = undefined; // PNG/BMP is lossless
+                }
+
+                canvas.toBlob((blob) => {
+                    // Embed DPI metadata in filename for reference
+                    let fileName = (this.dlFileName || 'ai-design').replace(/\.[^/.]+$/, '');
+                    let url = URL.createObjectURL(blob);
+                    let a = document.createElement('a');
+                    a.href = url;
+                    a.download = `${fileName}_${this.dlWidth}x${this.dlHeight}_${this.dlDpi}dpi.${ext}`;
+                    a.click();
+                    URL.revokeObjectURL(url);
+                    this.dlDownloading = false;
+                    this.closeDownloadSettings();
+                }, mime, quality);
+
+            } catch (e) {
+                // Fallback: raw download
+                let a = document.createElement('a');
+                a.href = this.resultImage;
+                a.download = (this.dlFileName || 'ai-design') + '.png';
+                a.click();
+                this.dlDownloading = false;
+                this.closeDownloadSettings();
+            }
+        },
+
+        frameStyle() {
+            let f = this.currentFrames.find(fr => fr.id === this.selectedFrame);
+            if (!f || f.id === 'none') return { display: 'inline-block' };
+
+            let style = {
+                display: 'inline-block',
+                boxShadow: '0 10px 40px rgba(0,0,0,0.2)',
+            };
+
+            // Gallery mat: white inner padding + dark outer
+            if (f.mat) {
+                style.padding = '24px';
+                style.background = '#f8f8f8';
+                style.border = f.border;
+                return style;
+            }
+
+            // Double frame: outer border + thin inner border
+            if (f.double) {
+                style.border = f.border;
+                style.outline = (f.inner || '4px solid #8b6914');
+                style.outlineOffset = '-10px';
+                return style;
+            }
+
+            // Shadow-only floating look
+            if (f.shadow) {
+                style.border = f.border;
+                style.boxShadow = '0 20px 60px rgba(0,0,0,0.3), 0 0 0 1px rgba(0,0,0,0.05)';
+                return style;
+            }
+
+            // Rainbow border for kids
+            if (f.rainbow) {
+                style.borderImage = 'linear-gradient(135deg, #ff6b6b, #feca57, #48dbfb, #1dd1a1, #5f27cd) 1';
+                style.border = '10px solid';
+                return style;
+            }
+
+            // Rounded frame
+            if (f.rounded) {
+                style.border = f.border;
+                style.borderRadius = '12px';
+                return style;
+            }
+
+            // Canvas wrap (thick edge shadow)
+            if (f.wrap) {
+                style.boxShadow = '0 0 0 20px #e8e0d5, 0 10px 40px rgba(0,0,0,0.2)';
+                return style;
+            }
+
+            // Standard frame
+            style.border = f.border;
+            return style;
+        },
+
+        frameImageClass() {
+            let f = this.currentFrames.find(fr => fr.id === this.selectedFrame);
+            if (!f || f.id === 'none') return 'max-w-full max-h-[600px] rounded-lg';
+            if (f.rounded) return 'rounded-md ' + f.width;
+            return f.width;
+        },
+
+        frameMiniStyle(frame) {
+            if (frame.id === 'none') {
+                return { border: '1px dashed #ccc', borderRadius: '2px' };
+            }
+            if (frame.mat) {
+                return { border: '6px solid #1a1a1a', padding: '3px', background: '#f8f8f8' };
+            }
+            if (frame.rainbow) {
+                return { border: '5px solid transparent', borderImage: 'linear-gradient(135deg, #ff6b6b, #feca57, #48dbfb, #1dd1a1) 1' };
+            }
+            if (frame.rounded) {
+                return { border: frame.border, borderRadius: '8px' };
+            }
+            if (frame.wrap) {
+                return { boxShadow: '0 0 0 6px #e8e0d5' };
+            }
+            return { border: frame.border };
+        },
+
+    }
+}
+</script>
+{% endblock %}
