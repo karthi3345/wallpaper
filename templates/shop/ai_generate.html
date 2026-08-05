@@ -682,7 +682,14 @@ function aiGenerator() {
                     size: this.selectedSize,
                 }),
             })
-            .then(resp => resp.json().then(data => ({status: resp.status, body: data})))
+            .then(resp => {
+                // If redirected to login (user session expired), redirect the page
+                if (resp.redirected || resp.status === 302) {
+                    window.location.href = '/login/?next=' + encodeURIComponent(window.location.pathname);
+                    return Promise.reject(new Error('Login required'));
+                }
+                return resp.json().then(data => ({status: resp.status, body: data}));
+            })
             .then(({status, body}) => {
                 this.loading = false;
                 clearInterval(this.loadingTimer);

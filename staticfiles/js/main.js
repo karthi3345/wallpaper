@@ -216,6 +216,12 @@ function chatbot() {
                     }),
                 });
 
+                // If redirected to login (user not authenticated), redirect the page
+                if (resp.redirected || resp.status === 302) {
+                    window.location.href = '/login/';
+                    return;
+                }
+
                 const data = await resp.json();
 
                 if (data.reply) {
@@ -262,6 +268,12 @@ function chatbot() {
                         history: this.messages.slice(-7),
                     }),
                 });
+
+                // If redirected to login (user not authenticated), redirect the page
+                if (resp.redirected || resp.status === 302) {
+                    window.location.href = '/login/';
+                    return;
+                }
 
                 const data = await resp.json();
                 this.messages.push({ from: 'bot', text: data.reply || 'Sorry, I couldn\'t answer that. Please try again.' });

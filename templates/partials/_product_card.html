@@ -15,12 +15,18 @@
 
             <!-- Quick add button -->
             <div class="absolute bottom-0 left-0 right-0 p-3 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                {% if user.is_authenticated %}
                 <form action="{% url 'add_to_cart' product.id %}" method="post">
                     {% csrf_token %}
                     <button type="submit" class="w-full bg-white/95 backdrop-blur text-rw-brown py-2.5 rounded-full text-xs font-medium uppercase tracking-widest hover:bg-rw-brown hover:text-white transition">
                         Add to Cart
                     </button>
                 </form>
+                {% else %}
+                <a href="/login/?next={{ request.path }}" class="block w-full bg-white/95 backdrop-blur text-rw-brown py-2.5 rounded-full text-xs font-medium uppercase tracking-widest hover:bg-rw-brown hover:text-white transition text-center">
+                    🔒 Login
+                </a>
+                {% endif %}
             </div>
         </div>
 

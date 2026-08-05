@@ -8,6 +8,7 @@ from django.conf import settings
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_http_methods
 from django.urls import reverse
+from django.contrib.auth.decorators import login_required
 from django.db.models import Q, Min, Max
 from decimal import Decimal
 import hmac
@@ -184,8 +185,9 @@ def product_detail(request, slug):
     return render(request, 'product_detail.html', context)
 
 
+@login_required(login_url='/login/')
 def add_to_cart(request, product_id):
-    """Add product to session cart."""
+    """Add product to session cart (login required)."""
     product = get_object_or_404(Product, id=product_id, status='active')
     cart = _get_cart(request)
     pid = str(product_id)
@@ -691,8 +693,9 @@ def mark_all_notifications_read(request):
 
 # ── AI Wallpaper Generation ──────────────────────────────────────────
 
+@login_required(login_url='/login/')
 def ai_generate(request):
-    """AI image generation page — shows generator + public gallery."""
+    """AI image generation page — shows generator + public gallery (login required)."""
     from .ai_generator import AI_CATEGORIES
     from .models import AIGeneratedImage
 
@@ -715,8 +718,9 @@ def ai_generate(request):
 
 
 @require_http_methods(["POST"])
+@login_required(login_url='/login/')
 def ai_generate_image(request):
-    """AJAX endpoint — generates an image and returns JSON."""
+    """AJAX endpoint — generates an image and returns JSON (login required)."""
     from .ai_generator import AI_CATEGORIES, generate_image, classify_prompt
     from .models import AIGeneratedImage
 
@@ -780,9 +784,10 @@ def ai_generate_image(request):
 # ── AI Decor Assistant Chatbot ───────────────────────────────────────
 
 @require_http_methods(["POST"])
+@login_required(login_url='/login/')
 def ai_chat(request):
     """
-    AJAX endpoint for the Mistral-powered decor assistant chatbot.
+    AJAX endpoint for the Mistral-powered decor assistant chatbot (login required).
 
     Accepts JSON: { "message": "...", "history": [{"from": "bot"|"user", "text": "..."}] }
     Returns JSON: { "reply": "...", "source": "ai"|"fallback" }

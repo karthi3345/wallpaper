@@ -63,20 +63,30 @@
         </div>
 
         <!-- Quick replies -->
+        {% if user.is_authenticated %}
         <div x-show="!isMinimized && messages.length <= 2" class="chatbot-quick-replies">
             <button @click="sendQuickReply('products')" class="chatbot-quick-btn">Wallpapers & Murals</button>
             <button @click="sendQuickReply('pricing')" class="chatbot-quick-btn">Pricing</button>
             <button @click="sendQuickReply('shipping')" class="chatbot-quick-btn">Shipping</button>
             <button @click="sendQuickReply('installation')" class="chatbot-quick-btn">Installation</button>
         </div>
+        {% endif %}
 
         <!-- Input -->
         <form x-show="!isMinimized" @submit.prevent="sendMessage()" class="chatbot-input-area">
+            {% if user.is_authenticated %}
             <input type="text" x-model="inputText" placeholder="Type your message..."
                    class="chatbot-input">
             <button type="submit" class="chatbot-send-btn" :disabled="!inputText.trim()">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
             </button>
+            {% else %}
+            <div class="flex items-center gap-2 w-full">
+                <a href="/login/?next={{ request.path }}" class="flex-1 text-center text-sm bg-rw-gold text-white py-2.5 rounded-full font-medium hover:opacity-90 transition">
+                    🔒 Login to Chat
+                </a>
+            </div>
+            {% endif %}
         </form>
     </div>
 
