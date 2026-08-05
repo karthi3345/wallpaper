@@ -172,3 +172,7 @@ cython_debug/
 #.idea/
 
 # End of https://www.toptal.com/developers/gitignore/api/django
+
+# Corrupted filesystem entries — skip to avoid git errors
+.drytis/specs/
+shop/management/commands/seed_mosaic.py

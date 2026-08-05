@@ -1,0 +1,1666 @@
+- generic [active] [ref=e1]:
+  - paragraph [ref=e3]: ✦ Free shipping on orders above ₹5,000 · 500+ Premium Designs · Pan‑India Delivery ✦
+  - banner [ref=e4]:
+    - generic [ref=e6]:
+      - link "Mahashanka Decor" [ref=e7] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e8]:
+          - text: Mahashanka
+          - generic [ref=e9]: Decor
+      - navigation [ref=e10]:
+        - link "Home" [ref=e11] [cursor=pointer]:
+          - /url: /
+          - text: Home
+        - button "Shop" [ref=e13] [cursor=pointer]:
+          - text: Shop
+          - img [ref=e14]
+        - link "About Us" [ref=e16] [cursor=pointer]:
+          - /url: "#about"
+          - text: About Us
+        - link "Contact Us" [ref=e17] [cursor=pointer]:
+          - /url: "#contact"
+          - text: Contact Us
+      - generic [ref=e18]:
+        - button [ref=e19] [cursor=pointer]:
+          - img [ref=e20]
+        - link [ref=e22] [cursor=pointer]:
+          - /url: /cart/
+          - img [ref=e23]
+  - generic [ref=e25]:
+    - generic [ref=e26]:
+      - link "Wall Murals Collection 01 Wall Murals Shop Now →" [ref=e27] [cursor=pointer]:
+        - /url: /category/wall-murals/
+        - img "Wall Murals" [ref=e28]
+        - generic [ref=e30]:
+          - paragraph [ref=e31]: Collection 01
+          - heading "Wall Murals" [level=2] [ref=e32]
+          - generic [ref=e33]: Shop Now →
+      - link "Home Decor Welcome to Mahashanka Decor Premium wallpapers, murals & curated home decor" [ref=e34] [cursor=pointer]:
+        - /url: /shop/
+        - img "Home Decor" [ref=e35]
+        - generic [ref=e37]:
+          - paragraph [ref=e38]: Welcome to
+          - heading "Mahashanka" [level=1] [ref=e39]
+          - paragraph [ref=e40]: Decor
+          - paragraph [ref=e41]: Premium wallpapers, murals & curated home decor
+      - link "Wallpaper Rolls Collection 02 Wallpaper Rolls Shop Now →" [ref=e42] [cursor=pointer]:
+        - /url: /category/wallpaper-rolls/
+        - img "Wallpaper Rolls" [ref=e43]
+        - generic [ref=e45]:
+          - paragraph [ref=e46]: Collection 02
+          - heading "Wallpaper Rolls" [level=2] [ref=e47]
+          - generic [ref=e48]: Shop Now →
+    - img [ref=e50]
+  - generic [ref=e54]:
+    - generic [ref=e55]: ✦ Free Shipping Above ₹5,000
+    - generic [ref=e56]: ✦ 500+ Premium Designs
+    - generic [ref=e57]: ✦ Pan‑India Installation
+    - generic [ref=e58]: ✦ 7‑Day Easy Returns
+    - generic [ref=e59]: ✦ Authentic Products
+    - generic [ref=e60]: ✦ Free Shipping Above ₹5,000
+    - generic [ref=e61]: ✦ 500+ Premium Designs
+    - generic [ref=e62]: ✦ Pan‑India Installation
+    - generic [ref=e63]: ✦ 7‑Day Easy Returns
+    - generic [ref=e64]: ✦ Authentic Products
+  - generic [ref=e66]:
+    - paragraph [ref=e67]: Limited Time Offer
+    - heading "Mega Decor Sale — Up to 40% Off" [level=2] [ref=e68]
+    - generic [ref=e69]:
+      - generic [ref=e70]:
+        - generic [ref=e71]: "151"
+        - generic [ref=e72]: Days
+      - generic [ref=e73]: ":"
+      - generic [ref=e74]:
+        - generic [ref=e75]: "20"
+        - generic [ref=e76]: Hours
+      - generic [ref=e77]: ":"
+      - generic [ref=e78]:
+        - generic [ref=e79]: "58"
+        - generic [ref=e80]: Minutes
+      - generic [ref=e81]: ":"
+      - generic [ref=e82]:
+        - generic [ref=e83]: "44"
+        - generic [ref=e84]: Seconds
+  - generic [ref=e86]:
+    - generic [ref=e87]:
+      - paragraph [ref=e88]: Discover
+      - heading "Shop by Category" [level=2] [ref=e89]
+    - generic [ref=e91]:
+      - link "Wall Murals Wall Murals Shop Now →" [ref=e92] [cursor=pointer]:
+        - /url: /category/wall-murals/
+        - img "Wall Murals" [ref=e93]
+        - generic [ref=e95]:
+          - heading "Wall Murals" [level=3] [ref=e96]
+          - text: Shop Now →
+      - link "Wallpaper Rolls Wallpaper Rolls Shop Now →" [ref=e97] [cursor=pointer]:
+        - /url: /category/wallpaper-rolls/
+        - img "Wallpaper Rolls" [ref=e98]
+        - generic [ref=e100]:
+          - heading "Wallpaper Rolls" [level=3] [ref=e101]
+          - text: Shop Now →
+      - link "Paintings & Wallart Paintings & Wallart Shop Now →" [ref=e102] [cursor=pointer]:
+        - /url: /category/paintings-wallart/
+        - img "Paintings & Wallart" [ref=e103]
+        - generic [ref=e105]:
+          - heading "Paintings & Wallart" [level=3] [ref=e106]
+          - text: Shop Now →
+      - link "Home Decor Home Decor Shop Now →" [ref=e107] [cursor=pointer]:
+        - /url: /category/home-decor/
+        - img "Home Decor" [ref=e108]
+        - generic [ref=e110]:
+          - heading "Home Decor" [level=3] [ref=e111]
+          - text: Shop Now →
+      - link "Self Adhesive Wallpaper Self Adhesive Wallpaper Shop Now →" [ref=e112] [cursor=pointer]:
+        - /url: /category/self-adhesive-wallpaper/
+        - img "Self Adhesive Wallpaper" [ref=e113]
+        - generic [ref=e115]:
+          - heading "Self Adhesive Wallpaper" [level=3] [ref=e116]
+          - text: Shop Now →
+  - generic [ref=e118]:
+    - generic [ref=e119]:
+      - generic [ref=e120]:
+        - paragraph [ref=e121]: Most Loved
+        - heading "Best Sellers" [level=2] [ref=e122]
+      - link "View All →" [ref=e123] [cursor=pointer]:
+        - /url: /shop/
+    - generic [ref=e124]:
+      - generic [ref=e125]:
+        - group "1 / 8" [ref=e126]:
+          - link "Self Adhesive Wallpaper Collection — Gold Leaf Add to Cart Self Adhesive Wallpaper Self Adhesive Wallpaper Collection — Gold Leaf ₹500/sqft" [ref=e128] [cursor=pointer]:
+            - /url: /product/self-adhesive-wallpaper-collection-gold-leaf-79/
+            - generic [ref=e129]:
+              - img "Self Adhesive Wallpaper Collection — Gold Leaf" [ref=e130]
+              - button "Add to Cart" [ref=e133]
+            - generic [ref=e134]:
+              - paragraph [ref=e135]: Self Adhesive Wallpaper
+              - heading "Self Adhesive Wallpaper Collection — Gold Leaf" [level=3] [ref=e136]
+              - generic [ref=e138]: ₹500/sqft
+        - group "2 / 8" [ref=e139]:
+          - link "Self Adhesive Wallpaper Collection — Gold Leaf Add to Cart Self Adhesive Wallpaper Self Adhesive Wallpaper Collection — Gold Leaf ₹2,000/sqft" [ref=e141] [cursor=pointer]:
+            - /url: /product/self-adhesive-wallpaper-collection-gold-leaf-78/
+            - generic [ref=e142]:
+              - img "Self Adhesive Wallpaper Collection — Gold Leaf" [ref=e143]
+              - button "Add to Cart" [ref=e146]
+            - generic [ref=e147]:
+              - paragraph [ref=e148]: Self Adhesive Wallpaper
+              - heading "Self Adhesive Wallpaper Collection — Gold Leaf" [level=3] [ref=e149]
+              - generic [ref=e151]: ₹2,000/sqft
+        - group "3 / 8" [ref=e152]:
+          - link "Home Decor Collection — Terracotta -18% Add to Cart Home Decor Home Decor Collection — Terracotta ₹900 ₹1,100" [ref=e154] [cursor=pointer]:
+            - /url: /product/home-decor-collection-terracotta-71/
+            - generic [ref=e155]:
+              - img "Home Decor Collection — Terracotta" [ref=e156]
+              - generic [ref=e157]: "-18%"
+              - button "Add to Cart" [ref=e160]
+            - generic [ref=e161]:
+              - paragraph [ref=e162]: Home Decor
+              - heading "Home Decor Collection — Terracotta" [level=3] [ref=e163]
+              - generic [ref=e164]:
+                - generic [ref=e165]: ₹900
+                - generic [ref=e166]: ₹1,100
+        - group "4 / 8" [ref=e167]:
+          - link "Glass Mosaic Tiles Collection — Antique Bronze Add to Cart Glass Mosaic Tiles Glass Mosaic Tiles Collection — Antique Bronze ₹750" [ref=e169] [cursor=pointer]:
+            - /url: /product/glass-mosaic-tiles-collection-antique-bronze-70/
+            - generic [ref=e170]:
+              - img "Glass Mosaic Tiles Collection — Antique Bronze" [ref=e171]
+              - button "Add to Cart" [ref=e174]
+            - generic [ref=e175]:
+              - paragraph [ref=e176]: Glass Mosaic Tiles
+              - heading "Glass Mosaic Tiles Collection — Antique Bronze" [level=3] [ref=e177]
+              - generic [ref=e179]: ₹750
+        - group "5 / 8" [ref=e180]:
+          - link "Glass Mosaic Tiles — Antique Bronze Add to Cart Glass Mosaic Tiles Glass Mosaic Tiles — Antique Bronze ₹200" [ref=e182] [cursor=pointer]:
+            - /url: /product/glass-mosaic-tiles-antique-bronze-67/
+            - generic [ref=e183]:
+              - img "Glass Mosaic Tiles — Antique Bronze" [ref=e184]
+              - button "Add to Cart" [ref=e187]
+            - generic [ref=e188]:
+              - paragraph [ref=e189]: Glass Mosaic Tiles
+              - heading "Glass Mosaic Tiles — Antique Bronze" [level=3] [ref=e190]
+              - generic [ref=e192]: ₹200
+        - group "6 / 8" [ref=e193]:
+          - link "Paintings & Wallart Collection — Forest Deep Add to Cart Paintings & Wallart Paintings & Wallart Collection — Forest Deep ₹750" [ref=e195] [cursor=pointer]:
+            - /url: /product/paintings-wallart-collection-forest-deep-65/
+            - generic [ref=e196]:
+              - img "Paintings & Wallart Collection — Forest Deep" [ref=e197]
+              - button "Add to Cart" [ref=e200]
+            - generic [ref=e201]:
+              - paragraph [ref=e202]: Paintings & Wallart
+              - heading "Paintings & Wallart Collection — Forest Deep" [level=3] [ref=e203]
+              - generic [ref=e205]: ₹750
+        - group "7 / 8" [ref=e206]:
+          - link "Paintings & Wallart Collection — Ocean Teal -42% Add to Cart Paintings & Wallart Paintings & Wallart Collection — Ocean Teal ₹400 ₹700" [ref=e208] [cursor=pointer]:
+            - /url: /product/paintings-wallart-collection-ocean-teal-63/
+            - generic [ref=e209]:
+              - img "Paintings & Wallart Collection — Ocean Teal" [ref=e210]
+              - generic [ref=e211]: "-42%"
+              - button "Add to Cart" [ref=e214]
+            - generic [ref=e215]:
+              - paragraph [ref=e216]: Paintings & Wallart
+              - heading "Paintings & Wallart Collection — Ocean Teal" [level=3] [ref=e217]
+              - generic [ref=e218]:
+                - generic [ref=e219]: ₹400
+                - generic [ref=e220]: ₹700
+        - group "8 / 8" [ref=e221]:
+          - link "Paintings & Wallart Collection — Champagne Gold -50% Add to Cart Paintings & Wallart Paintings & Wallart Collection — Champagne Gold ₹300 ₹600" [ref=e223] [cursor=pointer]:
+            - /url: /product/paintings-wallart-collection-champagne-gold-62/
+            - generic [ref=e224]:
+              - img "Paintings & Wallart Collection — Champagne Gold" [ref=e225]
+              - generic [ref=e226]: "-50%"
+              - button "Add to Cart" [ref=e229]
+            - generic [ref=e230]:
+              - paragraph [ref=e231]: Paintings & Wallart
+              - heading "Paintings & Wallart Collection — Champagne Gold" [level=3] [ref=e232]
+              - generic [ref=e233]:
+                - generic [ref=e234]: ₹300
+                - generic [ref=e235]: ₹600
+      - generic [ref=e236]:
+        - button "Go to slide 1" [ref=e237] [cursor=pointer]
+        - button "Go to slide 2" [ref=e238] [cursor=pointer]
+        - button "Go to slide 3" [ref=e239] [cursor=pointer]
+        - button "Go to slide 4" [ref=e240] [cursor=pointer]
+        - button "Go to slide 5" [ref=e241] [cursor=pointer]
+  - generic [ref=e243]:
+    - generic [ref=e244]:
+      - paragraph [ref=e245]: Signature Collections
+      - heading "Curated for Modern Spaces" [level=2] [ref=e246]
+    - generic [ref=e248]:
+      - link "Murals Heritage Murals Timeless Indian artistry for your walls Discover →" [ref=e249] [cursor=pointer]:
+        - /url: /category/wall-murals/
+        - img "Murals" [ref=e250]
+        - generic [ref=e252]:
+          - heading "Heritage Murals" [level=3] [ref=e253]
+          - paragraph [ref=e254]: Timeless Indian artistry for your walls
+          - text: Discover →
+      - link "Wallpapers Designer Wallpapers Contemporary patterns for every room Discover →" [ref=e255] [cursor=pointer]:
+        - /url: /category/wallpaper-rolls/
+        - img "Wallpapers" [ref=e256]
+        - generic [ref=e258]:
+          - heading "Designer Wallpapers" [level=3] [ref=e259]
+          - paragraph [ref=e260]: Contemporary patterns for every room
+          - text: Discover →
+  - generic [ref=e262]:
+    - generic [ref=e263]:
+      - paragraph [ref=e264]: Handpicked for You
+      - heading "New & Noteworthy" [level=2] [ref=e265]
+    - generic [ref=e266]:
+      - link "Self Adhesive Wallpaper — Pearl White -13% Add to Cart Self Adhesive Wallpaper Self Adhesive Wallpaper — Pearl White ₹2,000/sqft ₹2,300" [ref=e268] [cursor=pointer]:
+        - /url: /product/self-adhesive-wallpaper-pearl-white-80/
+        - generic [ref=e269]:
+          - img "Self Adhesive Wallpaper — Pearl White" [ref=e270]
+          - generic [ref=e271]: "-13%"
+          - button "Add to Cart" [ref=e274]
+        - generic [ref=e275]:
+          - paragraph [ref=e276]: Self Adhesive Wallpaper
+          - heading "Self Adhesive Wallpaper — Pearl White" [level=3] [ref=e277]
+          - generic [ref=e278]:
+            - generic [ref=e279]: ₹2,000/sqft
+            - generic [ref=e280]: ₹2,300
+      - link "Self Adhesive Wallpaper Collection — Gold Leaf Add to Cart Self Adhesive Wallpaper Self Adhesive Wallpaper Collection — Gold Leaf ₹500/sqft" [ref=e282] [cursor=pointer]:
+        - /url: /product/self-adhesive-wallpaper-collection-gold-leaf-79/
+        - generic [ref=e283]:
+          - img "Self Adhesive Wallpaper Collection — Gold Leaf" [ref=e284]
+          - button "Add to Cart" [ref=e287]
+        - generic [ref=e288]:
+          - paragraph [ref=e289]: Self Adhesive Wallpaper
+          - heading "Self Adhesive Wallpaper Collection — Gold Leaf" [level=3] [ref=e290]
+          - generic [ref=e292]: ₹500/sqft
+      - link "Self Adhesive Wallpaper Collection — Gold Leaf Add to Cart Self Adhesive Wallpaper Self Adhesive Wallpaper Collection — Gold Leaf ₹2,000/sqft" [ref=e294] [cursor=pointer]:
+        - /url: /product/self-adhesive-wallpaper-collection-gold-leaf-78/
+        - generic [ref=e295]:
+          - img "Self Adhesive Wallpaper Collection — Gold Leaf" [ref=e296]
+          - button "Add to Cart" [ref=e299]
+        - generic [ref=e300]:
+          - paragraph [ref=e301]: Self Adhesive Wallpaper
+          - heading "Self Adhesive Wallpaper Collection — Gold Leaf" [level=3] [ref=e302]
+          - generic [ref=e304]: ₹2,000/sqft
+      - link "Self Adhesive Wallpaper — Terracotta -10% Add to Cart Self Adhesive Wallpaper Self Adhesive Wallpaper — Terracotta ₹900/sqft ₹1,000" [ref=e306] [cursor=pointer]:
+        - /url: /product/self-adhesive-wallpaper-terracotta-77/
+        - generic [ref=e307]:
+          - img "Self Adhesive Wallpaper — Terracotta" [ref=e308]
+          - generic [ref=e309]: "-10%"
+          - button "Add to Cart" [ref=e312]
+        - generic [ref=e313]:
+          - paragraph [ref=e314]: Self Adhesive Wallpaper
+          - heading "Self Adhesive Wallpaper — Terracotta" [level=3] [ref=e315]
+          - generic [ref=e316]:
+            - generic [ref=e317]: ₹900/sqft
+            - generic [ref=e318]: ₹1,000
+      - link "Self Adhesive Wallpaper — Sapphire Mist -11% Add to Cart Self Adhesive Wallpaper Self Adhesive Wallpaper — Sapphire Mist ₹750/sqft ₹850" [ref=e320] [cursor=pointer]:
+        - /url: /product/self-adhesive-wallpaper-sapphire-mist-76/
+        - generic [ref=e321]:
+          - img "Self Adhesive Wallpaper — Sapphire Mist" [ref=e322]
+          - generic [ref=e323]: "-11%"
+          - button "Add to Cart" [ref=e326]
+        - generic [ref=e327]:
+          - paragraph [ref=e328]: Self Adhesive Wallpaper
+          - heading "Self Adhesive Wallpaper — Sapphire Mist" [level=3] [ref=e329]
+          - generic [ref=e330]:
+            - generic [ref=e331]: ₹750/sqft
+            - generic [ref=e332]: ₹850
+      - link "Home Decor Collection — Rose Quartz Add to Cart Home Decor Home Decor Collection — Rose Quartz ₹1,200" [ref=e334] [cursor=pointer]:
+        - /url: /product/home-decor-collection-rose-quartz-75/
+        - generic [ref=e335]:
+          - img "Home Decor Collection — Rose Quartz" [ref=e336]
+          - button "Add to Cart" [ref=e339]
+        - generic [ref=e340]:
+          - paragraph [ref=e341]: Home Decor
+          - heading "Home Decor Collection — Rose Quartz" [level=3] [ref=e342]
+          - generic [ref=e344]: ₹1,200
+      - link "Home Decor Collection — Forest Deep -7% Add to Cart Home Decor Home Decor Collection — Forest Deep ₹1,200 ₹1,300" [ref=e346] [cursor=pointer]:
+        - /url: /product/home-decor-collection-forest-deep-74/
+        - generic [ref=e347]:
+          - img "Home Decor Collection — Forest Deep" [ref=e348]
+          - generic [ref=e349]: "-7%"
+          - button "Add to Cart" [ref=e352]
+        - generic [ref=e353]:
+          - paragraph [ref=e354]: Home Decor
+          - heading "Home Decor Collection — Forest Deep" [level=3] [ref=e355]
+          - generic [ref=e356]:
+            - generic [ref=e357]: ₹1,200
+            - generic [ref=e358]: ₹1,300
+      - link "Home Decor — Charcoal Black Add to Cart Home Decor Home Decor — Charcoal Black ₹200" [ref=e360] [cursor=pointer]:
+        - /url: /product/home-decor-charcoal-black-73/
+        - generic [ref=e361]:
+          - img "Home Decor — Charcoal Black" [ref=e362]
+          - button "Add to Cart" [ref=e365]
+        - generic [ref=e366]:
+          - paragraph [ref=e367]: Home Decor
+          - heading "Home Decor — Charcoal Black" [level=3] [ref=e368]
+          - generic [ref=e370]: ₹200
+  - generic [ref=e372]:
+    - generic [ref=e373]:
+      - paragraph [ref=e374]: Browse by Room
+      - heading "Find Your Space" [level=2] [ref=e375]
+    - generic [ref=e377]:
+      - link "Living Room Living Room" [ref=e378] [cursor=pointer]:
+        - /url: /shop/?room=living-room
+        - img "Living Room" [ref=e379]
+        - heading "Living Room" [level=3] [ref=e382]
+      - link "Bedroom Bedroom" [ref=e383] [cursor=pointer]:
+        - /url: /shop/?room=bedroom
+        - img "Bedroom" [ref=e384]
+        - heading "Bedroom" [level=3] [ref=e387]
+      - link "Dining Room Dining Room" [ref=e388] [cursor=pointer]:
+        - /url: /shop/?room=dining-room
+        - img "Dining Room" [ref=e389]
+        - heading "Dining Room" [level=3] [ref=e392]
+      - link "Hallway Hallway" [ref=e393] [cursor=pointer]:
+        - /url: /shop/?room=hallway
+        - img "Hallway" [ref=e394]
+        - heading "Hallway" [level=3] [ref=e397]
+      - link "Study Room Study Room" [ref=e398] [cursor=pointer]:
+        - /url: /shop/?room=study-room
+        - img "Study Room" [ref=e399]
+        - heading "Study Room" [level=3] [ref=e402]
+      - link "Kids Room Kids Room" [ref=e403] [cursor=pointer]:
+        - /url: /shop/?room=kids-room
+        - img "Kids Room" [ref=e404]
+        - heading "Kids Room" [level=3] [ref=e407]
+      - link "Bathroom Bathroom" [ref=e408] [cursor=pointer]:
+        - /url: /shop/?room=bathroom
+        - img "Bathroom" [ref=e409]
+        - heading "Bathroom" [level=3] [ref=e412]
+  - generic [ref=e414]:
+    - generic [ref=e415]:
+      - paragraph [ref=e416]: Find Your Shade
+      - heading "Color Palette" [level=2] [ref=e417]
+    - generic [ref=e420]:
+      - group "1 / 5" [ref=e421]:
+        - link "Warm Neutrals Warm Neutrals" [ref=e422] [cursor=pointer]:
+          - /url: /shop/?color=warm-neutrals
+          - img "Warm Neutrals" [ref=e425]
+          - heading "Warm Neutrals" [level=3] [ref=e426]
+      - group "2 / 5" [ref=e427]:
+        - link "Earthy Browns Earthy Browns" [ref=e428] [cursor=pointer]:
+          - /url: /shop/?color=earthy-browns
+          - img "Earthy Browns" [ref=e431]
+          - heading "Earthy Browns" [level=3] [ref=e432]
+      - group "3 / 5" [ref=e433]:
+        - link "Cool Grays Cool Grays" [ref=e434] [cursor=pointer]:
+          - /url: /shop/?color=cool-grays
+          - img "Cool Grays" [ref=e437]
+          - heading "Cool Grays" [level=3] [ref=e438]
+      - group "4 / 5" [ref=e439]:
+        - link "Soft Blues Soft Blues" [ref=e440] [cursor=pointer]:
+          - /url: /shop/?color=soft-blues
+          - img "Soft Blues" [ref=e443]
+          - heading "Soft Blues" [level=3] [ref=e444]
+      - group "5 / 5" [ref=e445]:
+        - link "Sage & Greens Sage & Greens" [ref=e446] [cursor=pointer]:
+          - /url: /shop/?color=sage-greens
+          - img "Sage & Greens" [ref=e449]
+          - heading "Sage & Greens" [level=3] [ref=e450]
+  - generic [ref=e452]:
+    - generic [ref=e453]:
+      - generic [ref=e454]:
+        - paragraph [ref=e455]: Just Arrived
+        - heading "Latest Arrivals" [level=2] [ref=e456]
+      - link "View All →" [ref=e457] [cursor=pointer]:
+        - /url: /shop/
+    - generic [ref=e458]:
+      - generic [ref=e459]:
+        - group "1 / 8" [ref=e460]:
+          - link "Self Adhesive Wallpaper Collection — Gold Leaf Add to Cart Self Adhesive Wallpaper Self Adhesive Wallpaper Collection — Gold Leaf ₹500/sqft" [ref=e462] [cursor=pointer]:
+            - /url: /product/self-adhesive-wallpaper-collection-gold-leaf-79/
+            - generic [ref=e463]:
+              - img "Self Adhesive Wallpaper Collection — Gold Leaf" [ref=e464]
+              - button "Add to Cart" [ref=e467]
+            - generic [ref=e468]:
+              - paragraph [ref=e469]: Self Adhesive Wallpaper
+              - heading "Self Adhesive Wallpaper Collection — Gold Leaf" [level=3] [ref=e470]
+              - generic [ref=e472]: ₹500/sqft
+        - group "2 / 8" [ref=e473]:
+          - link "Self Adhesive Wallpaper — Sapphire Mist -11% Add to Cart Self Adhesive Wallpaper Self Adhesive Wallpaper — Sapphire Mist ₹750/sqft ₹850" [ref=e475] [cursor=pointer]:
+            - /url: /product/self-adhesive-wallpaper-sapphire-mist-76/
+            - generic [ref=e476]:
+              - img "Self Adhesive Wallpaper — Sapphire Mist" [ref=e477]
+              - generic [ref=e478]: "-11%"
+              - button "Add to Cart" [ref=e481]
+            - generic [ref=e482]:
+              - paragraph [ref=e483]: Self Adhesive Wallpaper
+              - heading "Self Adhesive Wallpaper — Sapphire Mist" [level=3] [ref=e484]
+              - generic [ref=e485]:
+                - generic [ref=e486]: ₹750/sqft
+                - generic [ref=e487]: ₹850
+        - group "3 / 8" [ref=e488]:
+          - link "Home Decor — Charcoal Black Add to Cart Home Decor Home Decor — Charcoal Black ₹200" [ref=e490] [cursor=pointer]:
+            - /url: /product/home-decor-charcoal-black-73/
+            - generic [ref=e491]:
+              - img "Home Decor — Charcoal Black" [ref=e492]
+              - button "Add to Cart" [ref=e495]
+            - generic [ref=e496]:
+              - paragraph [ref=e497]: Home Decor
+              - heading "Home Decor — Charcoal Black" [level=3] [ref=e498]
+              - generic [ref=e500]: ₹200
+        - group "4 / 8" [ref=e501]:
+          - link "Glass Mosaic Tiles Collection — Antique Bronze Add to Cart Glass Mosaic Tiles Glass Mosaic Tiles Collection — Antique Bronze ₹750" [ref=e503] [cursor=pointer]:
+            - /url: /product/glass-mosaic-tiles-collection-antique-bronze-70/
+            - generic [ref=e504]:
+              - img "Glass Mosaic Tiles Collection — Antique Bronze" [ref=e505]
+              - button "Add to Cart" [ref=e508]
+            - generic [ref=e509]:
+              - paragraph [ref=e510]: Glass Mosaic Tiles
+              - heading "Glass Mosaic Tiles Collection — Antique Bronze" [level=3] [ref=e511]
+              - generic [ref=e513]: ₹750
+        - group "5 / 8" [ref=e514]:
+          - link "Glass Mosaic Tiles — Antique Bronze Add to Cart Glass Mosaic Tiles Glass Mosaic Tiles — Antique Bronze ₹200" [ref=e516] [cursor=pointer]:
+            - /url: /product/glass-mosaic-tiles-antique-bronze-67/
+            - generic [ref=e517]:
+              - img "Glass Mosaic Tiles — Antique Bronze" [ref=e518]
+              - button "Add to Cart" [ref=e521]
+            - generic [ref=e522]:
+              - paragraph [ref=e523]: Glass Mosaic Tiles
+              - heading "Glass Mosaic Tiles — Antique Bronze" [level=3] [ref=e524]
+              - generic [ref=e526]: ₹200
+        - group "6 / 8" [ref=e527]:
+          - link "Paintings & Wallart — Slate Gray Add to Cart Paintings & Wallart Paintings & Wallart — Slate Gray ₹900" [ref=e529] [cursor=pointer]:
+            - /url: /product/paintings-wallart-slate-gray-64/
+            - generic [ref=e530]:
+              - img "Paintings & Wallart — Slate Gray" [ref=e531]
+              - button "Add to Cart" [ref=e534]
+            - generic [ref=e535]:
+              - paragraph [ref=e536]: Paintings & Wallart
+              - heading "Paintings & Wallart — Slate Gray" [level=3] [ref=e537]
+              - generic [ref=e539]: ₹900
+        - group "7 / 8" [ref=e540]:
+          - link "Paintings & Wallart — Slate Gray -6% Add to Cart Paintings & Wallart Paintings & Wallart — Slate Gray ₹1,500 ₹1,600" [ref=e542] [cursor=pointer]:
+            - /url: /product/paintings-wallart-slate-gray-61/
+            - generic [ref=e543]:
+              - img "Paintings & Wallart — Slate Gray" [ref=e544]
+              - generic [ref=e545]: "-6%"
+              - button "Add to Cart" [ref=e548]
+            - generic [ref=e549]:
+              - paragraph [ref=e550]: Paintings & Wallart
+              - heading "Paintings & Wallart — Slate Gray" [level=3] [ref=e551]
+              - generic [ref=e552]:
+                - generic [ref=e553]: ₹1,500
+                - generic [ref=e554]: ₹1,600
+        - group "8 / 8" [ref=e555]:
+          - link "Texture Designer Roll — Burgundy Wine Add to Cart Texture Texture Designer Roll — Burgundy Wine ₹1,000" [ref=e557] [cursor=pointer]:
+            - /url: /product/texture-designer-roll-burgundy-wine-58/
+            - generic [ref=e558]:
+              - img "Texture Designer Roll — Burgundy Wine" [ref=e559]
+              - button "Add to Cart" [ref=e562]
+            - generic [ref=e563]:
+              - paragraph [ref=e564]: Texture
+              - heading "Texture Designer Roll — Burgundy Wine" [level=3] [ref=e565]
+              - generic [ref=e567]: ₹1,000
+      - generic [ref=e568]:
+        - button "Go to slide 1" [ref=e569] [cursor=pointer]
+        - button "Go to slide 2" [ref=e570] [cursor=pointer]
+        - button "Go to slide 3" [ref=e571] [cursor=pointer]
+        - button "Go to slide 4" [ref=e572] [cursor=pointer]
+        - button "Go to slide 5" [ref=e573] [cursor=pointer]
+  - generic [ref=e575]:
+    - generic [ref=e576]:
+      - paragraph [ref=e577]: Expert Guide
+      - heading "Know Your Wallpapers" [level=2] [ref=e578]
+    - generic [ref=e580]:
+      - generic [ref=e581]:
+        - group "1 / 4" [ref=e582]:
+          - generic [ref=e583]: ①
+          - heading "Non-Woven" [level=3] [ref=e584]
+          - paragraph [ref=e585]: Easy to install and remove, tear-resistant, and eco-friendly. The most popular choice for modern homes.
+        - group "2 / 4" [ref=e586]:
+          - generic [ref=e587]: ②
+          - heading "Vinyl Coated" [level=3] [ref=e588]
+          - paragraph [ref=e589]: Water-resistant and durable. Perfect for kitchens, bathrooms, and high-traffic areas.
+        - group "3 / 4" [ref=e590]:
+          - generic [ref=e591]: ③
+          - heading "3D Wall Panels" [level=3] [ref=e592]
+          - paragraph [ref=e593]: Add depth and texture to your walls. Create stunning feature walls with dimensional designs.
+        - group "4 / 4" [ref=e594]:
+          - generic [ref=e595]: ④
+          - heading "Custom Murals" [level=3] [ref=e596]
+          - paragraph [ref=e597]: Bespoke designs tailored to your wall dimensions. Transform any space with personalized art.
+      - generic [ref=e598]:
+        - button "Go to slide 1" [ref=e599] [cursor=pointer]
+        - button "Go to slide 2" [ref=e600] [cursor=pointer]
+  - generic [ref=e602]:
+    - generic [ref=e603]:
+      - paragraph [ref=e604]: Premium Selection
+      - heading "Featured Collection" [level=2] [ref=e605]
+    - generic [ref=e606]:
+      - generic [ref=e607]:
+        - group "1 / 5" [ref=e608]:
+          - link "European Wall Art — Slate Gray -3% Add to Cart European European Wall Art — Slate Gray ₹3,000/sqft ₹3,100" [ref=e610] [cursor=pointer]:
+            - /url: /product/european-wall-art-slate-gray-5/
+            - generic [ref=e611]:
+              - img "European Wall Art — Slate Gray" [ref=e612]
+              - generic [ref=e613]: "-3%"
+              - button "Add to Cart" [ref=e616]
+            - generic [ref=e617]:
+              - paragraph [ref=e618]: European
+              - heading "European Wall Art — Slate Gray" [level=3] [ref=e619]
+              - generic [ref=e620]:
+                - generic [ref=e621]: ₹3,000/sqft
+                - generic [ref=e622]: ₹3,100
+        - group "2 / 5" [ref=e623]:
+          - link "European Designer Mural — Emerald Green -4% Add to Cart European European Designer Mural — Emerald Green ₹2,000/sqft ₹2,100" [ref=e625] [cursor=pointer]:
+            - /url: /product/european-designer-mural-emerald-green-4/
+            - generic [ref=e626]:
+              - img "European Designer Mural — Emerald Green" [ref=e627]
+              - generic [ref=e628]: "-4%"
+              - button "Add to Cart" [ref=e631]
+            - generic [ref=e632]:
+              - paragraph [ref=e633]: European
+              - heading "European Designer Mural — Emerald Green" [level=3] [ref=e634]
+              - generic [ref=e635]:
+                - generic [ref=e636]: ₹2,000/sqft
+                - generic [ref=e637]: ₹2,100
+        - group "3 / 5" [ref=e638]:
+          - link "Heritage Mural — Midnight Velvet -18% Add to Cart Heritage Heritage Mural — Midnight Velvet ₹900/sqft ₹1,100" [ref=e640] [cursor=pointer]:
+            - /url: /product/heritage-mural-midnight-velvet-3/
+            - generic [ref=e641]:
+              - img "Heritage Mural — Midnight Velvet" [ref=e642]
+              - generic [ref=e643]: "-18%"
+              - button "Add to Cart" [ref=e646]
+            - generic [ref=e647]:
+              - paragraph [ref=e648]: Heritage
+              - heading "Heritage Mural — Midnight Velvet" [level=3] [ref=e649]
+              - generic [ref=e650]:
+                - generic [ref=e651]: ₹900/sqft
+                - generic [ref=e652]: ₹1,100
+        - group "4 / 5" [ref=e653]:
+          - link "Heritage Designer Mural — Burgundy Wine -16% Add to Cart Heritage Heritage Designer Mural — Burgundy Wine ₹1,000/sqft ₹1,200" [ref=e655] [cursor=pointer]:
+            - /url: /product/heritage-designer-mural-burgundy-wine-2/
+            - generic [ref=e656]:
+              - img "Heritage Designer Mural — Burgundy Wine" [ref=e657]
+              - generic [ref=e658]: "-16%"
+              - button "Add to Cart" [ref=e661]
+            - generic [ref=e662]:
+              - paragraph [ref=e663]: Heritage
+              - heading "Heritage Designer Mural — Burgundy Wine" [level=3] [ref=e664]
+              - generic [ref=e665]:
+                - generic [ref=e666]: ₹1,000/sqft
+                - generic [ref=e667]: ₹1,200
+        - group "5 / 5" [ref=e668]:
+          - link "Heritage Wall Art — Sapphire Mist Add to Cart Heritage Heritage Wall Art — Sapphire Mist ₹1,000/sqft" [ref=e670] [cursor=pointer]:
+            - /url: /product/heritage-wall-art-sapphire-mist-1/
+            - generic [ref=e671]:
+              - img "Heritage Wall Art — Sapphire Mist" [ref=e672]
+              - button "Add to Cart" [ref=e675]
+            - generic [ref=e676]:
+              - paragraph [ref=e677]: Heritage
+              - heading "Heritage Wall Art — Sapphire Mist" [level=3] [ref=e678]
+              - generic [ref=e680]: ₹1,000/sqft
+      - generic [ref=e681]:
+        - button "Go to slide 1" [ref=e682] [cursor=pointer]
+        - button "Go to slide 2" [ref=e683] [cursor=pointer]
+  - generic [ref=e685]:
+    - generic [ref=e686]:
+      - paragraph [ref=e687]: Why Choose Us
+      - heading "Our Promise" [level=2] [ref=e688]
+    - generic [ref=e690]:
+      - generic [ref=e692] [cursor=pointer]:
+        - generic [ref=e693]:
+          - img [ref=e694]
+          - heading "Authentic Products" [level=3] [ref=e696]
+        - paragraph [ref=e698]: Every product is sourced directly from authorized manufacturers. 100% genuine, every time.
+      - generic [ref=e700] [cursor=pointer]:
+        - generic [ref=e701]:
+          - img [ref=e702]
+          - heading "Worldwide Delivery" [level=3] [ref=e704]
+        - paragraph [ref=e706]: We ship across India and internationally. Your dream decor, delivered to your doorstep.
+      - generic [ref=e708] [cursor=pointer]:
+        - generic [ref=e709]:
+          - img [ref=e710]
+          - heading "Easy Returns" [level=3] [ref=e712]
+        - paragraph [ref=e714]: Not happy with your order? Return within 7 days for a full refund. No questions asked.
+      - generic [ref=e716] [cursor=pointer]:
+        - generic [ref=e717]:
+          - img [ref=e718]
+          - heading "Secure Payment" [level=3] [ref=e720]
+        - paragraph [ref=e722]: Bank-grade encryption and multiple payment options. Your transactions are always safe.
+  - generic [ref=e724]:
+    - paragraph [ref=e725]: Our Story
+    - heading "The Mahashanka Difference" [level=2] [ref=e726]
+    - paragraph [ref=e728]: At Mahashanka Decor, we believe your walls are a canvas waiting to be transformed. We've been passionate about bringing exceptional wallpapers, murals, and decor to homes across India.
+    - paragraph [ref=e729]: From heritage murals to contemporary designer wallpapers, each piece in our collection is curated for quality, beauty, and the power to transform your space. We don't just sell wallpaper — we help you create an atmosphere.
+    - generic [ref=e730]:
+      - generic [ref=e731]:
+        - generic [ref=e732]: 500+
+        - generic [ref=e733]: Designs
+      - generic [ref=e734]:
+        - generic [ref=e735]: 10k+
+        - generic [ref=e736]: Happy Homes
+      - generic [ref=e737]:
+        - generic [ref=e738]: 25+
+        - generic [ref=e739]: Categories
+      - generic [ref=e740]:
+        - generic [ref=e741]: 100%
+        - generic [ref=e742]: Satisfaction
+  - generic [ref=e744]:
+    - generic [ref=e745]:
+      - paragraph [ref=e746]: Client Stories
+      - heading "What Our Customers Say" [level=2] [ref=e747]
+    - generic [ref=e749]:
+      - generic [ref=e750]:
+        - group "1 / 8" [ref=e751]:
+          - generic [ref=e752]:
+            - generic [ref=e753]:
+              - img [ref=e754]
+              - img [ref=e756]
+              - img [ref=e758]
+              - img [ref=e760]
+              - img [ref=e762]
+            - paragraph [ref=e764]: "\"Absolutely stunning wallpapers! The quality exceeded my expectations. My living room looks like a magazine cover now.\""
+            - generic [ref=e765]:
+              - img "Priya Sharma" [ref=e766]
+              - generic [ref=e767]:
+                - generic [ref=e768]: Priya Sharma
+                - generic [ref=e769]: Mumbai, Maharashtra
+        - group "2 / 8" [ref=e770]:
+          - generic [ref=e771]:
+            - generic [ref=e772]:
+              - img [ref=e773]
+              - img [ref=e775]
+              - img [ref=e777]
+              - img [ref=e779]
+              - img [ref=e781]
+            - paragraph [ref=e783]: "\"The heritage mural we ordered is breathtaking. Installation was smooth and the team was very professional.\""
+            - generic [ref=e784]:
+              - img "Rajesh Kumar" [ref=e785]
+              - generic [ref=e786]:
+                - generic [ref=e787]: Rajesh Kumar
+                - generic [ref=e788]: Delhi, Delhi
+        - group "3 / 8" [ref=e789]:
+          - generic [ref=e790]:
+            - generic [ref=e791]:
+              - img [ref=e792]
+              - img [ref=e794]
+              - img [ref=e796]
+              - img [ref=e798]
+              - img [ref=e800]
+            - paragraph [ref=e802]: "\"Beautiful designs and excellent customer service. Highly recommend Red & Wine for anyone looking to transform their space.\""
+            - generic [ref=e803]:
+              - img "Ananya Patel" [ref=e804]
+              - generic [ref=e805]:
+                - generic [ref=e806]: Ananya Patel
+                - generic [ref=e807]: Bangalore, Karnataka
+        - group "4 / 8" [ref=e808]:
+          - generic [ref=e809]:
+            - generic [ref=e810]:
+              - img [ref=e811]
+              - img [ref=e813]
+              - img [ref=e815]
+              - img [ref=e817]
+              - img [ref=e819]
+            - paragraph [ref=e821]: "\"The Pichwai mural in our dining room is a conversation starter at every dinner party. Love it!\""
+            - generic [ref=e822]:
+              - img "Vikram Singh" [ref=e823]
+              - generic [ref=e824]:
+                - generic [ref=e825]: Vikram Singh
+                - generic [ref=e826]: Jaipur, Rajasthan
+        - group "5 / 8" [ref=e827]:
+          - generic [ref=e828]:
+            - generic [ref=e829]:
+              - img [ref=e830]
+              - img [ref=e832]
+              - img [ref=e834]
+              - img [ref=e836]
+              - img [ref=e838]
+            - paragraph [ref=e840]: "\"Premium quality wallpapers at reasonable prices. The peacock mural is simply gorgeous.\""
+            - generic [ref=e841]:
+              - img "Meera Iyer" [ref=e842]
+              - generic [ref=e843]:
+                - generic [ref=e844]: Meera Iyer
+                - generic [ref=e845]: Chennai, Tamil Nadu
+        - group "6 / 8" [ref=e846]:
+          - generic [ref=e847]:
+            - generic [ref=e848]:
+              - img [ref=e849]
+              - img [ref=e851]
+              - img [ref=e853]
+              - img [ref=e855]
+              - img [ref=e857]
+            - paragraph [ref=e859]: "\"Fast delivery and the wallpaper was exactly as shown. Will definitely order again.\""
+            - generic [ref=e860]:
+              - img "Arjun Reddy" [ref=e861]
+              - generic [ref=e862]:
+                - generic [ref=e863]: Arjun Reddy
+                - generic [ref=e864]: Hyderabad, Telangana
+        - group "7 / 8" [ref=e865]:
+          - generic [ref=e866]:
+            - generic [ref=e867]:
+              - img [ref=e868]
+              - img [ref=e870]
+              - img [ref=e872]
+              - img [ref=e874]
+              - img [ref=e876]
+            - paragraph [ref=e878]: "\"The color palette options helped me choose the perfect wallpaper for my bedroom. Very happy!\""
+            - generic [ref=e879]:
+              - img "Sneha Gupta" [ref=e880]
+              - generic [ref=e881]:
+                - generic [ref=e882]: Sneha Gupta
+                - generic [ref=e883]: Pune, Maharashtra
+        - group "8 / 8" [ref=e884]:
+          - generic [ref=e885]:
+            - generic [ref=e886]:
+              - img [ref=e887]
+              - img [ref=e889]
+              - img [ref=e891]
+              - img [ref=e893]
+              - img [ref=e895]
+            - paragraph [ref=e897]: "\"Outstanding craftsmanship. The European mural added so much character to our home.\""
+            - generic [ref=e898]:
+              - img "Karthik Nair" [ref=e899]
+              - generic [ref=e900]:
+                - generic [ref=e901]: Karthik Nair
+                - generic [ref=e902]: Kochi, Kerala
+      - generic [ref=e903]:
+        - button "Go to slide 1" [ref=e904] [cursor=pointer]
+        - button "Go to slide 2" [ref=e905] [cursor=pointer]
+        - button "Go to slide 3" [ref=e906] [cursor=pointer]
+        - button "Go to slide 4" [ref=e907] [cursor=pointer]
+        - button "Go to slide 5" [ref=e908] [cursor=pointer]
+        - button "Go to slide 6" [ref=e909] [cursor=pointer]
+        - button "Go to slide 7" [ref=e910] [cursor=pointer]
+        - button "Go to slide 8" [ref=e911] [cursor=pointer]
+  - generic [ref=e913]:
+    - generic [ref=e914]:
+      - paragraph [ref=e915]: Inspiration
+      - heading "Real Homes. Real Stories." [level=2] [ref=e916]
+    - generic [ref=e919]:
+      - group "1 / 197" [ref=e920]:
+        - generic [ref=e921]:
+          - img "Real Home" [ref=e922]
+          - img [ref=e924]
+      - group "2 / 197" [ref=e926]:
+        - generic [ref=e927]:
+          - img "Real Home" [ref=e928]
+          - img [ref=e930]
+      - group "3 / 197" [ref=e932]:
+        - generic [ref=e933]:
+          - img "Real Home" [ref=e934]
+          - img [ref=e936]
+      - group "4 / 197" [ref=e938]:
+        - generic [ref=e939]:
+          - img "Real Home" [ref=e940]
+          - img [ref=e942]
+      - group "5 / 197" [ref=e944]:
+        - generic [ref=e945]:
+          - img "Real Home" [ref=e946]
+          - img [ref=e948]
+      - group "6 / 197" [ref=e950]:
+        - generic [ref=e951]:
+          - img "Real Home" [ref=e952]
+          - img [ref=e954]
+      - group "7 / 197" [ref=e956]:
+        - generic [ref=e957]:
+          - img "Real Home" [ref=e958]
+          - img [ref=e960]
+      - group "8 / 197" [ref=e962]:
+        - generic [ref=e963]:
+          - img "Real Home" [ref=e964]
+          - img [ref=e966]
+      - group "9 / 197" [ref=e968]:
+        - generic [ref=e969]:
+          - img "Real Home" [ref=e970]
+          - img [ref=e972]
+      - group "10 / 197" [ref=e974]:
+        - generic [ref=e975]:
+          - img "Real Home" [ref=e976]
+          - img [ref=e978]
+      - group "11 / 197" [ref=e980]:
+        - generic [ref=e981]:
+          - img "Real Home" [ref=e982]
+          - img [ref=e984]
+      - group "12 / 197" [ref=e986]:
+        - generic [ref=e987]:
+          - img "Real Home" [ref=e988]
+          - img [ref=e990]
+      - group "13 / 197" [ref=e992]:
+        - generic [ref=e993]:
+          - img "Real Home" [ref=e994]
+          - img [ref=e996]
+      - group "14 / 197" [ref=e998]:
+        - generic [ref=e999]:
+          - img "Real Home" [ref=e1000]
+          - img [ref=e1002]
+      - group "15 / 197" [ref=e1004]:
+        - generic [ref=e1005]:
+          - img "Real Home" [ref=e1006]
+          - img [ref=e1008]
+      - group "16 / 197" [ref=e1010]:
+        - generic [ref=e1011]:
+          - img "Real Home" [ref=e1012]
+          - img [ref=e1014]
+      - group "17 / 197" [ref=e1016]:
+        - generic [ref=e1017]:
+          - img "Real Home" [ref=e1018]
+          - img [ref=e1020]
+      - group "18 / 197" [ref=e1022]:
+        - generic [ref=e1023]:
+          - img "Real Home" [ref=e1024]
+          - img [ref=e1026]
+      - group "19 / 197" [ref=e1028]:
+        - generic [ref=e1029]:
+          - img "Real Home" [ref=e1030]
+          - img [ref=e1032]
+      - group "20 / 197" [ref=e1034]:
+        - generic [ref=e1035]:
+          - img "Real Home" [ref=e1036]
+          - img [ref=e1038]
+      - group "21 / 197" [ref=e1040]:
+        - generic [ref=e1041]:
+          - img "Real Home" [ref=e1042]
+          - img [ref=e1044]
+      - group "22 / 197" [ref=e1046]:
+        - generic [ref=e1047]:
+          - img "Real Home" [ref=e1048]
+          - img [ref=e1050]
+      - group "23 / 197" [ref=e1052]:
+        - generic [ref=e1053]:
+          - img "Real Home" [ref=e1054]
+          - img [ref=e1056]
+      - group "24 / 197" [ref=e1058]:
+        - generic [ref=e1059]:
+          - img "Real Home" [ref=e1060]
+          - img [ref=e1062]
+      - group "25 / 197" [ref=e1064]:
+        - generic [ref=e1065]:
+          - img "Real Home" [ref=e1066]
+          - img [ref=e1068]
+      - group "26 / 197" [ref=e1070]:
+        - generic [ref=e1071]:
+          - img "Real Home" [ref=e1072]
+          - img [ref=e1074]
+      - group "27 / 197" [ref=e1076]:
+        - generic [ref=e1077]:
+          - img "Real Home" [ref=e1078]
+          - img [ref=e1080]
+      - group "28 / 197" [ref=e1082]:
+        - generic [ref=e1083]:
+          - img "Real Home" [ref=e1084]
+          - img [ref=e1086]
+      - group "29 / 197" [ref=e1088]:
+        - generic [ref=e1089]:
+          - img "Real Home" [ref=e1090]
+          - img [ref=e1092]
+      - group "30 / 197" [ref=e1094]:
+        - generic [ref=e1095]:
+          - img "Real Home" [ref=e1096]
+          - img [ref=e1098]
+      - group "31 / 197" [ref=e1100]:
+        - generic [ref=e1101]:
+          - img "Real Home" [ref=e1102]
+          - img [ref=e1104]
+      - group "32 / 197" [ref=e1106]:
+        - generic [ref=e1107]:
+          - img "Real Home" [ref=e1108]
+          - img [ref=e1110]
+      - group "33 / 197" [ref=e1112]:
+        - generic [ref=e1113]:
+          - img "Real Home" [ref=e1114]
+          - img [ref=e1116]
+      - group "34 / 197" [ref=e1118]:
+        - generic [ref=e1119]:
+          - img "Real Home" [ref=e1120]
+          - img [ref=e1122]
+      - group "35 / 197" [ref=e1124]:
+        - generic [ref=e1125]:
+          - img "Real Home" [ref=e1126]
+          - img [ref=e1128]
+      - group "36 / 197" [ref=e1130]:
+        - generic [ref=e1131]:
+          - img "Real Home" [ref=e1132]
+          - img [ref=e1134]
+      - group "37 / 197" [ref=e1136]:
+        - generic [ref=e1137]:
+          - img "Real Home" [ref=e1138]
+          - img [ref=e1140]
+      - group "38 / 197" [ref=e1142]:
+        - generic [ref=e1143]:
+          - img "Real Home" [ref=e1144]
+          - img [ref=e1146]
+      - group "39 / 197" [ref=e1148]:
+        - generic [ref=e1149]:
+          - img "Real Home" [ref=e1150]
+          - img [ref=e1152]
+      - group "40 / 197" [ref=e1154]:
+        - generic [ref=e1155]:
+          - img "Real Home" [ref=e1156]
+          - img [ref=e1158]
+      - group "41 / 197" [ref=e1160]:
+        - generic [ref=e1161]:
+          - img "Real Home" [ref=e1162]
+          - img [ref=e1164]
+      - group "42 / 197" [ref=e1166]:
+        - generic [ref=e1167]:
+          - img "Real Home" [ref=e1168]
+          - img [ref=e1170]
+      - group "43 / 197" [ref=e1172]:
+        - generic [ref=e1173]:
+          - img "Real Home" [ref=e1174]
+          - img [ref=e1176]
+      - group "44 / 197" [ref=e1178]:
+        - generic [ref=e1179]:
+          - img "Real Home" [ref=e1180]
+          - img [ref=e1182]
+      - group "45 / 197" [ref=e1184]:
+        - generic [ref=e1185]:
+          - img "Real Home" [ref=e1186]
+          - img [ref=e1188]
+      - group "46 / 197" [ref=e1190]:
+        - generic [ref=e1191]:
+          - img "Real Home" [ref=e1192]
+          - img [ref=e1194]
+      - group "47 / 197" [ref=e1196]:
+        - generic [ref=e1197]:
+          - img "Real Home" [ref=e1198]
+          - img [ref=e1200]
+      - group "48 / 197" [ref=e1202]:
+        - generic [ref=e1203]:
+          - img "Real Home" [ref=e1204]
+          - img [ref=e1206]
+      - group "49 / 197" [ref=e1208]:
+        - generic [ref=e1209]:
+          - img "Real Home" [ref=e1210]
+          - img [ref=e1212]
+      - group "50 / 197" [ref=e1214]:
+        - generic [ref=e1215]:
+          - img "Real Home" [ref=e1216]
+          - img [ref=e1218]
+      - group "51 / 197" [ref=e1220]:
+        - generic [ref=e1221]:
+          - img "Real Home" [ref=e1222]
+          - img [ref=e1224]
+      - group "52 / 197" [ref=e1226]:
+        - generic [ref=e1227]:
+          - img "Real Home" [ref=e1228]
+          - img [ref=e1230]
+      - group "53 / 197" [ref=e1232]:
+        - generic [ref=e1233]:
+          - img "Real Home" [ref=e1234]
+          - img [ref=e1236]
+      - group "54 / 197" [ref=e1238]:
+        - generic [ref=e1239]:
+          - img "Real Home" [ref=e1240]
+          - img [ref=e1242]
+      - group "55 / 197" [ref=e1244]:
+        - generic [ref=e1245]:
+          - img "Real Home" [ref=e1246]
+          - img [ref=e1248]
+      - group "56 / 197" [ref=e1250]:
+        - generic [ref=e1251]:
+          - img "Real Home" [ref=e1252]
+          - img [ref=e1254]
+      - group "57 / 197" [ref=e1256]:
+        - generic [ref=e1257]:
+          - img "Real Home" [ref=e1258]
+          - img [ref=e1260]
+      - group "58 / 197" [ref=e1262]:
+        - generic [ref=e1263]:
+          - img "Real Home" [ref=e1264]
+          - img [ref=e1266]
+      - group "59 / 197" [ref=e1268]:
+        - generic [ref=e1269]:
+          - img "Real Home" [ref=e1270]
+          - img [ref=e1272]
+      - group "60 / 197" [ref=e1274]:
+        - generic [ref=e1275]:
+          - img "Real Home" [ref=e1276]
+          - img [ref=e1278]
+      - group "61 / 197" [ref=e1280]:
+        - generic [ref=e1281]:
+          - img "Real Home" [ref=e1282]
+          - img [ref=e1284]
+      - group "62 / 197" [ref=e1286]:
+        - generic [ref=e1287]:
+          - img "Real Home" [ref=e1288]
+          - img [ref=e1290]
+      - group "63 / 197" [ref=e1292]:
+        - generic [ref=e1293]:
+          - img "Real Home" [ref=e1294]
+          - img [ref=e1296]
+      - group "64 / 197" [ref=e1298]:
+        - generic [ref=e1299]:
+          - img "Real Home" [ref=e1300]
+          - img [ref=e1302]
+      - group "65 / 197" [ref=e1304]:
+        - generic [ref=e1305]:
+          - img "Real Home" [ref=e1306]
+          - img [ref=e1308]
+      - group "66 / 197" [ref=e1310]:
+        - generic [ref=e1311]:
+          - img "Real Home" [ref=e1312]
+          - img [ref=e1314]
+      - group "67 / 197" [ref=e1316]:
+        - generic [ref=e1317]:
+          - img "Real Home" [ref=e1318]
+          - img [ref=e1320]
+      - group "68 / 197" [ref=e1322]:
+        - generic [ref=e1323]:
+          - img "Real Home" [ref=e1324]
+          - img [ref=e1326]
+      - group "69 / 197" [ref=e1328]:
+        - generic [ref=e1329]:
+          - img "Real Home" [ref=e1330]
+          - img [ref=e1332]
+      - group "70 / 197" [ref=e1334]:
+        - generic [ref=e1335]:
+          - img "Real Home" [ref=e1336]
+          - img [ref=e1338]
+      - group "71 / 197" [ref=e1340]:
+        - generic [ref=e1341]:
+          - img "Real Home" [ref=e1342]
+          - img [ref=e1344]
+      - group "72 / 197" [ref=e1346]:
+        - generic [ref=e1347]:
+          - img "Real Home" [ref=e1348]
+          - img [ref=e1350]
+      - group "73 / 197" [ref=e1352]:
+        - generic [ref=e1353]:
+          - img "Real Home" [ref=e1354]
+          - img [ref=e1356]
+      - group "74 / 197" [ref=e1358]:
+        - generic [ref=e1359]:
+          - img "Real Home" [ref=e1360]
+          - img [ref=e1362]
+      - group "75 / 197" [ref=e1364]:
+        - generic [ref=e1365]:
+          - img "Real Home" [ref=e1366]
+          - img [ref=e1368]
+      - group "76 / 197" [ref=e1370]:
+        - generic [ref=e1371]:
+          - img "Real Home" [ref=e1372]
+          - img [ref=e1374]
+      - group "77 / 197" [ref=e1376]:
+        - generic [ref=e1377]:
+          - img "Real Home" [ref=e1378]
+          - img [ref=e1380]
+      - group "78 / 197" [ref=e1382]:
+        - generic [ref=e1383]:
+          - img "Real Home" [ref=e1384]
+          - img [ref=e1386]
+      - group "79 / 197" [ref=e1388]:
+        - generic [ref=e1389]:
+          - img "Real Home" [ref=e1390]
+          - img [ref=e1392]
+      - group "80 / 197" [ref=e1394]:
+        - generic [ref=e1395]:
+          - img "Real Home" [ref=e1396]
+          - img [ref=e1398]
+      - group "81 / 197" [ref=e1400]:
+        - generic [ref=e1401]:
+          - img "Real Home" [ref=e1402]
+          - img [ref=e1404]
+      - group "82 / 197" [ref=e1406]:
+        - generic [ref=e1407]:
+          - img "Real Home" [ref=e1408]
+          - img [ref=e1410]
+      - group "83 / 197" [ref=e1412]:
+        - generic [ref=e1413]:
+          - img "Real Home" [ref=e1414]
+          - img [ref=e1416]
+      - group "84 / 197" [ref=e1418]:
+        - generic [ref=e1419]:
+          - img "Real Home" [ref=e1420]
+          - img [ref=e1422]
+      - group "85 / 197" [ref=e1424]:
+        - generic [ref=e1425]:
+          - img "Real Home" [ref=e1426]
+          - img [ref=e1428]
+      - group "86 / 197" [ref=e1430]:
+        - generic [ref=e1431]:
+          - img "Real Home" [ref=e1432]
+          - img [ref=e1434]
+      - group "87 / 197" [ref=e1436]:
+        - generic [ref=e1437]:
+          - img "Real Home" [ref=e1438]
+          - img [ref=e1440]
+      - group "88 / 197" [ref=e1442]:
+        - generic [ref=e1443]:
+          - img "Real Home" [ref=e1444]
+          - img [ref=e1446]
+      - group "89 / 197" [ref=e1448]:
+        - generic [ref=e1449]:
+          - img "Real Home" [ref=e1450]
+          - img [ref=e1452]
+      - group "90 / 197" [ref=e1454]:
+        - generic [ref=e1455]:
+          - img "Real Home" [ref=e1456]
+          - img [ref=e1458]
+      - group "91 / 197" [ref=e1460]:
+        - generic [ref=e1461]:
+          - img "Real Home" [ref=e1462]
+          - img [ref=e1464]
+      - group "92 / 197" [ref=e1466]:
+        - generic [ref=e1467]:
+          - img "Real Home" [ref=e1468]
+          - img [ref=e1470]
+      - group "93 / 197" [ref=e1472]:
+        - generic [ref=e1473]:
+          - img "Real Home" [ref=e1474]
+          - img [ref=e1476]
+      - group "94 / 197" [ref=e1478]:
+        - generic [ref=e1479]:
+          - img "Real Home" [ref=e1480]
+          - img [ref=e1482]
+      - group "95 / 197" [ref=e1484]:
+        - generic [ref=e1485]:
+          - img "Real Home" [ref=e1486]
+          - img [ref=e1488]
+      - group "96 / 197" [ref=e1490]:
+        - generic [ref=e1491]:
+          - img "Real Home" [ref=e1492]
+          - img [ref=e1494]
+      - group "97 / 197" [ref=e1496]:
+        - generic [ref=e1497]:
+          - img "Real Home" [ref=e1498]
+          - img [ref=e1500]
+      - group "98 / 197" [ref=e1502]:
+        - generic [ref=e1503]:
+          - img "Real Home" [ref=e1504]
+          - img [ref=e1506]
+      - group "99 / 197" [ref=e1508]:
+        - generic [ref=e1509]:
+          - img "Real Home" [ref=e1510]
+          - img [ref=e1512]
+      - group "100 / 197" [ref=e1514]:
+        - generic [ref=e1515]:
+          - img "Real Home" [ref=e1516]
+          - img [ref=e1518]
+      - group "101 / 197" [ref=e1520]:
+        - generic [ref=e1521]:
+          - img "Real Home" [ref=e1522]
+          - img [ref=e1524]
+      - group "102 / 197" [ref=e1526]:
+        - generic [ref=e1527]:
+          - img "Real Home" [ref=e1528]
+          - img [ref=e1530]
+      - group "103 / 197" [ref=e1532]:
+        - generic [ref=e1533]:
+          - img "Real Home" [ref=e1534]
+          - img [ref=e1536]
+      - group "104 / 197" [ref=e1538]:
+        - generic [ref=e1539]:
+          - img "Real Home" [ref=e1540]
+          - img [ref=e1542]
+      - group "105 / 197" [ref=e1544]:
+        - generic [ref=e1545]:
+          - img "Real Home" [ref=e1546]
+          - img [ref=e1548]
+      - group "106 / 197" [ref=e1550]:
+        - generic [ref=e1551]:
+          - img "Real Home" [ref=e1552]
+          - img [ref=e1554]
+      - group "107 / 197" [ref=e1556]:
+        - generic [ref=e1557]:
+          - img "Real Home" [ref=e1558]
+          - img [ref=e1560]
+      - group "108 / 197" [ref=e1562]:
+        - generic [ref=e1563]:
+          - img "Real Home" [ref=e1564]
+          - img [ref=e1566]
+      - group "109 / 197" [ref=e1568]:
+        - generic [ref=e1569]:
+          - img "Real Home" [ref=e1570]
+          - img [ref=e1572]
+      - group "110 / 197" [ref=e1574]:
+        - generic [ref=e1575]:
+          - img "Real Home" [ref=e1576]
+          - img [ref=e1578]
+      - group "111 / 197" [ref=e1580]:
+        - generic [ref=e1581]:
+          - img "Real Home" [ref=e1582]
+          - img [ref=e1584]
+      - group "112 / 197" [ref=e1586]:
+        - generic [ref=e1587]:
+          - img "Real Home" [ref=e1588]
+          - img [ref=e1590]
+      - group "113 / 197" [ref=e1592]:
+        - generic [ref=e1593]:
+          - img "Real Home" [ref=e1594]
+          - img [ref=e1596]
+      - group "114 / 197" [ref=e1598]:
+        - generic [ref=e1599]:
+          - img "Real Home" [ref=e1600]
+          - img [ref=e1602]
+      - group "115 / 197" [ref=e1604]:
+        - generic [ref=e1605]:
+          - img "Real Home" [ref=e1606]
+          - img [ref=e1608]
+      - group "116 / 197" [ref=e1610]:
+        - generic [ref=e1611]:
+          - img "Real Home" [ref=e1612]
+          - img [ref=e1614]
+      - group "117 / 197" [ref=e1616]:
+        - generic [ref=e1617]:
+          - img "Real Home" [ref=e1618]
+          - img [ref=e1620]
+      - group "118 / 197" [ref=e1622]:
+        - generic [ref=e1623]:
+          - img "Real Home" [ref=e1624]
+          - img [ref=e1626]
+      - group "119 / 197" [ref=e1628]:
+        - generic [ref=e1629]:
+          - img "Real Home" [ref=e1630]
+          - img [ref=e1632]
+      - group "120 / 197" [ref=e1634]:
+        - generic [ref=e1635]:
+          - img "Real Home" [ref=e1636]
+          - img [ref=e1638]
+      - group "121 / 197" [ref=e1640]:
+        - generic [ref=e1641]:
+          - img "Real Home" [ref=e1642]
+          - img [ref=e1644]
+      - group "122 / 197" [ref=e1646]:
+        - generic [ref=e1647]:
+          - img "Real Home" [ref=e1648]
+          - img [ref=e1650]
+      - group "123 / 197" [ref=e1652]:
+        - generic [ref=e1653]:
+          - img "Real Home" [ref=e1654]
+          - img [ref=e1656]
+      - group "124 / 197" [ref=e1658]:
+        - generic [ref=e1659]:
+          - img "Real Home" [ref=e1660]
+          - img [ref=e1662]
+      - group "125 / 197" [ref=e1664]:
+        - generic [ref=e1665]:
+          - img "Real Home" [ref=e1666]
+          - img [ref=e1668]
+      - group "126 / 197" [ref=e1670]:
+        - generic [ref=e1671]:
+          - img "Real Home" [ref=e1672]
+          - img [ref=e1674]
+      - group "127 / 197" [ref=e1676]:
+        - generic [ref=e1677]:
+          - img "Real Home" [ref=e1678]
+          - img [ref=e1680]
+      - group "128 / 197" [ref=e1682]:
+        - generic [ref=e1683]:
+          - img "Real Home" [ref=e1684]
+          - img [ref=e1686]
+      - group "129 / 197" [ref=e1688]:
+        - generic [ref=e1689]:
+          - img "Real Home" [ref=e1690]
+          - img [ref=e1692]
+      - group "130 / 197" [ref=e1694]:
+        - generic [ref=e1695]:
+          - img "Real Home" [ref=e1696]
+          - img [ref=e1698]
+      - group "131 / 197" [ref=e1700]:
+        - generic [ref=e1701]:
+          - img "Real Home" [ref=e1702]
+          - img [ref=e1704]
+      - group "132 / 197" [ref=e1706]:
+        - generic [ref=e1707]:
+          - img "Real Home" [ref=e1708]
+          - img [ref=e1710]
+      - group "133 / 197" [ref=e1712]:
+        - generic [ref=e1713]:
+          - img "Real Home" [ref=e1714]
+          - img [ref=e1716]
+      - group "134 / 197" [ref=e1718]:
+        - generic [ref=e1719]:
+          - img "Real Home" [ref=e1720]
+          - img [ref=e1722]
+      - group "135 / 197" [ref=e1724]:
+        - generic [ref=e1725]:
+          - img "Real Home" [ref=e1726]
+          - img [ref=e1728]
+      - group "136 / 197" [ref=e1730]:
+        - generic [ref=e1731]:
+          - img "Real Home" [ref=e1732]
+          - img [ref=e1734]
+      - group "137 / 197" [ref=e1736]:
+        - generic [ref=e1737]:
+          - img "Real Home" [ref=e1738]
+          - img [ref=e1740]
+      - group "138 / 197" [ref=e1742]:
+        - generic [ref=e1743]:
+          - img "Real Home" [ref=e1744]
+          - img [ref=e1746]
+      - group "139 / 197" [ref=e1748]:
+        - generic [ref=e1749]:
+          - img "Real Home" [ref=e1750]
+          - img [ref=e1752]
+      - group "140 / 197" [ref=e1754]:
+        - generic [ref=e1755]:
+          - img "Real Home" [ref=e1756]
+          - img [ref=e1758]
+      - group "141 / 197" [ref=e1760]:
+        - generic [ref=e1761]:
+          - img "Real Home" [ref=e1762]
+          - img [ref=e1764]
+      - group "142 / 197" [ref=e1766]:
+        - generic [ref=e1767]:
+          - img "Real Home" [ref=e1768]
+          - img [ref=e1770]
+      - group "143 / 197" [ref=e1772]:
+        - generic [ref=e1773]:
+          - img "Real Home" [ref=e1774]
+          - img [ref=e1776]
+      - group "144 / 197" [ref=e1778]:
+        - generic [ref=e1779]:
+          - img "Real Home" [ref=e1780]
+          - img [ref=e1782]
+      - group "145 / 197" [ref=e1784]:
+        - generic [ref=e1785]:
+          - img "Real Home" [ref=e1786]
+          - img [ref=e1788]
+      - group "146 / 197" [ref=e1790]:
+        - generic [ref=e1791]:
+          - img "Real Home" [ref=e1792]
+          - img [ref=e1794]
+      - group "147 / 197" [ref=e1796]:
+        - generic [ref=e1797]:
+          - img "Real Home" [ref=e1798]
+          - img [ref=e1800]
+      - group "148 / 197" [ref=e1802]:
+        - generic [ref=e1803]:
+          - img "Real Home" [ref=e1804]
+          - img [ref=e1806]
+      - group "149 / 197" [ref=e1808]:
+        - generic [ref=e1809]:
+          - img "Real Home" [ref=e1810]
+          - img [ref=e1812]
+      - group "150 / 197" [ref=e1814]:
+        - generic [ref=e1815]:
+          - img "Real Home" [ref=e1816]
+          - img [ref=e1818]
+      - group "151 / 197" [ref=e1820]:
+        - generic [ref=e1821]:
+          - img "Real Home" [ref=e1822]
+          - img [ref=e1824]
+      - group "152 / 197" [ref=e1826]:
+        - generic [ref=e1827]:
+          - img "Real Home" [ref=e1828]
+          - img [ref=e1830]
+      - group "153 / 197" [ref=e1832]:
+        - generic [ref=e1833]:
+          - img "Real Home" [ref=e1834]
+          - img [ref=e1836]
+      - group "154 / 197" [ref=e1838]:
+        - generic [ref=e1839]:
+          - img "Real Home" [ref=e1840]
+          - img [ref=e1842]
+      - group "155 / 197" [ref=e1844]:
+        - generic [ref=e1845]:
+          - img "Real Home" [ref=e1846]
+          - img [ref=e1848]
+      - group "156 / 197" [ref=e1850]:
+        - generic [ref=e1851]:
+          - img "Real Home" [ref=e1852]
+          - img [ref=e1854]
+      - group "157 / 197" [ref=e1856]:
+        - generic [ref=e1857]:
+          - img "Real Home" [ref=e1858]
+          - img [ref=e1860]
+      - group "158 / 197" [ref=e1862]:
+        - generic [ref=e1863]:
+          - img "Real Home" [ref=e1864]
+          - img [ref=e1866]
+      - group "159 / 197" [ref=e1868]:
+        - generic [ref=e1869]:
+          - img "Real Home" [ref=e1870]
+          - img [ref=e1872]
+      - group "160 / 197" [ref=e1874]:
+        - generic [ref=e1875]:
+          - img "Real Home" [ref=e1876]
+          - img [ref=e1878]
+      - group "161 / 197" [ref=e1880]:
+        - generic [ref=e1881]:
+          - img "Real Home" [ref=e1882]
+          - img [ref=e1884]
+      - group "162 / 197" [ref=e1886]:
+        - generic [ref=e1887]:
+          - img "Real Home" [ref=e1888]
+          - img [ref=e1890]
+      - group "163 / 197" [ref=e1892]:
+        - generic [ref=e1893]:
+          - img "Real Home" [ref=e1894]
+          - img [ref=e1896]
+      - group "164 / 197" [ref=e1898]:
+        - generic [ref=e1899]:
+          - img "Real Home" [ref=e1900]
+          - img [ref=e1902]
+      - group "165 / 197" [ref=e1904]:
+        - generic [ref=e1905]:
+          - img "Real Home" [ref=e1906]
+          - img [ref=e1908]
+      - group "166 / 197" [ref=e1910]:
+        - generic [ref=e1911]:
+          - img "Real Home" [ref=e1912]
+          - img [ref=e1914]
+      - group "167 / 197" [ref=e1916]:
+        - generic [ref=e1917]:
+          - img "Real Home" [ref=e1918]
+          - img [ref=e1920]
+      - group "168 / 197" [ref=e1922]:
+        - generic [ref=e1923]:
+          - img "Real Home" [ref=e1924]
+          - img [ref=e1926]
+      - group "169 / 197" [ref=e1928]:
+        - generic [ref=e1929]:
+          - img "Real Home" [ref=e1930]
+          - img [ref=e1932]
+      - group "170 / 197" [ref=e1934]:
+        - generic [ref=e1935]:
+          - img "Real Home" [ref=e1936]
+          - img [ref=e1938]
+      - group "171 / 197" [ref=e1940]:
+        - generic [ref=e1941]:
+          - img "Real Home" [ref=e1942]
+          - img [ref=e1944]
+      - group "172 / 197" [ref=e1946]:
+        - generic [ref=e1947]:
+          - img "Real Home" [ref=e1948]
+          - img [ref=e1950]
+      - group "173 / 197" [ref=e1952]:
+        - generic [ref=e1953]:
+          - img "Real Home" [ref=e1954]
+          - img [ref=e1956]
+      - group "174 / 197" [ref=e1958]:
+        - generic [ref=e1959]:
+          - img "Real Home" [ref=e1960]
+          - img [ref=e1962]
+      - group "175 / 197" [ref=e1964]:
+        - generic [ref=e1965]:
+          - img "Real Home" [ref=e1966]
+          - img [ref=e1968]
+      - group "176 / 197" [ref=e1970]:
+        - generic [ref=e1971]:
+          - img "Real Home" [ref=e1972]
+          - img [ref=e1974]
+      - group "177 / 197" [ref=e1976]:
+        - generic [ref=e1977]:
+          - img "Real Home" [ref=e1978]
+          - img [ref=e1980]
+      - group "178 / 197" [ref=e1982]:
+        - generic [ref=e1983]:
+          - img "Real Home" [ref=e1984]
+          - img [ref=e1986]
+      - group "179 / 197" [ref=e1988]:
+        - generic [ref=e1989]:
+          - img "Real Home" [ref=e1990]
+          - img [ref=e1992]
+      - group "180 / 197" [ref=e1994]:
+        - generic [ref=e1995]:
+          - img "Real Home" [ref=e1996]
+          - img [ref=e1998]
+      - group "181 / 197" [ref=e2000]:
+        - generic [ref=e2001]:
+          - img "Real Home" [ref=e2002]
+          - img [ref=e2004]
+      - group "182 / 197" [ref=e2006]:
+        - generic [ref=e2007]:
+          - img "Real Home" [ref=e2008]
+          - img [ref=e2010]
+      - group "183 / 197" [ref=e2012]:
+        - generic [ref=e2013]:
+          - img "Real Home" [ref=e2014]
+          - img [ref=e2016]
+      - group "184 / 197" [ref=e2018]:
+        - generic [ref=e2019]:
+          - img "Real Home" [ref=e2020]
+          - img [ref=e2022]
+      - group "185 / 197" [ref=e2024]:
+        - generic [ref=e2025]:
+          - img "Real Home" [ref=e2026]
+          - img [ref=e2028]
+      - group "186 / 197" [ref=e2030]:
+        - generic [ref=e2031]:
+          - img "Real Home" [ref=e2032]
+          - img [ref=e2034]
+      - group "187 / 197" [ref=e2036]:
+        - generic [ref=e2037]:
+          - img "Real Home" [ref=e2038]
+          - img [ref=e2040]
+      - group "188 / 197" [ref=e2042]:
+        - generic [ref=e2043]:
+          - img "Real Home" [ref=e2044]
+          - img [ref=e2046]
+      - group "189 / 197" [ref=e2048]:
+        - generic [ref=e2049]:
+          - img "Real Home" [ref=e2050]
+          - img [ref=e2052]
+      - group "190 / 197" [ref=e2054]:
+        - generic [ref=e2055]:
+          - img "Real Home" [ref=e2056]
+          - img [ref=e2058]
+      - group "191 / 197" [ref=e2060]:
+        - generic [ref=e2061]:
+          - img "Real Home" [ref=e2062]
+          - img [ref=e2064]
+      - group "192 / 197" [ref=e2066]:
+        - generic [ref=e2067]:
+          - img "Real Home" [ref=e2068]
+          - img [ref=e2070]
+      - group "193 / 197" [ref=e2072]:
+        - generic [ref=e2073]:
+          - img "Real Home" [ref=e2074]
+          - img [ref=e2076]
+      - group "194 / 197" [ref=e2078]:
+        - generic [ref=e2079]:
+          - img "Real Home" [ref=e2080]
+          - img [ref=e2082]
+      - group "195 / 197" [ref=e2084]:
+        - generic [ref=e2085]:
+          - img "Real Home" [ref=e2086]
+          - img [ref=e2088]
+      - group "196 / 197" [ref=e2090]:
+        - generic [ref=e2091]:
+          - img "Real Home" [ref=e2092]
+          - img [ref=e2094]
+      - group "197 / 197" [ref=e2096]:
+        - generic [ref=e2097]:
+          - img "Real Home" [ref=e2098]
+          - img [ref=e2100]
+  - generic [ref=e2103]:
+    - paragraph [ref=e2104]: Recognition
+    - heading "Awards & Recognitions" [level=2] [ref=e2105]
+    - generic [ref=e2106]:
+      - generic [ref=e2107]:
+        - generic [ref=e2108]: Best Design
+        - generic [ref=e2109]: Interior Awards 2025
+      - generic [ref=e2110]:
+        - generic [ref=e2111]: Top Brand
+        - generic [ref=e2112]: Decor Excellence 2024
+      - generic [ref=e2113]:
+        - generic [ref=e2114]: Innovation
+        - generic [ref=e2115]: Wall Art Awards 2024
+      - generic [ref=e2116]:
+        - generic [ref=e2117]: Customer Choice
+        - generic [ref=e2118]: Decor India 2023
+  - generic [ref=e2120]:
+    - heading "Join the Mahashanka Family" [level=2] [ref=e2121]
+    - paragraph [ref=e2122]: Subscribe for exclusive offers, new arrivals, and interior design inspiration delivered to your inbox.
+    - generic [ref=e2123]:
+      - textbox "Your email address" [ref=e2124]
+      - button "Subscribe" [ref=e2125] [cursor=pointer]
+  - contentinfo [ref=e2126]:
+    - generic [ref=e2128]:
+      - generic [ref=e2129]:
+        - img [ref=e2130]
+        - generic [ref=e2132]: Worldwide Delivery
+      - generic [ref=e2133]:
+        - img [ref=e2134]
+        - generic [ref=e2136]: Easy Returns
+      - generic [ref=e2137]:
+        - img [ref=e2138]
+        - generic [ref=e2140]: Secure Payment
+      - generic [ref=e2141]:
+        - img [ref=e2142]
+        - generic [ref=e2144]: Authentic Products
+    - generic [ref=e2145]:
+      - generic [ref=e2146]:
+        - generic [ref=e2147]:
+          - text: Mahashanka
+          - generic [ref=e2148]: Decor
+        - paragraph [ref=e2149]: Premium wallpapers, wall murals, and home decor that transform your space into a masterpiece. Curated for modern Indian homes.
+        - generic [ref=e2150]:
+          - link [ref=e2151] [cursor=pointer]:
+            - /url: "#"
+            - img [ref=e2152]
+          - link [ref=e2154] [cursor=pointer]:
+            - /url: "#"
+            - img [ref=e2155]
+          - link [ref=e2157] [cursor=pointer]:
+            - /url: "#"
+            - img [ref=e2158]
+          - link [ref=e2160] [cursor=pointer]:
+            - /url: "#"
+            - img [ref=e2161]
+      - generic [ref=e2163]:
+        - heading "Shop" [level=4] [ref=e2164]
+        - list [ref=e2165]:
+          - listitem [ref=e2166]:
+            - link "Wall Murals" [ref=e2167] [cursor=pointer]:
+              - /url: /category/wall-murals/
+          - listitem [ref=e2168]:
+            - link "Wallpaper Rolls" [ref=e2169] [cursor=pointer]:
+              - /url: /category/wallpaper-rolls/
+          - listitem [ref=e2170]:
+            - link "Paintings & Wallart" [ref=e2171] [cursor=pointer]:
+              - /url: /category/paintings-and-wallart/
+          - listitem [ref=e2172]:
+            - link "Glass Mosaic Tiles" [ref=e2173] [cursor=pointer]:
+              - /url: /category/glass-mosaic-tiles/
+          - listitem [ref=e2174]:
+            - link "Home Decor" [ref=e2175] [cursor=pointer]:
+              - /url: /category/home-decor/
+          - listitem [ref=e2176]:
+            - link "Self Adhesive" [ref=e2177] [cursor=pointer]:
+              - /url: /category/self-adhesive-wallpaper/
+      - generic [ref=e2178]:
+        - heading "Help" [level=4] [ref=e2179]
+        - list [ref=e2180]:
+          - listitem [ref=e2181]:
+            - link "Shipping Policy" [ref=e2182] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=e2183]:
+            - link "Returns & Refunds" [ref=e2184] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=e2185]:
+            - link "FAQ" [ref=e2186] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=e2187]:
+            - link "Track Your Order" [ref=e2188] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=e2189]:
+            - link "Contact Us" [ref=e2190] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=e2191]:
+            - link "Privacy Policy" [ref=e2192] [cursor=pointer]:
+              - /url: "#"
+      - generic [ref=e2193]:
+        - heading "Get in Touch" [level=4] [ref=e2194]
+        - list [ref=e2195]:
+          - listitem [ref=e2196]:
+            - img [ref=e2197]
+            - generic [ref=e2200]: "Studio: Mumbai · Delhi · Bangalore"
+          - listitem [ref=e2201]:
+            - img [ref=e2202]
+            - generic [ref=e2204]: +91 98765 43210
+          - listitem [ref=e2205]:
+            - img [ref=e2206]
+            - generic [ref=e2208]: hello@mahashanka.com
+    - paragraph [ref=e2210]: © 2026 Mahashanka Decor. Premium wallpapers, murals & home decor. All rights reserved.
+  - button "1" [ref=e2212] [cursor=pointer]:
+    - img [ref=e2213]
+    - generic [ref=e2215]: "1"

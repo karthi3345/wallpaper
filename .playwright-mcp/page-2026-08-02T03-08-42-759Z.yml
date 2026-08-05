@@ -1,0 +1,987 @@
+- generic [active] [ref=e1]:
+  - paragraph [ref=e3]: ✦ Free shipping on orders above ₹5,000 · 500+ Premium Designs · Pan‑India Delivery ✦
+  - banner [ref=e4]:
+    - generic [ref=e6]:
+      - link "Mahashanka Decor" [ref=e7] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e8]:
+          - text: Mahashanka
+          - generic [ref=e9]: Decor
+      - generic [ref=e10]:
+        - button [ref=e11] [cursor=pointer]:
+          - img [ref=e12]
+        - link [ref=e14] [cursor=pointer]:
+          - /url: /cart/
+          - img [ref=e15]
+        - button [ref=e17] [cursor=pointer]:
+          - img [ref=e18]
+  - generic [ref=e21]:
+    - generic [ref=e22]:
+      - link "Home" [ref=e23] [cursor=pointer]:
+        - /url: /
+      - generic [ref=e24]: /
+      - link "Shop" [ref=e25] [cursor=pointer]:
+        - /url: /shop/
+    - generic [ref=e26]:
+      - heading "All Products" [level=1] [ref=e27]
+      - paragraph [ref=e28]: 80 products found
+    - generic [ref=e30]:
+      - generic [ref=e31]:
+        - button "Filters" [ref=e32] [cursor=pointer]
+        - generic [ref=e33]:
+          - generic [ref=e34]: "Sort by:"
+          - combobox [ref=e35]:
+            - option "Newest" [selected]
+            - 'option "Price: Low to High"'
+            - 'option "Price: High to Low"'
+            - option "Name A-Z"
+      - generic [ref=e36]:
+        - link "Self Adhesive Wallpaper — Pearl White -13% Add to Cart Self Adhesive Wallpaper Self Adhesive Wallpaper — Pearl White ₹2,000/sqft ₹2,300" [ref=e38] [cursor=pointer]:
+          - /url: /product/self-adhesive-wallpaper-pearl-white-80/
+          - generic [ref=e39]:
+            - img "Self Adhesive Wallpaper — Pearl White" [ref=e40]
+            - generic [ref=e41]: "-13%"
+            - button "Add to Cart" [ref=e44]
+          - generic [ref=e45]:
+            - paragraph [ref=e46]: Self Adhesive Wallpaper
+            - heading "Self Adhesive Wallpaper — Pearl White" [level=3] [ref=e47]
+            - generic [ref=e48]:
+              - generic [ref=e49]: ₹2,000/sqft
+              - generic [ref=e50]: ₹2,300
+        - link "Self Adhesive Wallpaper Collection — Gold Leaf Add to Cart Self Adhesive Wallpaper Self Adhesive Wallpaper Collection — Gold Leaf ₹500/sqft" [ref=e52] [cursor=pointer]:
+          - /url: /product/self-adhesive-wallpaper-collection-gold-leaf-79/
+          - generic [ref=e53]:
+            - img "Self Adhesive Wallpaper Collection — Gold Leaf" [ref=e54]
+            - button "Add to Cart" [ref=e57]
+          - generic [ref=e58]:
+            - paragraph [ref=e59]: Self Adhesive Wallpaper
+            - heading "Self Adhesive Wallpaper Collection — Gold Leaf" [level=3] [ref=e60]
+            - generic [ref=e62]: ₹500/sqft
+        - link "Self Adhesive Wallpaper Collection — Gold Leaf Add to Cart Self Adhesive Wallpaper Self Adhesive Wallpaper Collection — Gold Leaf ₹2,000/sqft" [ref=e64] [cursor=pointer]:
+          - /url: /product/self-adhesive-wallpaper-collection-gold-leaf-78/
+          - generic [ref=e65]:
+            - img "Self Adhesive Wallpaper Collection — Gold Leaf" [ref=e66]
+            - button "Add to Cart" [ref=e69]
+          - generic [ref=e70]:
+            - paragraph [ref=e71]: Self Adhesive Wallpaper
+            - heading "Self Adhesive Wallpaper Collection — Gold Leaf" [level=3] [ref=e72]
+            - generic [ref=e74]: ₹2,000/sqft
+        - link "Self Adhesive Wallpaper — Terracotta -10% Add to Cart Self Adhesive Wallpaper Self Adhesive Wallpaper — Terracotta ₹900/sqft ₹1,000" [ref=e76] [cursor=pointer]:
+          - /url: /product/self-adhesive-wallpaper-terracotta-77/
+          - generic [ref=e77]:
+            - img "Self Adhesive Wallpaper — Terracotta" [ref=e78]
+            - generic [ref=e79]: "-10%"
+            - button "Add to Cart" [ref=e82]
+          - generic [ref=e83]:
+            - paragraph [ref=e84]: Self Adhesive Wallpaper
+            - heading "Self Adhesive Wallpaper — Terracotta" [level=3] [ref=e85]
+            - generic [ref=e86]:
+              - generic [ref=e87]: ₹900/sqft
+              - generic [ref=e88]: ₹1,000
+        - link "Self Adhesive Wallpaper — Sapphire Mist -11% Add to Cart Self Adhesive Wallpaper Self Adhesive Wallpaper — Sapphire Mist ₹750/sqft ₹850" [ref=e90] [cursor=pointer]:
+          - /url: /product/self-adhesive-wallpaper-sapphire-mist-76/
+          - generic [ref=e91]:
+            - img "Self Adhesive Wallpaper — Sapphire Mist" [ref=e92]
+            - generic [ref=e93]: "-11%"
+            - button "Add to Cart" [ref=e96]
+          - generic [ref=e97]:
+            - paragraph [ref=e98]: Self Adhesive Wallpaper
+            - heading "Self Adhesive Wallpaper — Sapphire Mist" [level=3] [ref=e99]
+            - generic [ref=e100]:
+              - generic [ref=e101]: ₹750/sqft
+              - generic [ref=e102]: ₹850
+        - link "Home Decor Collection — Rose Quartz Add to Cart Home Decor Home Decor Collection — Rose Quartz ₹1,200" [ref=e104] [cursor=pointer]:
+          - /url: /product/home-decor-collection-rose-quartz-75/
+          - generic [ref=e105]:
+            - img "Home Decor Collection — Rose Quartz" [ref=e106]
+            - button "Add to Cart" [ref=e109]
+          - generic [ref=e110]:
+            - paragraph [ref=e111]: Home Decor
+            - heading "Home Decor Collection — Rose Quartz" [level=3] [ref=e112]
+            - generic [ref=e114]: ₹1,200
+        - link "Home Decor Collection — Forest Deep -7% Add to Cart Home Decor Home Decor Collection — Forest Deep ₹1,200 ₹1,300" [ref=e116] [cursor=pointer]:
+          - /url: /product/home-decor-collection-forest-deep-74/
+          - generic [ref=e117]:
+            - img "Home Decor Collection — Forest Deep" [ref=e118]
+            - generic [ref=e119]: "-7%"
+            - button "Add to Cart" [ref=e122]
+          - generic [ref=e123]:
+            - paragraph [ref=e124]: Home Decor
+            - heading "Home Decor Collection — Forest Deep" [level=3] [ref=e125]
+            - generic [ref=e126]:
+              - generic [ref=e127]: ₹1,200
+              - generic [ref=e128]: ₹1,300
+        - link "Home Decor — Charcoal Black Add to Cart Home Decor Home Decor — Charcoal Black ₹200" [ref=e130] [cursor=pointer]:
+          - /url: /product/home-decor-charcoal-black-73/
+          - generic [ref=e131]:
+            - img "Home Decor — Charcoal Black" [ref=e132]
+            - button "Add to Cart" [ref=e135]
+          - generic [ref=e136]:
+            - paragraph [ref=e137]: Home Decor
+            - heading "Home Decor — Charcoal Black" [level=3] [ref=e138]
+            - generic [ref=e140]: ₹200
+        - link "Home Decor Collection — Ocean Teal -13% Add to Cart Home Decor Home Decor Collection — Ocean Teal ₹2,000 ₹2,300" [ref=e142] [cursor=pointer]:
+          - /url: /product/home-decor-collection-ocean-teal-72/
+          - generic [ref=e143]:
+            - img "Home Decor Collection — Ocean Teal" [ref=e144]
+            - generic [ref=e145]: "-13%"
+            - button "Add to Cart" [ref=e148]
+          - generic [ref=e149]:
+            - paragraph [ref=e150]: Home Decor
+            - heading "Home Decor Collection — Ocean Teal" [level=3] [ref=e151]
+            - generic [ref=e152]:
+              - generic [ref=e153]: ₹2,000
+              - generic [ref=e154]: ₹2,300
+        - link "Home Decor Collection — Terracotta -18% Add to Cart Home Decor Home Decor Collection — Terracotta ₹900 ₹1,100" [ref=e156] [cursor=pointer]:
+          - /url: /product/home-decor-collection-terracotta-71/
+          - generic [ref=e157]:
+            - img "Home Decor Collection — Terracotta" [ref=e158]
+            - generic [ref=e159]: "-18%"
+            - button "Add to Cart" [ref=e162]
+          - generic [ref=e163]:
+            - paragraph [ref=e164]: Home Decor
+            - heading "Home Decor Collection — Terracotta" [level=3] [ref=e165]
+            - generic [ref=e166]:
+              - generic [ref=e167]: ₹900
+              - generic [ref=e168]: ₹1,100
+        - link "Glass Mosaic Tiles Collection — Antique Bronze Add to Cart Glass Mosaic Tiles Glass Mosaic Tiles Collection — Antique Bronze ₹750" [ref=e170] [cursor=pointer]:
+          - /url: /product/glass-mosaic-tiles-collection-antique-bronze-70/
+          - generic [ref=e171]:
+            - img "Glass Mosaic Tiles Collection — Antique Bronze" [ref=e172]
+            - button "Add to Cart" [ref=e175]
+          - generic [ref=e176]:
+            - paragraph [ref=e177]: Glass Mosaic Tiles
+            - heading "Glass Mosaic Tiles Collection — Antique Bronze" [level=3] [ref=e178]
+            - generic [ref=e180]: ₹750
+        - link "Glass Mosaic Tiles — Terracotta Add to Cart Glass Mosaic Tiles Glass Mosaic Tiles — Terracotta ₹200" [ref=e182] [cursor=pointer]:
+          - /url: /product/glass-mosaic-tiles-terracotta-69/
+          - generic [ref=e183]:
+            - img "Glass Mosaic Tiles — Terracotta" [ref=e184]
+            - button "Add to Cart" [ref=e187]
+          - generic [ref=e188]:
+            - paragraph [ref=e189]: Glass Mosaic Tiles
+            - heading "Glass Mosaic Tiles — Terracotta" [level=3] [ref=e190]
+            - generic [ref=e192]: ₹200
+        - link "Glass Mosaic Tiles Collection — Champagne Gold -7% Add to Cart Glass Mosaic Tiles Glass Mosaic Tiles Collection — Champagne Gold ₹1,200 ₹1,300" [ref=e194] [cursor=pointer]:
+          - /url: /product/glass-mosaic-tiles-collection-champagne-gold-68/
+          - generic [ref=e195]:
+            - img "Glass Mosaic Tiles Collection — Champagne Gold" [ref=e196]
+            - generic [ref=e197]: "-7%"
+            - button "Add to Cart" [ref=e200]
+          - generic [ref=e201]:
+            - paragraph [ref=e202]: Glass Mosaic Tiles
+            - heading "Glass Mosaic Tiles Collection — Champagne Gold" [level=3] [ref=e203]
+            - generic [ref=e204]:
+              - generic [ref=e205]: ₹1,200
+              - generic [ref=e206]: ₹1,300
+        - link "Glass Mosaic Tiles — Antique Bronze Add to Cart Glass Mosaic Tiles Glass Mosaic Tiles — Antique Bronze ₹200" [ref=e208] [cursor=pointer]:
+          - /url: /product/glass-mosaic-tiles-antique-bronze-67/
+          - generic [ref=e209]:
+            - img "Glass Mosaic Tiles — Antique Bronze" [ref=e210]
+            - button "Add to Cart" [ref=e213]
+          - generic [ref=e214]:
+            - paragraph [ref=e215]: Glass Mosaic Tiles
+            - heading "Glass Mosaic Tiles — Antique Bronze" [level=3] [ref=e216]
+            - generic [ref=e218]: ₹200
+        - link "Glass Mosaic Tiles — Champagne Gold Add to Cart Glass Mosaic Tiles Glass Mosaic Tiles — Champagne Gold ₹1,500" [ref=e220] [cursor=pointer]:
+          - /url: /product/glass-mosaic-tiles-champagne-gold-66/
+          - generic [ref=e221]:
+            - img "Glass Mosaic Tiles — Champagne Gold" [ref=e222]
+            - button "Add to Cart" [ref=e225]
+          - generic [ref=e226]:
+            - paragraph [ref=e227]: Glass Mosaic Tiles
+            - heading "Glass Mosaic Tiles — Champagne Gold" [level=3] [ref=e228]
+            - generic [ref=e230]: ₹1,500
+        - link "Paintings & Wallart Collection — Forest Deep Add to Cart Paintings & Wallart Paintings & Wallart Collection — Forest Deep ₹750" [ref=e232] [cursor=pointer]:
+          - /url: /product/paintings-wallart-collection-forest-deep-65/
+          - generic [ref=e233]:
+            - img "Paintings & Wallart Collection — Forest Deep" [ref=e234]
+            - button "Add to Cart" [ref=e237]
+          - generic [ref=e238]:
+            - paragraph [ref=e239]: Paintings & Wallart
+            - heading "Paintings & Wallart Collection — Forest Deep" [level=3] [ref=e240]
+            - generic [ref=e242]: ₹750
+        - link "Paintings & Wallart — Slate Gray Add to Cart Paintings & Wallart Paintings & Wallart — Slate Gray ₹900" [ref=e244] [cursor=pointer]:
+          - /url: /product/paintings-wallart-slate-gray-64/
+          - generic [ref=e245]:
+            - img "Paintings & Wallart — Slate Gray" [ref=e246]
+            - button "Add to Cart" [ref=e249]
+          - generic [ref=e250]:
+            - paragraph [ref=e251]: Paintings & Wallart
+            - heading "Paintings & Wallart — Slate Gray" [level=3] [ref=e252]
+            - generic [ref=e254]: ₹900
+        - link "Paintings & Wallart Collection — Ocean Teal -42% Add to Cart Paintings & Wallart Paintings & Wallart Collection — Ocean Teal ₹400 ₹700" [ref=e256] [cursor=pointer]:
+          - /url: /product/paintings-wallart-collection-ocean-teal-63/
+          - generic [ref=e257]:
+            - img "Paintings & Wallart Collection — Ocean Teal" [ref=e258]
+            - generic [ref=e259]: "-42%"
+            - button "Add to Cart" [ref=e262]
+          - generic [ref=e263]:
+            - paragraph [ref=e264]: Paintings & Wallart
+            - heading "Paintings & Wallart Collection — Ocean Teal" [level=3] [ref=e265]
+            - generic [ref=e266]:
+              - generic [ref=e267]: ₹400
+              - generic [ref=e268]: ₹700
+        - link "Paintings & Wallart Collection — Champagne Gold -50% Add to Cart Paintings & Wallart Paintings & Wallart Collection — Champagne Gold ₹300 ₹600" [ref=e270] [cursor=pointer]:
+          - /url: /product/paintings-wallart-collection-champagne-gold-62/
+          - generic [ref=e271]:
+            - img "Paintings & Wallart Collection — Champagne Gold" [ref=e272]
+            - generic [ref=e273]: "-50%"
+            - button "Add to Cart" [ref=e276]
+          - generic [ref=e277]:
+            - paragraph [ref=e278]: Paintings & Wallart
+            - heading "Paintings & Wallart Collection — Champagne Gold" [level=3] [ref=e279]
+            - generic [ref=e280]:
+              - generic [ref=e281]: ₹300
+              - generic [ref=e282]: ₹600
+        - link "Paintings & Wallart — Slate Gray -6% Add to Cart Paintings & Wallart Paintings & Wallart — Slate Gray ₹1,500 ₹1,600" [ref=e284] [cursor=pointer]:
+          - /url: /product/paintings-wallart-slate-gray-61/
+          - generic [ref=e285]:
+            - img "Paintings & Wallart — Slate Gray" [ref=e286]
+            - generic [ref=e287]: "-6%"
+            - button "Add to Cart" [ref=e290]
+          - generic [ref=e291]:
+            - paragraph [ref=e292]: Paintings & Wallart
+            - heading "Paintings & Wallart — Slate Gray" [level=3] [ref=e293]
+            - generic [ref=e294]:
+              - generic [ref=e295]: ₹1,500
+              - generic [ref=e296]: ₹1,600
+        - link "Texture Wallpaper Roll — Rose Quartz Add to Cart Texture Texture Wallpaper Roll — Rose Quartz ₹500" [ref=e298] [cursor=pointer]:
+          - /url: /product/texture-wallpaper-roll-rose-quartz-60/
+          - generic [ref=e299]:
+            - img "Texture Wallpaper Roll — Rose Quartz" [ref=e300]
+            - button "Add to Cart" [ref=e303]
+          - generic [ref=e304]:
+            - paragraph [ref=e305]: Texture
+            - heading "Texture Wallpaper Roll — Rose Quartz" [level=3] [ref=e306]
+            - generic [ref=e308]: ₹500
+        - link "Texture Designer Roll — Royal Blue Add to Cart Texture Texture Designer Roll — Royal Blue ₹900" [ref=e310] [cursor=pointer]:
+          - /url: /product/texture-designer-roll-royal-blue-59/
+          - generic [ref=e311]:
+            - img "Texture Designer Roll — Royal Blue" [ref=e312]
+            - button "Add to Cart" [ref=e315]
+          - generic [ref=e316]:
+            - paragraph [ref=e317]: Texture
+            - heading "Texture Designer Roll — Royal Blue" [level=3] [ref=e318]
+            - generic [ref=e320]: ₹900
+        - link "Texture Designer Roll — Burgundy Wine Add to Cart Texture Texture Designer Roll — Burgundy Wine ₹1,000" [ref=e322] [cursor=pointer]:
+          - /url: /product/texture-designer-roll-burgundy-wine-58/
+          - generic [ref=e323]:
+            - img "Texture Designer Roll — Burgundy Wine" [ref=e324]
+            - button "Add to Cart" [ref=e327]
+          - generic [ref=e328]:
+            - paragraph [ref=e329]: Texture
+            - heading "Texture Designer Roll — Burgundy Wine" [level=3] [ref=e330]
+            - generic [ref=e332]: ₹1,000
+        - link "Metallic Wallpaper Roll — Rose Quartz -16% Add to Cart Metallic Metallic Wallpaper Roll — Rose Quartz ₹1,500 ₹1,800" [ref=e334] [cursor=pointer]:
+          - /url: /product/metallic-wallpaper-roll-rose-quartz-57/
+          - generic [ref=e335]:
+            - img "Metallic Wallpaper Roll — Rose Quartz" [ref=e336]
+            - generic [ref=e337]: "-16%"
+            - button "Add to Cart" [ref=e340]
+          - generic [ref=e341]:
+            - paragraph [ref=e342]: Metallic
+            - heading "Metallic Wallpaper Roll — Rose Quartz" [level=3] [ref=e343]
+            - generic [ref=e344]:
+              - generic [ref=e345]: ₹1,500
+              - generic [ref=e346]: ₹1,800
+        - link "Metallic Designer Roll — Charcoal Black -62% Add to Cart Metallic Metallic Designer Roll — Charcoal Black ₹300 ₹800" [ref=e348] [cursor=pointer]:
+          - /url: /product/metallic-designer-roll-charcoal-black-56/
+          - generic [ref=e349]:
+            - img "Metallic Designer Roll — Charcoal Black" [ref=e350]
+            - generic [ref=e351]: "-62%"
+            - button "Add to Cart" [ref=e354]
+          - generic [ref=e355]:
+            - paragraph [ref=e356]: Metallic
+            - heading "Metallic Designer Roll — Charcoal Black" [level=3] [ref=e357]
+            - generic [ref=e358]:
+              - generic [ref=e359]: ₹300
+              - generic [ref=e360]: ₹800
+        - link "Metallic Designer Roll — Midnight Velvet Add to Cart Metallic Metallic Designer Roll — Midnight Velvet ₹250" [ref=e362] [cursor=pointer]:
+          - /url: /product/metallic-designer-roll-midnight-velvet-55/
+          - generic [ref=e363]:
+            - img "Metallic Designer Roll — Midnight Velvet" [ref=e364]
+            - button "Add to Cart" [ref=e367]
+          - generic [ref=e368]:
+            - paragraph [ref=e369]: Metallic
+            - heading "Metallic Designer Roll — Midnight Velvet" [level=3] [ref=e370]
+            - generic [ref=e372]: ₹250
+        - link "Kids Wallpaper Roll — Mauve Blush -45% Add to Cart Kids Kids Wallpaper Roll — Mauve Blush ₹120 ₹220" [ref=e374] [cursor=pointer]:
+          - /url: /product/kids-wallpaper-roll-mauve-blush-54/
+          - generic [ref=e375]:
+            - img "Kids Wallpaper Roll — Mauve Blush" [ref=e376]
+            - generic [ref=e377]: "-45%"
+            - button "Add to Cart" [ref=e380]
+          - generic [ref=e381]:
+            - paragraph [ref=e382]: Kids
+            - heading "Kids Wallpaper Roll — Mauve Blush" [level=3] [ref=e383]
+            - generic [ref=e384]:
+              - generic [ref=e385]: ₹120
+              - generic [ref=e386]: ₹220
+        - link "Kids Wallpaper Roll — Pearl White Add to Cart Kids Kids Wallpaper Roll — Pearl White ₹85" [ref=e388] [cursor=pointer]:
+          - /url: /product/kids-wallpaper-roll-pearl-white-53/
+          - generic [ref=e389]:
+            - img "Kids Wallpaper Roll — Pearl White" [ref=e390]
+            - button "Add to Cart" [ref=e393]
+          - generic [ref=e394]:
+            - paragraph [ref=e395]: Kids
+            - heading "Kids Wallpaper Roll — Pearl White" [level=3] [ref=e396]
+            - generic [ref=e398]: ₹85
+        - link "Kids Designer Roll — Champagne Gold Add to Cart Kids Kids Designer Roll — Champagne Gold ₹1,000" [ref=e400] [cursor=pointer]:
+          - /url: /product/kids-designer-roll-champagne-gold-52/
+          - generic [ref=e401]:
+            - img "Kids Designer Roll — Champagne Gold" [ref=e402]
+            - button "Add to Cart" [ref=e405]
+          - generic [ref=e406]:
+            - paragraph [ref=e407]: Kids
+            - heading "Kids Designer Roll — Champagne Gold" [level=3] [ref=e408]
+            - generic [ref=e410]: ₹1,000
+        - link "Abstract Wallpaper Roll — Sapphire Mist -46% Add to Cart Abstract Abstract Wallpaper Roll — Sapphire Mist ₹350 ₹650" [ref=e412] [cursor=pointer]:
+          - /url: /product/abstract-wallpaper-roll-sapphire-mist-51/
+          - generic [ref=e413]:
+            - img "Abstract Wallpaper Roll — Sapphire Mist" [ref=e414]
+            - generic [ref=e415]: "-46%"
+            - button "Add to Cart" [ref=e418]
+          - generic [ref=e419]:
+            - paragraph [ref=e420]: Abstract
+            - heading "Abstract Wallpaper Roll — Sapphire Mist" [level=3] [ref=e421]
+            - generic [ref=e422]:
+              - generic [ref=e423]: ₹350
+              - generic [ref=e424]: ₹650
+        - link "Abstract Designer Roll — Ivory Cream -40% Add to Cart Abstract Abstract Designer Roll — Ivory Cream ₹300 ₹500" [ref=e426] [cursor=pointer]:
+          - /url: /product/abstract-designer-roll-ivory-cream-50/
+          - generic [ref=e427]:
+            - img "Abstract Designer Roll — Ivory Cream" [ref=e428]
+            - generic [ref=e429]: "-40%"
+            - button "Add to Cart" [ref=e432]
+          - generic [ref=e433]:
+            - paragraph [ref=e434]: Abstract
+            - heading "Abstract Designer Roll — Ivory Cream" [level=3] [ref=e435]
+            - generic [ref=e436]:
+              - generic [ref=e437]: ₹300
+              - generic [ref=e438]: ₹500
+        - link "Abstract Wallpaper Roll — Midnight Velvet Add to Cart Abstract Abstract Wallpaper Roll — Midnight Velvet ₹250" [ref=e440] [cursor=pointer]:
+          - /url: /product/abstract-wallpaper-roll-midnight-velvet-49/
+          - generic [ref=e441]:
+            - img "Abstract Wallpaper Roll — Midnight Velvet" [ref=e442]
+            - button "Add to Cart" [ref=e445]
+          - generic [ref=e446]:
+            - paragraph [ref=e447]: Abstract
+            - heading "Abstract Wallpaper Roll — Midnight Velvet" [level=3] [ref=e448]
+            - generic [ref=e450]: ₹250
+        - link "Floral Wallpaper Roll — Ivory Cream -16% Add to Cart Floral Floral Wallpaper Roll — Ivory Cream ₹500 ₹600" [ref=e452] [cursor=pointer]:
+          - /url: /product/floral-wallpaper-roll-ivory-cream-48/
+          - generic [ref=e453]:
+            - img "Floral Wallpaper Roll — Ivory Cream" [ref=e454]
+            - generic [ref=e455]: "-16%"
+            - button "Add to Cart" [ref=e458]
+          - generic [ref=e459]:
+            - paragraph [ref=e460]: Floral
+            - heading "Floral Wallpaper Roll — Ivory Cream" [level=3] [ref=e461]
+            - generic [ref=e462]:
+              - generic [ref=e463]: ₹500
+              - generic [ref=e464]: ₹600
+        - link "Floral Designer Roll — Ivory Cream Add to Cart Floral Floral Designer Roll — Ivory Cream ₹350" [ref=e466] [cursor=pointer]:
+          - /url: /product/floral-designer-roll-ivory-cream-47/
+          - generic [ref=e467]:
+            - img "Floral Designer Roll — Ivory Cream" [ref=e468]
+            - button "Add to Cart" [ref=e471]
+          - generic [ref=e472]:
+            - paragraph [ref=e473]: Floral
+            - heading "Floral Designer Roll — Ivory Cream" [level=3] [ref=e474]
+            - generic [ref=e476]: ₹350
+        - link "Floral Designer Roll — Pearl White -6% Add to Cart Floral Floral Designer Roll — Pearl White ₹1,500 ₹1,600" [ref=e478] [cursor=pointer]:
+          - /url: /product/floral-designer-roll-pearl-white-46/
+          - generic [ref=e479]:
+            - img "Floral Designer Roll — Pearl White" [ref=e480]
+            - generic [ref=e481]: "-6%"
+            - button "Add to Cart" [ref=e484]
+          - generic [ref=e485]:
+            - paragraph [ref=e486]: Floral
+            - heading "Floral Designer Roll — Pearl White" [level=3] [ref=e487]
+            - generic [ref=e488]:
+              - generic [ref=e489]: ₹1,500
+              - generic [ref=e490]: ₹1,600
+        - link "Office Designer Roll — Ocean Teal -60% Add to Cart Office Office Designer Roll — Ocean Teal ₹200 ₹500" [ref=e492] [cursor=pointer]:
+          - /url: /product/office-designer-roll-ocean-teal-45/
+          - generic [ref=e493]:
+            - img "Office Designer Roll — Ocean Teal" [ref=e494]
+            - generic [ref=e495]: "-60%"
+            - button "Add to Cart" [ref=e498]
+          - generic [ref=e499]:
+            - paragraph [ref=e500]: Office
+            - heading "Office Designer Roll — Ocean Teal" [level=3] [ref=e501]
+            - generic [ref=e502]:
+              - generic [ref=e503]: ₹200
+              - generic [ref=e504]: ₹500
+        - link "Office Wallpaper Roll — Slate Gray Add to Cart Office Office Wallpaper Roll — Slate Gray ₹3,000" [ref=e506] [cursor=pointer]:
+          - /url: /product/office-wallpaper-roll-slate-gray-44/
+          - generic [ref=e507]:
+            - img "Office Wallpaper Roll — Slate Gray" [ref=e508]
+            - button "Add to Cart" [ref=e511]
+          - generic [ref=e512]:
+            - paragraph [ref=e513]: Office
+            - heading "Office Wallpaper Roll — Slate Gray" [level=3] [ref=e514]
+            - generic [ref=e516]: ₹3,000
+        - link "Office Designer Roll — Gold Leaf Add to Cart Office Office Designer Roll — Gold Leaf ₹350" [ref=e518] [cursor=pointer]:
+          - /url: /product/office-designer-roll-gold-leaf-43/
+          - generic [ref=e519]:
+            - img "Office Designer Roll — Gold Leaf" [ref=e520]
+            - button "Add to Cart" [ref=e523]
+          - generic [ref=e524]:
+            - paragraph [ref=e525]: Office
+            - heading "Office Designer Roll — Gold Leaf" [level=3] [ref=e526]
+            - generic [ref=e528]: ₹350
+        - link "Damask Designer Roll — Terracotta Add to Cart Damask Damask Designer Roll — Terracotta ₹600" [ref=e530] [cursor=pointer]:
+          - /url: /product/damask-designer-roll-terracotta-42/
+          - generic [ref=e531]:
+            - img "Damask Designer Roll — Terracotta" [ref=e532]
+            - button "Add to Cart" [ref=e535]
+          - generic [ref=e536]:
+            - paragraph [ref=e537]: Damask
+            - heading "Damask Designer Roll — Terracotta" [level=3] [ref=e538]
+            - generic [ref=e540]: ₹600
+        - link "Damask Designer Roll — Desert Sand -71% Add to Cart Damask Damask Designer Roll — Desert Sand ₹200 ₹700" [ref=e542] [cursor=pointer]:
+          - /url: /product/damask-designer-roll-desert-sand-41/
+          - generic [ref=e543]:
+            - img "Damask Designer Roll — Desert Sand" [ref=e544]
+            - generic [ref=e545]: "-71%"
+            - button "Add to Cart" [ref=e548]
+          - generic [ref=e549]:
+            - paragraph [ref=e550]: Damask
+            - heading "Damask Designer Roll — Desert Sand" [level=3] [ref=e551]
+            - generic [ref=e552]:
+              - generic [ref=e553]: ₹200
+              - generic [ref=e554]: ₹700
+        - link "Damask Designer Roll — Forest Deep Add to Cart Damask Damask Designer Roll — Forest Deep ₹600" [ref=e556] [cursor=pointer]:
+          - /url: /product/damask-designer-roll-forest-deep-40/
+          - generic [ref=e557]:
+            - img "Damask Designer Roll — Forest Deep" [ref=e558]
+            - button "Add to Cart" [ref=e561]
+          - generic [ref=e562]:
+            - paragraph [ref=e563]: Damask
+            - heading "Damask Designer Roll — Forest Deep" [level=3] [ref=e564]
+            - generic [ref=e566]: ₹600
+        - link "Luxury Series Wallpaper Roll — Ivory Cream -80% Add to Cart Luxury Series Luxury Series Wallpaper Roll — Ivory Cream ₹120 ₹620" [ref=e568] [cursor=pointer]:
+          - /url: /product/luxury-series-wallpaper-roll-ivory-cream-39/
+          - generic [ref=e569]:
+            - img "Luxury Series Wallpaper Roll — Ivory Cream" [ref=e570]
+            - generic [ref=e571]: "-80%"
+            - button "Add to Cart" [ref=e574]
+          - generic [ref=e575]:
+            - paragraph [ref=e576]: Luxury Series
+            - heading "Luxury Series Wallpaper Roll — Ivory Cream" [level=3] [ref=e577]
+            - generic [ref=e578]:
+              - generic [ref=e579]: ₹120
+              - generic [ref=e580]: ₹620
+        - link "Luxury Series Wallpaper Roll — Slate Gray -50% Add to Cart Luxury Series Luxury Series Wallpaper Roll — Slate Gray ₹300 ₹600" [ref=e582] [cursor=pointer]:
+          - /url: /product/luxury-series-wallpaper-roll-slate-gray-38/
+          - generic [ref=e583]:
+            - img "Luxury Series Wallpaper Roll — Slate Gray" [ref=e584]
+            - generic [ref=e585]: "-50%"
+            - button "Add to Cart" [ref=e588]
+          - generic [ref=e589]:
+            - paragraph [ref=e590]: Luxury Series
+            - heading "Luxury Series Wallpaper Roll — Slate Gray" [level=3] [ref=e591]
+            - generic [ref=e592]:
+              - generic [ref=e593]: ₹300
+              - generic [ref=e594]: ₹600
+        - link "Luxury Series Wallpaper Roll — Burgundy Wine Add to Cart Luxury Series Luxury Series Wallpaper Roll — Burgundy Wine ₹150" [ref=e596] [cursor=pointer]:
+          - /url: /product/luxury-series-wallpaper-roll-burgundy-wine-37/
+          - generic [ref=e597]:
+            - img "Luxury Series Wallpaper Roll — Burgundy Wine" [ref=e598]
+            - button "Add to Cart" [ref=e601]
+          - generic [ref=e602]:
+            - paragraph [ref=e603]: Luxury Series
+            - heading "Luxury Series Wallpaper Roll — Burgundy Wine" [level=3] [ref=e604]
+            - generic [ref=e606]: ₹150
+        - link "Peacock Designer Mural — Emerald Green -85% Add to Cart Peacock Peacock Designer Mural — Emerald Green ₹85/sqft ₹585" [ref=e608] [cursor=pointer]:
+          - /url: /product/peacock-designer-mural-emerald-green-36/
+          - generic [ref=e609]:
+            - img "Peacock Designer Mural — Emerald Green" [ref=e610]
+            - generic [ref=e611]: "-85%"
+            - button "Add to Cart" [ref=e614]
+          - generic [ref=e615]:
+            - paragraph [ref=e616]: Peacock
+            - heading "Peacock Designer Mural — Emerald Green" [level=3] [ref=e617]
+            - generic [ref=e618]:
+              - generic [ref=e619]: ₹85/sqft
+              - generic [ref=e620]: ₹585
+        - link "Peacock Wall Art — Midnight Velvet Add to Cart Peacock Peacock Wall Art — Midnight Velvet ₹200/sqft" [ref=e622] [cursor=pointer]:
+          - /url: /product/peacock-wall-art-midnight-velvet-35/
+          - generic [ref=e623]:
+            - img "Peacock Wall Art — Midnight Velvet" [ref=e624]
+            - button "Add to Cart" [ref=e627]
+          - generic [ref=e628]:
+            - paragraph [ref=e629]: Peacock
+            - heading "Peacock Wall Art — Midnight Velvet" [level=3] [ref=e630]
+            - generic [ref=e632]: ₹200/sqft
+        - link "Peacock Mural — Pearl White Add to Cart Peacock Peacock Mural — Pearl White ₹250/sqft" [ref=e634] [cursor=pointer]:
+          - /url: /product/peacock-mural-pearl-white-34/
+          - generic [ref=e635]:
+            - img "Peacock Mural — Pearl White" [ref=e636]
+            - button "Add to Cart" [ref=e639]
+          - generic [ref=e640]:
+            - paragraph [ref=e641]: Peacock
+            - heading "Peacock Mural — Pearl White" [level=3] [ref=e642]
+            - generic [ref=e644]: ₹250/sqft
+        - link "3D Wallmural Mural — Ocean Teal -14% Add to Cart 3D Wallmural 3D Wallmural Mural — Ocean Teal ₹3,000/sqft ₹3,500" [ref=e646] [cursor=pointer]:
+          - /url: /product/3d-wallmural-mural-ocean-teal-33/
+          - generic [ref=e647]:
+            - img "3D Wallmural Mural — Ocean Teal" [ref=e648]
+            - generic [ref=e649]: "-14%"
+            - button "Add to Cart" [ref=e652]
+          - generic [ref=e653]:
+            - paragraph [ref=e654]: 3D Wallmural
+            - heading "3D Wallmural Mural — Ocean Teal" [level=3] [ref=e655]
+            - generic [ref=e656]:
+              - generic [ref=e657]: ₹3,000/sqft
+              - generic [ref=e658]: ₹3,500
+        - link "3D Wallmural Designer Mural — Pearl White -25% Add to Cart 3D Wallmural 3D Wallmural Designer Mural — Pearl White ₹900/sqft ₹1,200" [ref=e660] [cursor=pointer]:
+          - /url: /product/3d-wallmural-designer-mural-pearl-white-32/
+          - generic [ref=e661]:
+            - img "3D Wallmural Designer Mural — Pearl White" [ref=e662]
+            - generic [ref=e663]: "-25%"
+            - button "Add to Cart" [ref=e666]
+          - generic [ref=e667]:
+            - paragraph [ref=e668]: 3D Wallmural
+            - heading "3D Wallmural Designer Mural — Pearl White" [level=3] [ref=e669]
+            - generic [ref=e670]:
+              - generic [ref=e671]: ₹900/sqft
+              - generic [ref=e672]: ₹1,200
+        - link "3D Wallmural Wall Art — Rose Quartz Add to Cart 3D Wallmural 3D Wallmural Wall Art — Rose Quartz ₹500/sqft" [ref=e674] [cursor=pointer]:
+          - /url: /product/3d-wallmural-wall-art-rose-quartz-31/
+          - generic [ref=e675]:
+            - img "3D Wallmural Wall Art — Rose Quartz" [ref=e676]
+            - button "Add to Cart" [ref=e679]
+          - generic [ref=e680]:
+            - paragraph [ref=e681]: 3D Wallmural
+            - heading "3D Wallmural Wall Art — Rose Quartz" [level=3] [ref=e682]
+            - generic [ref=e684]: ₹500/sqft
+        - link "Seamless Designer Mural — Terracotta -22% Add to Cart Seamless Seamless Designer Mural — Terracotta ₹350/sqft ₹450" [ref=e686] [cursor=pointer]:
+          - /url: /product/seamless-designer-mural-terracotta-30/
+          - generic [ref=e687]:
+            - img "Seamless Designer Mural — Terracotta" [ref=e688]
+            - generic [ref=e689]: "-22%"
+            - button "Add to Cart" [ref=e692]
+          - generic [ref=e693]:
+            - paragraph [ref=e694]: Seamless
+            - heading "Seamless Designer Mural — Terracotta" [level=3] [ref=e695]
+            - generic [ref=e696]:
+              - generic [ref=e697]: ₹350/sqft
+              - generic [ref=e698]: ₹450
+        - link "Seamless Wall Art — Mauve Blush -16% Add to Cart Seamless Seamless Wall Art — Mauve Blush ₹1,500/sqft ₹1,800" [ref=e700] [cursor=pointer]:
+          - /url: /product/seamless-wall-art-mauve-blush-29/
+          - generic [ref=e701]:
+            - img "Seamless Wall Art — Mauve Blush" [ref=e702]
+            - generic [ref=e703]: "-16%"
+            - button "Add to Cart" [ref=e706]
+          - generic [ref=e707]:
+            - paragraph [ref=e708]: Seamless
+            - heading "Seamless Wall Art — Mauve Blush" [level=3] [ref=e709]
+            - generic [ref=e710]:
+              - generic [ref=e711]: ₹1,500/sqft
+              - generic [ref=e712]: ₹1,800
+        - link "Seamless Wall Art — Emerald Green -46% Add to Cart Seamless Seamless Wall Art — Emerald Green ₹350/sqft ₹650" [ref=e714] [cursor=pointer]:
+          - /url: /product/seamless-wall-art-emerald-green-28/
+          - generic [ref=e715]:
+            - img "Seamless Wall Art — Emerald Green" [ref=e716]
+            - generic [ref=e717]: "-46%"
+            - button "Add to Cart" [ref=e720]
+          - generic [ref=e721]:
+            - paragraph [ref=e722]: Seamless
+            - heading "Seamless Wall Art — Emerald Green" [level=3] [ref=e723]
+            - generic [ref=e724]:
+              - generic [ref=e725]: ₹350/sqft
+              - generic [ref=e726]: ₹650
+        - link "Kids & Nursery Wall Art — Rose Quartz Add to Cart Kids & Nursery Kids & Nursery Wall Art — Rose Quartz ₹500/sqft" [ref=e728] [cursor=pointer]:
+          - /url: /product/kids-nursery-wall-art-rose-quartz-27/
+          - generic [ref=e729]:
+            - img "Kids & Nursery Wall Art — Rose Quartz" [ref=e730]
+            - button "Add to Cart" [ref=e733]
+          - generic [ref=e734]:
+            - paragraph [ref=e735]: Kids & Nursery
+            - heading "Kids & Nursery Wall Art — Rose Quartz" [level=3] [ref=e736]
+            - generic [ref=e738]: ₹500/sqft
+        - link "Kids & Nursery Wall Art — Sapphire Mist -9% Add to Cart Kids & Nursery Kids & Nursery Wall Art — Sapphire Mist ₹3,000/sqft ₹3,300" [ref=e740] [cursor=pointer]:
+          - /url: /product/kids-nursery-wall-art-sapphire-mist-26/
+          - generic [ref=e741]:
+            - img "Kids & Nursery Wall Art — Sapphire Mist" [ref=e742]
+            - generic [ref=e743]: "-9%"
+            - button "Add to Cart" [ref=e746]
+          - generic [ref=e747]:
+            - paragraph [ref=e748]: Kids & Nursery
+            - heading "Kids & Nursery Wall Art — Sapphire Mist" [level=3] [ref=e749]
+            - generic [ref=e750]:
+              - generic [ref=e751]: ₹3,000/sqft
+              - generic [ref=e752]: ₹3,300
+        - link "Kids & Nursery Designer Mural — Terracotta -71% Add to Cart Kids & Nursery Kids & Nursery Designer Mural — Terracotta ₹200/sqft ₹700" [ref=e754] [cursor=pointer]:
+          - /url: /product/kids-nursery-designer-mural-terracotta-25/
+          - generic [ref=e755]:
+            - img "Kids & Nursery Designer Mural — Terracotta" [ref=e756]
+            - generic [ref=e757]: "-71%"
+            - button "Add to Cart" [ref=e760]
+          - generic [ref=e761]:
+            - paragraph [ref=e762]: Kids & Nursery
+            - heading "Kids & Nursery Designer Mural — Terracotta" [level=3] [ref=e763]
+            - generic [ref=e764]:
+              - generic [ref=e765]: ₹200/sqft
+              - generic [ref=e766]: ₹700
+        - link "Ceiling Wall Art — Burgundy Wine -45% Add to Cart Ceiling Ceiling Wall Art — Burgundy Wine ₹600/sqft ₹1,100" [ref=e768] [cursor=pointer]:
+          - /url: /product/ceiling-wall-art-burgundy-wine-24/
+          - generic [ref=e769]:
+            - img "Ceiling Wall Art — Burgundy Wine" [ref=e770]
+            - generic [ref=e771]: "-45%"
+            - button "Add to Cart" [ref=e774]
+          - generic [ref=e775]:
+            - paragraph [ref=e776]: Ceiling
+            - heading "Ceiling Wall Art — Burgundy Wine" [level=3] [ref=e777]
+            - generic [ref=e778]:
+              - generic [ref=e779]: ₹600/sqft
+              - generic [ref=e780]: ₹1,100
+        - link "Ceiling Designer Mural — Emerald Green -30% Add to Cart Ceiling Ceiling Designer Mural — Emerald Green ₹450/sqft ₹650" [ref=e782] [cursor=pointer]:
+          - /url: /product/ceiling-designer-mural-emerald-green-23/
+          - generic [ref=e783]:
+            - img "Ceiling Designer Mural — Emerald Green" [ref=e784]
+            - generic [ref=e785]: "-30%"
+            - button "Add to Cart" [ref=e788]
+          - generic [ref=e789]:
+            - paragraph [ref=e790]: Ceiling
+            - heading "Ceiling Designer Mural — Emerald Green" [level=3] [ref=e791]
+            - generic [ref=e792]:
+              - generic [ref=e793]: ₹450/sqft
+              - generic [ref=e794]: ₹650
+        - link "Ceiling Wall Art — Mauve Blush -44% Add to Cart Ceiling Ceiling Wall Art — Mauve Blush ₹250/sqft ₹450" [ref=e796] [cursor=pointer]:
+          - /url: /product/ceiling-wall-art-mauve-blush-22/
+          - generic [ref=e797]:
+            - img "Ceiling Wall Art — Mauve Blush" [ref=e798]
+            - generic [ref=e799]: "-44%"
+            - button "Add to Cart" [ref=e802]
+          - generic [ref=e803]:
+            - paragraph [ref=e804]: Ceiling
+            - heading "Ceiling Wall Art — Mauve Blush" [level=3] [ref=e805]
+            - generic [ref=e806]:
+              - generic [ref=e807]: ₹250/sqft
+              - generic [ref=e808]: ₹450
+        - link "Leopard Tiger Mural — Mauve Blush -66% Add to Cart Leopard Tiger Leopard Tiger Mural — Mauve Blush ₹250/sqft ₹750" [ref=e810] [cursor=pointer]:
+          - /url: /product/leopard-tiger-mural-mauve-blush-21/
+          - generic [ref=e811]:
+            - img "Leopard Tiger Mural — Mauve Blush" [ref=e812]
+            - generic [ref=e813]: "-66%"
+            - button "Add to Cart" [ref=e816]
+          - generic [ref=e817]:
+            - paragraph [ref=e818]: Leopard Tiger
+            - heading "Leopard Tiger Mural — Mauve Blush" [level=3] [ref=e819]
+            - generic [ref=e820]:
+              - generic [ref=e821]: ₹250/sqft
+              - generic [ref=e822]: ₹750
+        - link "Leopard Tiger Designer Mural — Champagne Gold -6% Add to Cart Leopard Tiger Leopard Tiger Designer Mural — Champagne Gold ₹1,500/sqft ₹1,600" [ref=e824] [cursor=pointer]:
+          - /url: /product/leopard-tiger-designer-mural-champagne-gold-20/
+          - generic [ref=e825]:
+            - img "Leopard Tiger Designer Mural — Champagne Gold" [ref=e826]
+            - generic [ref=e827]: "-6%"
+            - button "Add to Cart" [ref=e830]
+          - generic [ref=e831]:
+            - paragraph [ref=e832]: Leopard Tiger
+            - heading "Leopard Tiger Designer Mural — Champagne Gold" [level=3] [ref=e833]
+            - generic [ref=e834]:
+              - generic [ref=e835]: ₹1,500/sqft
+              - generic [ref=e836]: ₹1,600
+        - link "Leopard Tiger Wall Art — Forest Deep -58% Add to Cart Leopard Tiger Leopard Tiger Wall Art — Forest Deep ₹350/sqft ₹850" [ref=e838] [cursor=pointer]:
+          - /url: /product/leopard-tiger-wall-art-forest-deep-19/
+          - generic [ref=e839]:
+            - img "Leopard Tiger Wall Art — Forest Deep" [ref=e840]
+            - generic [ref=e841]: "-58%"
+            - button "Add to Cart" [ref=e844]
+          - generic [ref=e845]:
+            - paragraph [ref=e846]: Leopard Tiger
+            - heading "Leopard Tiger Wall Art — Forest Deep" [level=3] [ref=e847]
+            - generic [ref=e848]:
+              - generic [ref=e849]: ₹350/sqft
+              - generic [ref=e850]: ₹850
+        - link "Chinoiseries Wall Art — Champagne Gold Add to Cart Chinoiseries Chinoiseries Wall Art — Champagne Gold ₹200/sqft" [ref=e852] [cursor=pointer]:
+          - /url: /product/chinoiseries-wall-art-champagne-gold-18/
+          - generic [ref=e853]:
+            - img "Chinoiseries Wall Art — Champagne Gold" [ref=e854]
+            - button "Add to Cart" [ref=e857]
+          - generic [ref=e858]:
+            - paragraph [ref=e859]: Chinoiseries
+            - heading "Chinoiseries Wall Art — Champagne Gold" [level=3] [ref=e860]
+            - generic [ref=e862]: ₹200/sqft
+        - link "Chinoiseries Wall Art — Sapphire Mist Add to Cart Chinoiseries Chinoiseries Wall Art — Sapphire Mist ₹350/sqft" [ref=e864] [cursor=pointer]:
+          - /url: /product/chinoiseries-wall-art-sapphire-mist-17/
+          - generic [ref=e865]:
+            - img "Chinoiseries Wall Art — Sapphire Mist" [ref=e866]
+            - button "Add to Cart" [ref=e869]
+          - generic [ref=e870]:
+            - paragraph [ref=e871]: Chinoiseries
+            - heading "Chinoiseries Wall Art — Sapphire Mist" [level=3] [ref=e872]
+            - generic [ref=e874]: ₹350/sqft
+        - link "Chinoiseries Wall Art — Forest Deep -25% Add to Cart Chinoiseries Chinoiseries Wall Art — Forest Deep ₹600/sqft ₹800" [ref=e876] [cursor=pointer]:
+          - /url: /product/chinoiseries-wall-art-forest-deep-16/
+          - generic [ref=e877]:
+            - img "Chinoiseries Wall Art — Forest Deep" [ref=e878]
+            - generic [ref=e879]: "-25%"
+            - button "Add to Cart" [ref=e882]
+          - generic [ref=e883]:
+            - paragraph [ref=e884]: Chinoiseries
+            - heading "Chinoiseries Wall Art — Forest Deep" [level=3] [ref=e885]
+            - generic [ref=e886]:
+              - generic [ref=e887]: ₹600/sqft
+              - generic [ref=e888]: ₹800
+        - link "Tropical Wall Art — Emerald Green Add to Cart Tropical Tropical Wall Art — Emerald Green ₹300/sqft" [ref=e890] [cursor=pointer]:
+          - /url: /product/tropical-wall-art-emerald-green-15/
+          - generic [ref=e891]:
+            - img "Tropical Wall Art — Emerald Green" [ref=e892]
+            - button "Add to Cart" [ref=e895]
+          - generic [ref=e896]:
+            - paragraph [ref=e897]: Tropical
+            - heading "Tropical Wall Art — Emerald Green" [level=3] [ref=e898]
+            - generic [ref=e900]: ₹300/sqft
+        - link "Tropical Designer Mural — Ocean Teal -45% Add to Cart Tropical Tropical Designer Mural — Ocean Teal ₹600/sqft ₹1,100" [ref=e902] [cursor=pointer]:
+          - /url: /product/tropical-designer-mural-ocean-teal-14/
+          - generic [ref=e903]:
+            - img "Tropical Designer Mural — Ocean Teal" [ref=e904]
+            - generic [ref=e905]: "-45%"
+            - button "Add to Cart" [ref=e908]
+          - generic [ref=e909]:
+            - paragraph [ref=e910]: Tropical
+            - heading "Tropical Designer Mural — Ocean Teal" [level=3] [ref=e911]
+            - generic [ref=e912]:
+              - generic [ref=e913]: ₹600/sqft
+              - generic [ref=e914]: ₹1,100
+        - link "Tropical Wall Art — Pearl White -14% Add to Cart Tropical Tropical Wall Art — Pearl White ₹1,200/sqft ₹1,400" [ref=e916] [cursor=pointer]:
+          - /url: /product/tropical-wall-art-pearl-white-13/
+          - generic [ref=e917]:
+            - img "Tropical Wall Art — Pearl White" [ref=e918]
+            - generic [ref=e919]: "-14%"
+            - button "Add to Cart" [ref=e922]
+          - generic [ref=e923]:
+            - paragraph [ref=e924]: Tropical
+            - heading "Tropical Wall Art — Pearl White" [level=3] [ref=e925]
+            - generic [ref=e926]:
+              - generic [ref=e927]: ₹1,200/sqft
+              - generic [ref=e928]: ₹1,400
+        - link "Temple Wall Art — Charcoal Black Add to Cart Temple Temple Wall Art — Charcoal Black ₹900/sqft" [ref=e930] [cursor=pointer]:
+          - /url: /product/temple-wall-art-charcoal-black-12/
+          - generic [ref=e931]:
+            - img "Temple Wall Art — Charcoal Black" [ref=e932]
+            - button "Add to Cart" [ref=e935]
+          - generic [ref=e936]:
+            - paragraph [ref=e937]: Temple
+            - heading "Temple Wall Art — Charcoal Black" [level=3] [ref=e938]
+            - generic [ref=e940]: ₹900/sqft
+        - link "Temple Mural — Pearl White Add to Cart Temple Temple Mural — Pearl White ₹450/sqft" [ref=e942] [cursor=pointer]:
+          - /url: /product/temple-mural-pearl-white-11/
+          - generic [ref=e943]:
+            - img "Temple Mural — Pearl White" [ref=e944]
+            - button "Add to Cart" [ref=e947]
+          - generic [ref=e948]:
+            - paragraph [ref=e949]: Temple
+            - heading "Temple Mural — Pearl White" [level=3] [ref=e950]
+            - generic [ref=e952]: ₹450/sqft
+        - link "Temple Designer Mural — Sapphire Mist -70% Add to Cart Temple Temple Designer Mural — Sapphire Mist ₹85/sqft ₹285" [ref=e954] [cursor=pointer]:
+          - /url: /product/temple-designer-mural-sapphire-mist-10/
+          - generic [ref=e955]:
+            - img "Temple Designer Mural — Sapphire Mist" [ref=e956]
+            - generic [ref=e957]: "-70%"
+            - button "Add to Cart" [ref=e960]
+          - generic [ref=e961]:
+            - paragraph [ref=e962]: Temple
+            - heading "Temple Designer Mural — Sapphire Mist" [level=3] [ref=e963]
+            - generic [ref=e964]:
+              - generic [ref=e965]: ₹85/sqft
+              - generic [ref=e966]: ₹285
+        - link "Pichwai Mural — Antique Bronze Add to Cart Pichwai Pichwai Mural — Antique Bronze ₹150/sqft" [ref=e968] [cursor=pointer]:
+          - /url: /product/pichwai-mural-antique-bronze-9/
+          - generic [ref=e969]:
+            - img "Pichwai Mural — Antique Bronze" [ref=e970]
+            - button "Add to Cart" [ref=e973]
+          - generic [ref=e974]:
+            - paragraph [ref=e975]: Pichwai
+            - heading "Pichwai Mural — Antique Bronze" [level=3] [ref=e976]
+            - generic [ref=e978]: ₹150/sqft
+        - link "Pichwai Wall Art — Emerald Green Add to Cart Pichwai Pichwai Wall Art — Emerald Green ₹1,500/sqft" [ref=e980] [cursor=pointer]:
+          - /url: /product/pichwai-wall-art-emerald-green-8/
+          - generic [ref=e981]:
+            - img "Pichwai Wall Art — Emerald Green" [ref=e982]
+            - button "Add to Cart" [ref=e985]
+          - generic [ref=e986]:
+            - paragraph [ref=e987]: Pichwai
+            - heading "Pichwai Wall Art — Emerald Green" [level=3] [ref=e988]
+            - generic [ref=e990]: ₹1,500/sqft
+        - link "Pichwai Wall Art — Charcoal Black -40% Add to Cart Pichwai Pichwai Wall Art — Charcoal Black ₹150/sqft ₹250" [ref=e992] [cursor=pointer]:
+          - /url: /product/pichwai-wall-art-charcoal-black-7/
+          - generic [ref=e993]:
+            - img "Pichwai Wall Art — Charcoal Black" [ref=e994]
+            - generic [ref=e995]: "-40%"
+            - button "Add to Cart" [ref=e998]
+          - generic [ref=e999]:
+            - paragraph [ref=e1000]: Pichwai
+            - heading "Pichwai Wall Art — Charcoal Black" [level=3] [ref=e1001]
+            - generic [ref=e1002]:
+              - generic [ref=e1003]: ₹150/sqft
+              - generic [ref=e1004]: ₹250
+        - link "European Mural — Midnight Velvet Add to Cart European European Mural — Midnight Velvet ₹250/sqft" [ref=e1006] [cursor=pointer]:
+          - /url: /product/european-mural-midnight-velvet-6/
+          - generic [ref=e1007]:
+            - img "European Mural — Midnight Velvet" [ref=e1008]
+            - button "Add to Cart" [ref=e1011]
+          - generic [ref=e1012]:
+            - paragraph [ref=e1013]: European
+            - heading "European Mural — Midnight Velvet" [level=3] [ref=e1014]
+            - generic [ref=e1016]: ₹250/sqft
+        - link "European Wall Art — Slate Gray -3% Add to Cart European European Wall Art — Slate Gray ₹3,000/sqft ₹3,100" [ref=e1018] [cursor=pointer]:
+          - /url: /product/european-wall-art-slate-gray-5/
+          - generic [ref=e1019]:
+            - img "European Wall Art — Slate Gray" [ref=e1020]
+            - generic [ref=e1021]: "-3%"
+            - button "Add to Cart" [ref=e1024]
+          - generic [ref=e1025]:
+            - paragraph [ref=e1026]: European
+            - heading "European Wall Art — Slate Gray" [level=3] [ref=e1027]
+            - generic [ref=e1028]:
+              - generic [ref=e1029]: ₹3,000/sqft
+              - generic [ref=e1030]: ₹3,100
+        - link "European Designer Mural — Emerald Green -4% Add to Cart European European Designer Mural — Emerald Green ₹2,000/sqft ₹2,100" [ref=e1032] [cursor=pointer]:
+          - /url: /product/european-designer-mural-emerald-green-4/
+          - generic [ref=e1033]:
+            - img "European Designer Mural — Emerald Green" [ref=e1034]
+            - generic [ref=e1035]: "-4%"
+            - button "Add to Cart" [ref=e1038]
+          - generic [ref=e1039]:
+            - paragraph [ref=e1040]: European
+            - heading "European Designer Mural — Emerald Green" [level=3] [ref=e1041]
+            - generic [ref=e1042]:
+              - generic [ref=e1043]: ₹2,000/sqft
+              - generic [ref=e1044]: ₹2,100
+        - link "Heritage Mural — Midnight Velvet -18% Add to Cart Heritage Heritage Mural — Midnight Velvet ₹900/sqft ₹1,100" [ref=e1046] [cursor=pointer]:
+          - /url: /product/heritage-mural-midnight-velvet-3/
+          - generic [ref=e1047]:
+            - img "Heritage Mural — Midnight Velvet" [ref=e1048]
+            - generic [ref=e1049]: "-18%"
+            - button "Add to Cart" [ref=e1052]
+          - generic [ref=e1053]:
+            - paragraph [ref=e1054]: Heritage
+            - heading "Heritage Mural — Midnight Velvet" [level=3] [ref=e1055]
+            - generic [ref=e1056]:
+              - generic [ref=e1057]: ₹900/sqft
+              - generic [ref=e1058]: ₹1,100
+        - link "Heritage Designer Mural — Burgundy Wine -16% Add to Cart Heritage Heritage Designer Mural — Burgundy Wine ₹1,000/sqft ₹1,200" [ref=e1060] [cursor=pointer]:
+          - /url: /product/heritage-designer-mural-burgundy-wine-2/
+          - generic [ref=e1061]:
+            - img "Heritage Designer Mural — Burgundy Wine" [ref=e1062]
+            - generic [ref=e1063]: "-16%"
+            - button "Add to Cart" [ref=e1066]
+          - generic [ref=e1067]:
+            - paragraph [ref=e1068]: Heritage
+            - heading "Heritage Designer Mural — Burgundy Wine" [level=3] [ref=e1069]
+            - generic [ref=e1070]:
+              - generic [ref=e1071]: ₹1,000/sqft
+              - generic [ref=e1072]: ₹1,200
+        - link "Heritage Wall Art — Sapphire Mist Add to Cart Heritage Heritage Wall Art — Sapphire Mist ₹1,000/sqft" [ref=e1074] [cursor=pointer]:
+          - /url: /product/heritage-wall-art-sapphire-mist-1/
+          - generic [ref=e1075]:
+            - img "Heritage Wall Art — Sapphire Mist" [ref=e1076]
+            - button "Add to Cart" [ref=e1079]
+          - generic [ref=e1080]:
+            - paragraph [ref=e1081]: Heritage
+            - heading "Heritage Wall Art — Sapphire Mist" [level=3] [ref=e1082]
+            - generic [ref=e1084]: ₹1,000/sqft
+  - generic [ref=e1086]:
+    - heading "Join the Mahashanka Family" [level=2] [ref=e1087]
+    - paragraph [ref=e1088]: Subscribe for exclusive offers, new arrivals, and interior design inspiration delivered to your inbox.
+    - generic [ref=e1089]:
+      - textbox "Your email address" [ref=e1090]
+      - button "Subscribe" [ref=e1091] [cursor=pointer]
+  - contentinfo [ref=e1092]:
+    - generic [ref=e1094]:
+      - generic [ref=e1095]:
+        - img [ref=e1096]
+        - generic [ref=e1098]: Worldwide Delivery
+      - generic [ref=e1099]:
+        - img [ref=e1100]
+        - generic [ref=e1102]: Easy Returns
+      - generic [ref=e1103]:
+        - img [ref=e1104]
+        - generic [ref=e1106]: Secure Payment
+      - generic [ref=e1107]:
+        - img [ref=e1108]
+        - generic [ref=e1110]: Authentic Products
+    - generic [ref=e1111]:
+      - generic [ref=e1112]:
+        - generic [ref=e1113]:
+          - text: Mahashanka
+          - generic [ref=e1114]: Decor
+        - paragraph [ref=e1115]: Premium wallpapers, wall murals, and home decor that transform your space into a masterpiece. Curated for modern Indian homes.
+        - generic [ref=e1116]:
+          - link [ref=e1117] [cursor=pointer]:
+            - /url: "#"
+            - img [ref=e1118]
+          - link [ref=e1120] [cursor=pointer]:
+            - /url: "#"
+            - img [ref=e1121]
+          - link [ref=e1123] [cursor=pointer]:
+            - /url: "#"
+            - img [ref=e1124]
+          - link [ref=e1126] [cursor=pointer]:
+            - /url: "#"
+            - img [ref=e1127]
+      - generic [ref=e1129]:
+        - heading "Shop" [level=4] [ref=e1130]
+        - list [ref=e1131]:
+          - listitem [ref=e1132]:
+            - link "Wall Murals" [ref=e1133] [cursor=pointer]:
+              - /url: /category/wall-murals/
+          - listitem [ref=e1134]:
+            - link "Wallpaper Rolls" [ref=e1135] [cursor=pointer]:
+              - /url: /category/wallpaper-rolls/
+          - listitem [ref=e1136]:
+            - link "Paintings & Wallart" [ref=e1137] [cursor=pointer]:
+              - /url: /category/paintings-and-wallart/
+          - listitem [ref=e1138]:
+            - link "Glass Mosaic Tiles" [ref=e1139] [cursor=pointer]:
+              - /url: /category/glass-mosaic-tiles/
+          - listitem [ref=e1140]:
+            - link "Home Decor" [ref=e1141] [cursor=pointer]:
+              - /url: /category/home-decor/
+          - listitem [ref=e1142]:
+            - link "Self Adhesive" [ref=e1143] [cursor=pointer]:
+              - /url: /category/self-adhesive-wallpaper/
+      - generic [ref=e1144]:
+        - heading "Help" [level=4] [ref=e1145]
+        - list [ref=e1146]:
+          - listitem [ref=e1147]:
+            - link "Shipping Policy" [ref=e1148] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=e1149]:
+            - link "Returns & Refunds" [ref=e1150] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=e1151]:
+            - link "FAQ" [ref=e1152] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=e1153]:
+            - link "Track Your Order" [ref=e1154] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=e1155]:
+            - link "Contact Us" [ref=e1156] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=e1157]:
+            - link "Privacy Policy" [ref=e1158] [cursor=pointer]:
+              - /url: "#"
+      - generic [ref=e1159]:
+        - heading "Get in Touch" [level=4] [ref=e1160]
+        - list [ref=e1161]:
+          - listitem [ref=e1162]:
+            - img [ref=e1163]
+            - generic [ref=e1166]: "Studio: Mumbai · Delhi · Bangalore"
+          - listitem [ref=e1167]:
+            - img [ref=e1168]
+            - generic [ref=e1170]: +91 98765 43210
+          - listitem [ref=e1171]:
+            - img [ref=e1172]
+            - generic [ref=e1174]: hello@mahashanka.com
+    - paragraph [ref=e1176]: © 2026 Mahashanka Decor. Premium wallpapers, murals & home decor. All rights reserved.
+  - button "1" [ref=e1178] [cursor=pointer]:
+    - img [ref=e1179]
+    - generic [ref=e1181]: "1"

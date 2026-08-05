@@ -1,0 +1,23 @@
+{
+  "preview_url": "https://red-and-wine-decor-nwyvpq.drytis.dev/",
+  "accounts": [
+    {
+      "role": "admin",
+      "username": "admin",
+      "email": "admin@redwine.local",
+      "password": "admin123",
+      "verified_at": "2026-08-05T05:10:00Z",
+      "verified_by": "leader",
+      "notes": "superuser, works at /login/ and /admin/"
+    },
+    {
+      "role": "user",
+      "username": "demo",
+      "email": "demo@redwine.local",
+      "password": "unknown",
+      "verified_at": "",
+      "verified_by": "",
+      "notes": "password not verified"
+    }
+  ]
+}
