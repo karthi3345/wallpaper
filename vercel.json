@@ -1,0 +1,25 @@
+{
+  "builds": [
+    {
+      "build": "vercel-python.config.api",
+      "config": {
+        "maxLambdaSize": "50mb",
+        "runtime": "python3.12"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/static/(.*)",
+      "dest": "/static/$1"
+    },
+    {
+      "src": "/media/(.*)",
+      "dest": "/media/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "store/wsgi.py"
+    }
+  ]
+}

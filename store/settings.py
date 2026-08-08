@@ -14,13 +14,21 @@ env = environ.Env(
     DJANGO_DEBUG=(bool, True),
     DJANGO_ALLOWED_HOSTS=(str, '*'),
 )
-environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+_env_path = os.path.join(BASE_DIR, '.env')
+if os.path.exists(_env_path):
+    environ.Env.read_env(_env_path)
 
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-fallback-key-change-me')
 
 DEBUG = env('DJANGO_DEBUG')
 
 ALLOWED_HOSTS = env('DJANGO_ALLOWED_HOSTS').split(',')
+
+# Allow Vercel deployment URLs (e.g. wallpaper-xxx.vercel.app)
+_vercel_url = os.environ.get('VERCEL_URL')
+if _vercel_url:
+    ALLOWED_HOSTS.append(_vercel_url)
+    ALLOWED_HOSTS.append(f'.{_vercel_url}')
 
 # Login URL — @login_required redirects here
 LOGIN_URL = '/login/'
@@ -29,6 +37,8 @@ LOGIN_URL = '/login/'
 CSRF_TRUSTED_ORIGINS = [
     'https://*.drytis.dev',
     'http://*.drytis.dev',
+    'https://*.vercel.app',
+    'http://*.vercel.app',
 ]
 
 # Trust the proxy so Django knows the original scheme was HTTPS
