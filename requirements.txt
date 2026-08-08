@@ -6,3 +6,4 @@ django-environ
 whitenoise
 razorpay
 requests
+dj-database-url

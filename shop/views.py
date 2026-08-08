@@ -530,15 +530,15 @@ def login_register(request):
                     from django.core.mail import send_mail
                     try:
                         send_mail(
-                            subject='Welcome to Mahashank Decor — Your Account Details',
+                            subject='Welcome to Mahashankh Decor — Your Account Details',
                             message=(
-                                f'Welcome to Mahashank Decor!\n\n'
+                                f'Welcome to Mahashankh Decor!\n\n'
                                 f'Your account has been created successfully.\n\n'
                                 f'Username: {username}\n'
                                 f'Temporary Password: {temp_password}\n\n'
                                 f'Please log in and change your password.\n\n'
                                 f'Visit: https://mahashank.com/login/\n\n'
-                                f'— Mahashank Decor Team'
+                                f'— Mahashankh Decor Team'
                             ),
                             from_email='noreply@mahashank.com',
                             recipient_list=[email],

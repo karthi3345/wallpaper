@@ -1,5 +1,5 @@
 """
-Seed demo data for Mahashank.
+Seed demo data for Mahashankh.
 Run: python3 manage.py seed_demo
 """
 
@@ -89,7 +89,7 @@ COLOR_DATA = [
 TESTIMONIAL_DATA = [
     ('Priya Sharma', 'Mumbai, Maharashtra', 'Absolutely stunning wallpapers! The quality exceeded my expectations. My living room looks like a magazine cover now.', 5),
     ('Rajesh Kumar', 'Delhi, Delhi', 'The heritage mural we ordered is breathtaking. Installation was smooth and the team was very professional.', 5),
-    ('Ananya Patel', 'Bangalore, Karnataka', 'Beautiful designs and excellent customer service. Highly recommend Mahashank for anyone looking to transform their space.', 5),
+    ('Ananya Patel', 'Bangalore, Karnataka', 'Beautiful designs and excellent customer service. Highly recommend Mahashankh for anyone looking to transform their space.', 5),
     ('Vikram Singh', 'Jaipur, Rajasthan', 'The Pichwai mural in our dining room is a conversation starter at every dinner party. Love it!', 5),
     ('Meera Iyer', 'Chennai, Tamil Nadu', 'Premium quality wallpapers at reasonable prices. The peacock mural is simply gorgeous.', 4),
     ('Arjun Reddy', 'Hyderabad, Telangana', 'Fast delivery and the wallpaper was exactly as shown. Will definitely order again.', 5),
@@ -120,7 +120,7 @@ PRODUCT_DESCRIPTIONS = [
 
 
 class Command(BaseCommand):
-    help = 'Seed demo data for Mahashank'
+    help = 'Seed demo data for Mahashankh'
 
     def handle(self, *args, **options):
         self.stdout.write('Seeding demo data...')

@@ -1,7 +1,7 @@
 """
 Mistral AI Decor Assistant — intelligent chatbot service.
 
-Powers the Mahashank Decor chatbot with full store knowledge:
+Powers the Mahashankh Decor chatbot with full store knowledge:
 products, categories, pricing, shipping, installation, returns,
 AI wallpaper generation (positive & negative prompts), rooms, colors.
 
@@ -23,12 +23,12 @@ MAX_HISTORY = 8       # max conversation turns sent to the API
 
 # ── Store knowledge base ─────────────────────────────────────────────
 # This system prompt gives the AI everything it needs to act as an
-# expert decor consultant for Mahashank Decor.
+# expert decor consultant for Mahashankh Decor.
 
-SYSTEM_PROMPT = """You are the AI Decor Assistant for **Mahashank Decor** — a premium wallpaper, wall mural, and home decor store based in India. You are warm, knowledgeable, and helpful — like an expert interior designer.
+SYSTEM_PROMPT = """You are the AI Decor Assistant for **Mahashankh Decor** — a premium wallpaper, wall mural, and home decor store based in India. You are warm, knowledgeable, and helpful — like an expert interior designer.
 
 ## Your Store
-Mahashank Decor sells premium wallpapers, wall murals, paintings, wall art, glass mosaic tiles, self-adhesive wallpapers, kids & nursery decor, and 3D murals. All prices are in Indian Rupees (₹).
+Mahashankh Decor sells premium wallpapers, wall murals, paintings, wall art, glass mosaic tiles, self-adhesive wallpapers, kids & nursery decor, and 3D murals. All prices are in Indian Rupees (₹).
 
 ## Product Categories & Details
 
@@ -187,7 +187,7 @@ Use **bullet lists** (-) for:
 - Line breaks: use double line break between paragraphs
 
 ### Example Response for "What products do you have?"
-Here's our full product range at Mahashank Decor:
+Here's our full product range at Mahashankh Decor:
 
 | Category | Popular Styles | Starting Price | Ideal For |
 |----------|---------------|----------------|-----------|

@@ -252,7 +252,7 @@ SEARCH_API = (
     "&redirects=1&titles={}"
 )
 HEADERS = {
-    "User-Agent": "MahashankBot/1.0 (contact: dev@mahashank.com)",
+    "User-Agent": "MahashankhBot/1.0 (contact: dev@mahashank.com)",
     "Accept": "application/json",
 }
 

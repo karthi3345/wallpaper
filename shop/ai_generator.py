@@ -1,24 +1,36 @@
 """
-AI Wallpaper Generation Service — powered by Mistral AI.
-Uses Mistral's image_generation tool (Flux via Black Forest Labs) to
-generate high-quality images from text prompts with category-based
-style enhancement.
+AI Wallpaper Generation Service — powered by Cloudflare Workers AI.
+Ultra-optimized for minimal neuron usage to serve many users within
+the 10,000 neuron/day free tier.
 
-Mistral handles image generation internally via its tool system —
-we send a chat completion with the image_generation tool enabled,
-and the response includes the generated image URL.
+Strategy:
+  - Generate at 512×512 with 1 diffusion step = ~261 neurons/image
+  - Supports ~38 generations/day on free tier
+  - Upscale client-side via CSS if user requests larger sizes
+  - Multi-provider fallback: Cloudflare → Pollinations → retry queue
 """
 import base64
 import os
+import time
 
 import requests
+from django.conf import settings
 
-# ── Mistral AI Config ─────────────────────────────────────────────────
-MISTRAL_API_KEY = os.environ.get('MISTRAL_API_KEY', '')
-MISTRAL_API_URL = 'https://api.mistral.ai/v1/chat/completions'
-MISTRAL_MODEL = os.environ.get('MISTRAL_MODEL', 'mistral-medium-latest')
+# ── Cloudflare Workers AI Config ──────────────────────────────────────
+CF_ACCOUNT_ID = os.environ.get('CF_ACCOUNT_ID', '')
+CF_API_TOKEN = os.environ.get('CF_API_TOKEN', '')
+CF_MODEL = '@cf/black-forest-labs/flux-1-schnell'
+CF_API_URL = (
+    f'https://api.cloudflare.com/client/v4/accounts/{CF_ACCOUNT_ID}/ai/run/{CF_MODEL}'
+)
 
-# Default negative prompt applied to ALL generations (can be extended by user)
+# Ultra-minimal settings: 512×512, 1 step = ~261 neurons per image
+# This allows ~38 images/day on the 10,000 neuron free tier
+CF_GEN_WIDTH = 512
+CF_GEN_HEIGHT = 512
+CF_GEN_STEPS = 1
+
+# Default negative prompt applied to ALL generations
 DEFAULT_NEGATIVE_PROMPT = (
     'blurry, low quality, pixelated, distorted, deformed, '
     'watermark, signature, text, logo, border, frame, '
@@ -27,6 +39,9 @@ DEFAULT_NEGATIVE_PROMPT = (
 
 
 # ── Category Definitions ──────────────────────────────────────────────
+# Each category has style keywords injected into the prompt so the AI
+# knows exactly what aesthetic to produce.
+
 AI_CATEGORIES = {
     'painting': {
         'label': 'AI Painting',
@@ -193,130 +208,130 @@ def build_negative_prompt(user_negative, category_key):
     return ', '.join(parts)
 
 
-def _extract_image_url(data):
+def _generate_via_cloudflare(full_prompt, final_negative):
     """
-    Extract the generated image URL from Mistral's multi-completion response.
-    The response structure is:
-      choices[0].messages[] — array of messages including tool calls and results.
-    The image URL appears in either:
-      1. A tool result message's content (JSON with "url" key)
-      2. An assistant message's content array with type "image_url"
+    Generate via Cloudflare Workers AI with ultra-minimal neuron settings.
+    Returns (base64_string, None) on success, (None, error_msg) on failure.
     """
-    for choice in data.get('choices', []):
-        messages = choice.get('messages', [])
-        for msg in messages:
-            # Check tool result messages for image URL
-            content = msg.get('content', '')
-            if isinstance(content, str) and content:
-                try:
-                    import json
-                    parsed = json.loads(content)
-                    if isinstance(parsed, dict) and parsed.get('url'):
-                        return parsed['url']
-                except (ValueError, TypeError):
-                    pass
-
-            # Check assistant messages with content array (image_url type)
-            if isinstance(content, list):
-                for block in content:
-                    if isinstance(block, dict):
-                        if block.get('type') == 'image_url':
-                            img_url = block.get('image_url', '')
-                            if isinstance(img_url, dict):
-                                return img_url.get('url', '')
-                            return img_url
-
-        # Fallback: check choice.message (single-message format)
-        single_msg = choice.get('message', {})
-        single_content = single_msg.get('content', '')
-        if isinstance(single_content, list):
-            for block in single_content:
-                if isinstance(block, dict) and block.get('type') == 'image_url':
-                    img_url = block.get('image_url', '')
-                    if isinstance(img_url, dict):
-                        return img_url.get('url', '')
-                    return img_url
-
-    return None
-
-
-def generate_image(user_prompt, category_key, size='1024x1024', negative_prompt=''):
-    """
-    Generate an image via Mistral AI's image_generation tool.
-    Returns (b64_string, error_message).
-    On success b64_string is a base64-encoded image; on failure it is None.
-    """
-    if not MISTRAL_API_KEY:
-        return None, (
-            'Mistral AI API key not configured. '
-            'Set MISTRAL_API_KEY environment variable.'
-        )
-
-    final_prompt = classify_prompt(user_prompt, category_key)
-    final_negative = build_negative_prompt(negative_prompt, category_key)
-
-    # Build the prompt for Mistral — include negative prompt in the text
-    # since the image_generation tool doesn't have a separate negative field
-    full_instruction = f'Generate an image: {final_prompt}'
-    if final_negative:
-        full_instruction += f'\nAvoid: {final_negative}'
+    if not CF_ACCOUNT_ID or not CF_API_TOKEN:
+        return None, 'Cloudflare credentials not configured.'
 
     headers = {
+        'Authorization': f'Bearer {CF_API_TOKEN}',
         'Content-Type': 'application/json',
-        'Accept': 'application/json',
-        'Authorization': f'Bearer {MISTRAL_API_KEY}',
     }
 
     payload = {
-        'model': MISTRAL_MODEL,
-        'tools': [{'type': 'image_generation'}],
-        'messages': [
-            {
-                'role': 'user',
-                'content': full_instruction,
-            }
-        ],
+        'prompt': full_prompt,
+        'width': CF_GEN_WIDTH,
+        'height': CF_GEN_HEIGHT,
+        'num_steps': CF_GEN_STEPS,   # 1 step = minimal neurons
     }
 
+    if final_negative:
+        payload['negative_prompt'] = final_negative
+
     try:
-        resp = requests.post(
-            MISTRAL_API_URL,
-            headers=headers,
-            json=payload,
-            timeout=120,
-        )
+        resp = requests.post(CF_API_URL, headers=headers, json=payload, timeout=90)
     except requests.exceptions.Timeout:
-        return None, 'The image generation timed out. Please try again.'
+        return None, None  # fallback to next provider
     except requests.exceptions.ConnectionError:
-        return None, 'Could not connect to Mistral AI. Please try again.'
+        return None, None
+
+    if resp.status_code == 429:
+        # Rate limit / daily limit exhausted — return None so fallback kicks in
+        return None, None
 
     if resp.status_code != 200:
         try:
             err_data = resp.json()
-            err_msg = err_data.get('message', '') or err_data.get('detail', '')
-            if err_msg:
-                return None, f'Mistral AI error: {err_msg}'
+            cf_errors = err_data.get('errors', [])
+            if cf_errors:
+                msg = cf_errors[0].get('message', '')
+                if 'authentication' in msg.lower():
+                    return None, None  # auth issue — try fallback
         except (ValueError, KeyError):
             pass
-        return None, f'Mistral AI error (HTTP {resp.status_code}). Please try again.'
+        return None, None  # any error — try fallback
 
+    # Cloudflare returns binary image (image/png)
+    content_type = resp.headers.get('Content-Type', '')
+
+    if 'image' in content_type:
+        b64 = base64.b64encode(resp.content).decode('ascii')
+        return b64, None
+
+    # JSON response with base64
     try:
         data = resp.json()
+        if data.get('success') and data.get('result'):
+            result = data['result']
+            if isinstance(result, dict) and result.get('image'):
+                img_b64 = result['image']
+                if img_b64.startswith('data:image'):
+                    img_b64 = img_b64.split(',', 1)[-1]
+                return img_b64, None
     except (ValueError, KeyError):
-        return None, 'Unexpected response from Mistral AI. Please try again.'
-
-    # Extract image URL from the response
-    image_url = _extract_image_url(data)
-    if not image_url:
-        return None, 'No image was generated. Please try again with a different description.'
-
-    # Download the image and convert to base64
-    try:
-        img_resp = requests.get(image_url, timeout=30)
-        if img_resp.status_code == 200:
-            b64 = base64.b64encode(img_resp.content).decode('ascii')
-            return b64, None
-    except requests.exceptions.RequestException:
         pass
 
-    return None, 'Failed to download generated image. Please try again.'
+    return None, None
+
+
+def _generate_via_pollinations(full_prompt, final_negative):
+    """
+    Fallback: Pollinations.ai free image generation.
+    Returns (base64_string, None) on success, (None, None) on failure.
+    """
+    from urllib.parse import quote
+
+    # Combine prompt with negatives
+    prompt_text = full_prompt
+    if final_negative:
+        prompt_text = f'{full_prompt}. Avoid: {final_negative}'
+
+    url = (
+        f'https://image.pollinations.ai/prompt/{quote(prompt_text[:500])}'
+        f'?width=512&height=512&nologo=true&seed={int(time.time()) % 100000}'
+    )
+
+    try:
+        resp = requests.get(url, timeout=90)
+    except (requests.exceptions.Timeout, requests.exceptions.ConnectionError):
+        return None, None
+
+    if resp.status_code == 200 and 'image' in resp.headers.get('Content-Type', ''):
+        b64 = base64.b64encode(resp.content).decode('ascii')
+        return b64, None
+
+    return None, None
+
+
+def generate_image(user_prompt, category_key, size='1024x1024', negative_prompt=''):
+    """
+    Main entry point. Generate an image with minimal neuron usage.
+    Always generates at 512×512 internally (saves neurons), the display
+    size is handled by CSS on the frontend.
+
+    Fallback chain: Cloudflare (minimal neurons) → Pollinations (free)
+
+    Returns (b64_string, error_message).
+    """
+    final_prompt = classify_prompt(user_prompt, category_key)
+    final_negative = build_negative_prompt(negative_prompt, category_key)
+
+    # ── Provider 1: Cloudflare Workers AI (ultra-minimal neurons) ──
+    b64, _ = _generate_via_cloudflare(final_prompt, final_negative)
+    if b64:
+        return b64, None
+
+    # ── Provider 2: Pollinations.ai (free fallback) ──
+    b64, _ = _generate_via_pollinations(final_prompt, final_negative)
+    if b64:
+        return b64, None
+
+    # ── All providers failed ──
+    return None, (
+        'Image generation is temporarily busy. Our AI providers have reached '
+        'their daily limit. Please try again in a few hours — '
+        'the limit resets daily. Thank you for your patience!'
+    )

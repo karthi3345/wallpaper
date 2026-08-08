@@ -1,4 +1,4 @@
-/* Mahashank — Main JS */
+/* Mahashankh — Main JS */
 
 document.addEventListener('DOMContentLoaded', function() {
 
@@ -188,7 +188,7 @@ function chatbot() {
                 if (this.messages.length === 0) {
                     this.messages.push({
                         from: 'bot',
-                        text: 'Namaste! 🙏 Welcome to Mahashank! I\'m your AI decor assistant. Ask me about wallpapers, murals, pricing, or how to write great prompts for our AI Generator!'
+                        text: 'Namaste! 🙏 Welcome to Mahashankh! I\'m your AI decor assistant. Ask me about wallpapers, murals, pricing, or how to write great prompts for our AI Generator!'
                     });
                 }
             }, 1500);

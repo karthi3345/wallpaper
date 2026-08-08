@@ -1,6 +1,6 @@
 """
 Django settings for store project.
-Mahashank — Wallpaper & Home Decor E-commerce
+Mahashankh — Wallpaper & Home Decor E-commerce
 """
 
 import os
@@ -79,17 +79,31 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'store.wsgi.application'
 
-# Database — PostgreSQL
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('POSTGRES_DB', os.environ.get('DB_NAME', 'redwine_db')),
-        'USER': os.environ.get('POSTGRES_USER', os.environ.get('DB_USER', 'redwine')),
-        'PASSWORD': os.environ.get('POSTGRES_PASSWORD', os.environ.get('DB_PASSWORD', 'redwine2026')),
-        'HOST': os.environ.get('POSTGRES_HOST', os.environ.get('DB_HOST', '127.0.0.1')),
-        'PORT': os.environ.get('POSTGRES_PORT', os.environ.get('DB_PORT', '5432')),
+# Database — PostgreSQL (local) or Neon (production via DATABASE_URL)
+import dj_database_url
+
+DATABASE_URL = os.environ.get('DATABASE_URL')
+
+if DATABASE_URL:
+    # Production / Neon — parse the connection URL and enforce SSL
+    DATABASES = {
+        'default': dj_database_url.parse(
+            DATABASE_URL,
+            conn_max_age=600,
+            ssl_require=True,
+        )
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': os.environ.get('POSTGRES_DB', os.environ.get('DB_NAME', 'redwine_db')),
+            'USER': os.environ.get('POSTGRES_USER', os.environ.get('DB_USER', 'redwine')),
+            'PASSWORD': os.environ.get('POSTGRES_PASSWORD', os.environ.get('DB_PASSWORD', 'redwine2026')),
+            'HOST': os.environ.get('POSTGRES_HOST', os.environ.get('DB_HOST', '127.0.0.1')),
+            'PORT': os.environ.get('POSTGRES_PORT', os.environ.get('DB_PORT', '5432')),
+        }
+    }
 
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
