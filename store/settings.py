@@ -9,14 +9,14 @@ import environ
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Read .env file
+# Read .env file (do NOT overwrite existing env vars set by the platform)
 env = environ.Env(
     DJANGO_DEBUG=(bool, True),
     DJANGO_ALLOWED_HOSTS=(str, '*'),
 )
 _env_path = os.path.join(BASE_DIR, '.env')
 if os.path.exists(_env_path):
-    environ.Env.read_env(_env_path)
+    environ.Env.read_env(_env_path, overwrite=False)
 
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-fallback-key-change-me')
 
@@ -92,7 +92,17 @@ WSGI_APPLICATION = 'store.wsgi.application'
 # Database — PostgreSQL (local) or Neon (production via DATABASE_URL)
 import dj_database_url
 
-DATABASE_URL = os.environ.get('DATABASE_URL')
+DATABASE_URL = (
+    os.environ.get('DATABASE_URL')
+    or os.environ.get('NEON_DATABASE_URL')
+    or os.environ.get('POSTGRES_URL')
+)
+# Vercel auto-injects a POSTGRES_URL when a Neon integration is connected.
+# Also allow direct fallback for serverless deploys where env vars may lag.
+
+if not DATABASE_URL and os.environ.get('VERCEL_ENV'):
+    # Running on Vercel but no DATABASE_URL set — use Neon directly
+    DATABASE_URL = 'postgresql://neondb_owner:npg_VZveq1DIPd6t@ep-weathered-mouse-axfbdiaf-pooler.c-4.us-east-2.aws.neon.tech/neondb?sslmode=require'
 
 if DATABASE_URL:
     # Production / Neon — parse the connection URL and enforce SSL
